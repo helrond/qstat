@@ -10,7 +10,7 @@ angular.module('qStat', [
   'qStat.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/home', {templateUrl: 'partials/home.html', controller: 'homeCtrl'});
+  $routeProvider.when('/', {templateUrl: 'partials/home.html', controller: 'homeCtrl'});
   $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-  $routeProvider.otherwise({redirectTo: '/home'});
+  $routeProvider.otherwise({redirectTo: '/'});
 }]);

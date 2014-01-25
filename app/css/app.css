@@ -36,3 +36,11 @@ header h1 {
   content: "";
   padding: 0;
 }
+
+.footer {
+	background-color: #000;
+	text-align:center;
+}
+.footer p {
+	color:#fff;
+}
