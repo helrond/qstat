@@ -1,7 +1,12 @@
 /* app css stylesheet */
+html, body {
+	height:100%;
+}
+
 header {
 	text-align:center;
 	background-color:#000;
+	height:5%;
 }
 
 header h1 {
@@ -37,9 +42,14 @@ header h1 {
   padding: 0;
 }
 
+.content {
+	height:94%;
+}
+
 .footer {
 	background-color: #000;
 	text-align:center;
+	height:1%
 }
 .footer p {
 	color:#fff;
