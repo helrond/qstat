@@ -6,7 +6,7 @@ html, body {
 header {
 	text-align:center;
 	background-color:#000;
-	height:5%;
+	height:6%;
 }
 
 header h1 {
@@ -18,14 +18,6 @@ header h1 {
   border-bottom: 0.1em solid black;
   margin-bottom: 2em;
   padding: 0 0 0.5em;
-}
-
-.menu:before {
-  content: "[";
-}
-
-.menu:after {
-  content: "]";
 }
 
 .menu > li {
@@ -43,13 +35,21 @@ header h1 {
 }
 
 .content {
-	height:94%;
+	height:91%;
+}
+
+.home {
+	text-align:center;
+}
+.home ul, .home li {
+	list-style-type:none;
+	font-size:2em;
 }
 
 footer {
 	background-color: #000;
 	text-align:center;
-	height:1%
+	height:3%
 }
 
 footer p {
