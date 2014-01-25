@@ -4,10 +4,10 @@
 // Declare app level module which depends on filters, and services
 angular.module('qStat', [
   'ngRoute',
-  'myApp.filters',
-  'myApp.services',
-  'myApp.directives',
-  'myApp.controllers'
+  'qStat.filters',
+  'qStat.services',
+  'qStat.directives',
+  'qStat.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
