@@ -3,6 +3,9 @@
 /* Controllers */
 
 angular.module('qStat.controllers', []).
+  controller('homeCtrl', [function() {
+
+  }])
   controller('MyCtrl1', [function() {
 
   }])
