@@ -46,11 +46,12 @@ header h1 {
 	height:94%;
 }
 
-.footer {
+footer {
 	background-color: #000;
 	text-align:center;
 	height:1%
 }
-.footer p {
+
+footer p {
 	color:#fff;
 }
