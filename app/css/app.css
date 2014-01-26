@@ -16,6 +16,8 @@ header h1 {
 
 .content {
 	min-height:91%;
+	width:90%;
+	margin-left:5%;
 }
 
 .home {
