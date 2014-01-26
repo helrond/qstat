@@ -14,6 +14,11 @@ header h1 {
 	color:#fff;
 }
 
+.nav {
+	width:90%;
+	margin-left:5%;
+}
+
 .content {
 	min-height:91%;
 	width:90%;
