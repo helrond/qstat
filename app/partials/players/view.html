@@ -1,6 +1,6 @@
 <div ng-controller="playerCtrl" class="playerView text-center">
 	<div class="search">
-		<input ng-model="query" />
+		<input type="text" placeholder="Search" ng-model="query" />
         <select ng-model="orderProp">
   			<option value="name">Name</option>
   			<option value="position">Position</option>
@@ -8,9 +8,9 @@
 	</div>
 	<ul class="players">
     	<li ng-repeat="player in players | filter:query | orderBy:orderProp">
+        	<img src="{{player.image}}"/>
     		<h3>{{ player.name }} ({{player.number}})</h3>
             <p>{{ player.position }}</p>
-        	<p>{{ player.description }}</p>
         </li>
     </ul>
 </div>

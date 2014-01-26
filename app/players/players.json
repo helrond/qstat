@@ -1,37 +1,30 @@
 [
 {
-	"@context":"http://schema.org/Person",
 	"id":"1",
 	"name":"Alvin Arnold",
-	"image":null,
+	"image":"img/alvin.jpg",
 	"number":"13",
-	"description":"World's biggest nerd.",
 	"position":"Chaser"
 },
 {
-	"@context":"http://schema.org/Person",
 	"id":"2",
 	"name":"Calypso Montoya",
-	"image":null,"number":"1",
-	"description":"Prepare to die.",
+	"image":null,
+	"number":"1",
 	"position":"Beater"
 },
 {
-	"@context":"http://schema.org/Person",
 	"id":"3",
 	"name":"Lord Voldemort",
 	"image":null,
 	"number":"-google",
-	"description":"I am the Lord of Darkness.",
 	"position":"Utility"
 },
 {
-	"@context":"http://schema.org/Person",
 	"id":"4",
 	"name":"George W. Bush",
 	"image":null,
 	"number":"13",
-	"description":"Bring 'em on.",
 	"position":"Beater"
 }
 ]
