@@ -7,7 +7,7 @@
         	<img width="50px" ng-src="{{player.image}}"/>
     		<h3><a href="#/player/{{player.id}}">{{ player.name }} ({{player.number}})</a></h3>
             <p>{{ player.position }}</p>
-            <span class="glyphicon glyphicon-pencil"></span>
+            <a href="#player/{{player.id}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
         </li>
     </ul>
 </div>
