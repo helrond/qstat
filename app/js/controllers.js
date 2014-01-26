@@ -6,9 +6,15 @@ angular.module('qStat.controllers', []).
   controller('homeCtrl', [function() {
 
   }])
-  controller('MyCtrl1', [function() {
+  controller('gameCtrl', [function() {
 
   }])
-  .controller('MyCtrl2', [function() {
+  controller('playerCtrl', [function() {
+
+  }])
+  controller('statCtrl', [function() {
+
+  }])
+  controller('teamCtrl', [function() {
 
   }]);
