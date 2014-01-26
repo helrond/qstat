@@ -1,7 +1,8 @@
 /* app css stylesheet */
 html, body {
 	height:100%;
-	width:100%
+	width:90%;
+	margin-left:5%;
 }
 
 header {
@@ -12,11 +13,6 @@ header {
 
 header h1 {
 	color:#fff;
-}
-
-.nav {
-	width:90%;
-	margin-left:5%;
 }
 
 .content {
