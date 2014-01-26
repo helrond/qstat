@@ -1,27 +1,27 @@
 [
 {
-	"id":"1",
+	"id":"alvin-arnold",
 	"name":"Alvin Arnold",
 	"image":"img/alvin.png",
 	"number":"13",
 	"position":"Chaser"
 },
 {
-	"id":"2",
+	"id":"calypso-montoya",
 	"name":"Calypso Montoya",
 	"image":"img/calypso.png",
 	"number":"1",
 	"position":"Beater"
 },
 {
-	"id":"3",
+	"id":"lord-voldemort",
 	"name":"Lord Voldemort",
 	"image":"img/voldemort.png",
 	"number":"-google",
 	"position":"Utility"
 },
 {
-	"id":"4",
+	"id":"george-w-bush",
 	"name":"George W. Bush",
 	"image":"img/bush.png",
 	"number":"13",

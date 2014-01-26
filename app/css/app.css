@@ -29,6 +29,13 @@ header h1 {
 	font-size:2em;
 }
 
+.players ul {
+	list-style-type:none;
+}
+.players li:nth-of-type(odd) {
+	background-color: #ccc;
+}
+
 footer {
 	background-color: #000;
 	text-align:center;
