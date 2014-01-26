@@ -50,6 +50,11 @@ header h1 {
 }
 .players .name {
 	float:left;
+	margin-left: 2%;
+	width: 70%;
+}
+.players h3 {
+	margin:0;
 }
 .players .edit {
 	float:right;
