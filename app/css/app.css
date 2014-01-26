@@ -20,7 +20,9 @@ header h1 {
 	width:90%;
 	margin-left:5%;
 }
-
+.search {
+	margin-bottom: 1em;
+}
 .home {
 	text-align:center;
 }
@@ -29,13 +31,24 @@ header h1 {
 	font-size:2em;
 }
 
-.players ul {
+.playerView ul {
 	list-style-type:none;
+	padding:0;
+}
+.players li {
+	padding:1%;
+	float:left;
+	width:100%;
 }
 .players li:nth-of-type(odd) {
 	background-color: #ccc;
 }
-
+.players h3 {
+	float:left;
+}
+.players glyphicon {
+	float:right;
+}
 footer {
 	background-color: #000;
 	text-align:center;
