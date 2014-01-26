@@ -6,8 +6,10 @@
   			<option value="position">Position</option>
 		</select>
 	</div>
-	<dl class="players" ng-repeat="player in players">
-    	<dt>{{ player.name }}</dt>
-        <dd>{{ player.description }}</dd>
-    </dl>
+	<ul class="players">
+    	<li ng-repeat="player in players">
+    		<h3>{{ player.name }}</h3>
+        	<small>{{ player.description }}</small>
+        </li>
+    </ul>
 </div>
