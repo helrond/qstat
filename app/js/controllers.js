@@ -12,18 +12,11 @@ var qStat = angular.module('qStat.controllers', []);
 
   }]);
   
-qStat.controller('playerCtrl', function($scope) {
-	  $scope.players = [
-	{
-		"@context":"http://schema.org/Person",
-		"id":"1",
-		"name":"Alvin Arnold",
-		"image":null,
-		"number":"13",
-		"description":"World's biggest nerd.",
-		"position":"Chaser"
-	}
-	  ];
+qStat.controller('playerCtrl', function($scope, $http) {
+	$http.get('players/players.json').success(function(data) {
+		$scope.players = data; 
+		});
+	$scope.orderProp = 'name';
 });
   
   qStat.controller('statCtrl', [function() {

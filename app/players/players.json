@@ -7,7 +7,7 @@
 	"number":"13",
 	"description":"World's biggest nerd.",
 	"position":"Chaser"
-}
+},
 {
 	"@context":"http://schema.org/Person",
 	"id":"2",
@@ -15,7 +15,7 @@
 	"image":null,"number":"1",
 	"description":"Prepare to die.",
 	"position":"Beater"
-}
+},
 {
 	"@context":"http://schema.org/Person",
 	"id":"3",
@@ -24,7 +24,7 @@
 	"number":"-google",
 	"description":"I am the Lord of Darkness.",
 	"position":"Utility"
-}
+},
 {
 	"@context":"http://schema.org/Person",
 	"id":"4",
