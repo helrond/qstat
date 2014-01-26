@@ -1,0 +1,9 @@
+{
+	"@context":"http://schema.org/Person",
+	"id":1,
+	"name":"Alvin Arnold",
+	"image":null,
+	"number":"13",
+	"description":"World's biggest nerd.",
+	"position":"Chaser"
+}

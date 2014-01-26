@@ -2,19 +2,27 @@
 
 /* Controllers */
 
-angular.module('qStat.controllers', []).
-  controller('homeCtrl', [function() {
+var qStat = angular.module('qStat.controllers', []);
 
-  }])
-  controller('gameCtrl', [function() {
+  qStat.controller('homeCtrl', [function() {
 
-  }])
-  controller('playerCtrl', [function() {
+  }]);
+  
+  qStat.controller('gameCtrl', [function() {
 
-  }])
-  controller('statCtrl', [function() {
+  }]);
+  
+qStat.controller('playerCtrl', function($scope, $http) {
+	  $http.get('players/players.json').success(function(data) {
+    	$scope.players = data;
+  });
+    $scope.orderProp = 'age';
+});
+  
+  qStat.controller('statCtrl', [function() {
 
-  }])
-  controller('teamCtrl', [function() {
+  }]);
+  
+  qStat.controller('teamCtrl', [function() {
 
   }]);
