@@ -21,8 +21,13 @@
   
 	<div class="content">
   		<div ng-view></div>
-        <p ng-repeat="player in players">{{ player.name }}</p>
-  	</div>
+  	</div><br>
+
+<div ng-controller="playerCtrl">
+<p ng-repeat="player in players">
+{{ player.name }}
+</p>
+</div>
   
   <footer>
   <p><small>version 0.1</small></p>
