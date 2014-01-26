@@ -16,7 +16,7 @@ qStat.controller('playerCtrl', function($scope, $http) {
 	  $http.get('players/players.json').success(function(data) {
     	$scope.players = data;
   });
-    $scope.orderProp = 'age';
+    $scope.orderProp = 'name';
 });
   
   qStat.controller('statCtrl', [function() {
