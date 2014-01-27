@@ -11,15 +11,9 @@ angular.module('qStat', [
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {templateUrl: 'partials/home.html', controller: 'homeCtrl'});
-  $routeProvider.when('/games', {templateUrl: 'partials/games/view.html', controller: 'gameListCtrl'});
-  $routeProvider.when('/games/view', {templateUrl: 'partials/games/view.html', controller: 'gameListCtrl'});
-  $routeProvider.when('/games/edit', {templateUrl: 'partials/games/edit.html', controller: 'gameCtrl'});
-  $routeProvider.when('/teams', {templateUrl: 'partials/teams/view.html', controller: 'teamListCtrl'});
-  $routeProvider.when('/teams/view', {templateUrl: 'partials/teams/view.html', controller: 'teamListCtrl'});
-  $routeProvider.when('/teams/edit', {templateUrl: 'partials/teams/edit.html', controller: 'teamCtrl'});
-  $routeProvider.when('/players', {templateUrl: 'partials/players/view.html', controller: 'playerListCtrl'});
-  $routeProvider.when('/players/view', {templateUrl: 'partials/players/view.html', controller: 'playerListCtrl'});
-  $routeProvider.when('/players/edit', {templateUrl: 'partials/players/edit.html', controller: 'playerCtrl'});
+  $routeProvider.when('/games', {templateUrl: 'partials/games/list.html', controller: 'gameCtrl'});
+  $routeProvider.when('/teams', {templateUrl: 'partials/teams/list.html', controller: 'teamCtrl'});
+  $routeProvider.when('/players', {templateUrl: 'partials/players/list.html', controller: 'playerCtrl'});
   $routeProvider.when('/stats/select', {templateUrl: 'partials/stats/gameSelect.html', controller: 'statsCtrl'});
   $routeProvider.when('/stats/start', {templateUrl: 'partials/stats/gameStart.html', controller: 'statsCtrl'});
   $routeProvider.when('/stats/record', {templateUrl: 'partials/stats/record.html', controller: 'statsCtrl'});
