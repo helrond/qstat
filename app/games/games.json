@@ -1,38 +1,34 @@
 [
-{
-	"id":"philly-honey-badgers-vs-lords-of-darkness",
-	"name":"Philly Honey Badgers vs. Lords of Darkness",
-	"winner":
-		{
-			"name":"Philly Honey Badgers",
-			"score":"120",
-			"snitchCatch":true
-		},
-	"loser":
-		{
-			"name":"Lords of Darkness",
-			"score":"97",
-			"snitchCatch":false
-		},
-	"location":
-		{
-			"name":"Podunk Community College",
-			"latitude":null,
-			"longitude":null
-		},
-	"date":"2014-01-01"
-},
-{
-	"id":"philly-honey-badgers-vs-oral-roberts",
-	"name":"Philly Honey Badgers vs. Oral Roberts",
-	"winner":null,
-	"loser":null,
-	"location":
-		{
-			"name":"Podunk Community College",
-			"latitude":null,
-			"longitude":null
-		},
-	"date":"2015-01-01"	
-}
+    {
+        "id": "philly-honey-badgers-vs-lords-of-darkness",
+        "name": "Philly Honey Badgers vs. Lords of Darkness",
+        "winner": {
+            "name": "Philly Honey Badgers",
+            "score": "120",
+            "snitchCatch": true
+        },
+        "loser": {
+            "name": "Lords of Darkness",
+            "score": "97",
+            "snitchCatch": false
+        },
+        "location": {
+            "name": "Podunk Community College",
+            "latitude": null,
+            "longitude": null
+        },
+        "date": "2014-01-01"
+    },
+    {
+        "id": "philly-honey-badgers-vs-oral-roberts",
+        "name": "Philly Honey Badgers vs. Oral Roberts",
+        "winner": null,
+        "loser": null,
+        "location": {
+            "name": "Podunk Community College",
+            "latitude": null,
+            "longitude": null
+        },
+        "date": "2015-01-01"
+    }
 ]
