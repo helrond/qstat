@@ -1,4 +1,4 @@
-<div ng-controller="playerCtrl" class="playerView">
+<div ng-controller="playerCtrl" class="listView">
 	<div class="top">
     	<div class="title">
         	<h2>Players</h2>
@@ -7,7 +7,7 @@
 			<input type="text" placeholder="Search" ng-model="query" class="form-control"/>
         </div>
     </div>
-	<ul class="listView">
+	<ul class="list">
     	<li ng-repeat="player in players | filter:query | orderBy:orderProp">
     		<h3 class="name"><a href="#/player/{{player.id}}">{{ player.name }} (#{{player.number}})</a></h3>
             <a class="edit" href="#/player/{{player.id}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
