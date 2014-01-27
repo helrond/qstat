@@ -56,10 +56,10 @@ header h1 {
 .list li p {
 	margin:0;
 }
-.list li a {
+.list li p a {
 	color:#333;
 }
-.list li a:hover {
+.list li p a:hover {
 	color:#666;
 	text-decoration:none;
 	border-bottom: 1px dotted #333;
