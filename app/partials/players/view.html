@@ -1,10 +1,14 @@
 <div ng-controller="playerCtrl" class="playerView">
-	<div class="search text-center">
-		<input type="text" placeholder="Search" ng-model="query" class="form-control"/>
+	<div class="top">
+    	<div class="title">
+        	<h2>Players</h2>
+        </div>
+    	<div class="search">
+			<input type="text" placeholder="Search" ng-model="query" class="form-control"/>
+        </div>
     </div>
-	<ul class="players">
+	<ul class="listView">
     	<li ng-repeat="player in players | filter:query | orderBy:orderProp">
-        	<img class="image" ng-src="{{player.image}}"/>
     		<h3 class="name"><a href="#/player/{{player.id}}">{{ player.name }} (#{{player.number}})</a></h3>
             <a class="edit" href="#/player/{{player.id}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
         </li>
