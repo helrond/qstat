@@ -4,27 +4,23 @@
 	"name":"Alvin Arnold",
 	"image":"img/alvin.png",
 	"number":"13",
-	"position":"Chaser"
 },
 {
 	"id":"calypso-montoya",
 	"name":"Calypso Montoya",
 	"image":"img/calypso.png",
 	"number":"1",
-	"position":"Beater"
 },
 {
 	"id":"lord-voldemort",
 	"name":"Lord Voldemort",
 	"image":"img/voldemort.png",
-	"number":"-google",
-	"position":"Utility"
+	"number":"one google",
 },
 {
 	"id":"george-w-bush",
 	"name":"George W. Bush",
 	"image":"img/bush.png",
 	"number":"13",
-	"position":"Beater"
 }
 ]

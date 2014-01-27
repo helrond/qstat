@@ -1,3 +1,16 @@
-<div class="teamEdit text-center">
-	<p>Teams View</p>
+<div ng-controller="teamListCtrl" class="listView">
+	<div class="top">
+    	<div class="title">
+        	<h2>Teams</h2>
+        </div>
+    	<div class="search">
+			<input type="text" placeholder="Search" ng-model="query" class="form-control"/>
+        </div>
+    </div>
+	<ul class="list">
+    	<li ng-repeat="team in teams | filter:query | orderBy:orderProp">
+    		<p class="name"><a href="#/team/{{team.id}}">{{ team.name }}</a></p>
+            <a class="edit" href="#/team/{{team.id}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+        </li>
+    </ul>
 </div>
