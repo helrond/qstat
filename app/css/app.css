@@ -53,8 +53,16 @@ header h1 {
 .list li:nth-of-type(odd) {
 	background-color: #ccc;
 }
-.list li:hover {
-	background-color:#eee;
+.list li p {
+	margin:0;
+}
+.list li a {
+	color:#333;
+}
+.list li a:hover {
+	color:#666;
+	text-decoration:none;
+	border-bottom: 1px dotted #333;
 }
 .list .name {
 	float:left;
@@ -72,6 +80,7 @@ footer {
 	height:3%;
 	width:100%;
 	float:left;
+	margin-top:1%;
 }
 
 footer p {
