@@ -8,7 +8,7 @@ var qStat = angular.module('qStat.controllers', []);
 
   }]);
   
-qStat.controller('gameListCtrl', [function() {
+qStat.controller('gameListCtrl', [function($scope, $http) {
 	$http.get('games/games.json').success(function(data) {
 		$scope.games = data; 
 		});
@@ -26,7 +26,7 @@ qStat.controller('statCtrl', [function() {
 
 }]);
   
-qStat.controller('teamListCtrl', [function() {
+qStat.controller('teamListCtrl', [function($scope, $http) {
 	$http.get('teams/teams.json').success(function(data) {
 		$scope.teams = data; 
 		});
