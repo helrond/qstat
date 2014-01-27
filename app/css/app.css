@@ -69,7 +69,9 @@ header h1 {
 footer {
 	background-color: #000;
 	text-align:center;
-	height:3%
+	height:3%;
+	width:100%;
+	float:left;
 }
 
 footer p {
