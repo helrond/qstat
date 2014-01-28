@@ -3,8 +3,8 @@
     "id": "lords-of-darkness",
     "name": "Lords of Darkness",
     "players": [
-        {"id":"lord-voldemort"},
-        {"id":"george-w-bush"}
+        {"name":"Lord Voldemort","id":"lord-voldemort"},
+        {"name":"George W Bush","id":"george-w-bush"}
         ],
     "url":"http://www.nsa.gov"
 }

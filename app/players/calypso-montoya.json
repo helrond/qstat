@@ -1,6 +1,6 @@
 {
 	"@context":"http://schema.org/Person",
-	"id":2,
+	"id":"calpyso-montoya",
 	"name":"Calypso Montoya",
 	"image":"img/user.png",
 	"number":"1",

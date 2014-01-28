@@ -1,6 +1,6 @@
 {
 	"@context":"http://schema.org/Person",
-	"id":4,
+	"id":"george-w-bush",
 	"name":"George W. Bush",
 	"image":"img/user.png",
 	"number":"13",

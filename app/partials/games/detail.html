@@ -1,10 +1,10 @@
 <div ng-controller="gameDetailCtrl" class="detailView">
 	<div class="title">
-    	<h2>{{game.name}}</h2>
+	    <h2><div click-to-edit="game.name"></div></h2>
     </div>
-    <p>{{game.date}}</p>
+    <p><div click-to-edit="game.date | date:'longDate'"></div></p>
     <p><span class="glyphicon glyphicon-screenshot"></span><a target="_blank" href="http://www.openstreetmap.org/search?query={{game.location.latitude}},{{game.location.longitude}}">{{game.location.name}}</a><span class="glyphicon glyphicon-new-window"></span></p>
-    <p><span class="glyphicon glyphicon-time"></span>{{game.time}}</p>
+    <p><span class="glyphicon glyphicon-time"></span><div click-to-edit="game.time"></div></p>
     <h3>Score</h3>
     <div class="score">
         <div class="team">

@@ -1,6 +1,6 @@
 {
 	"@context":"http://schema.org/Person",
-	"id":3,
+	"id":"lord-voldemort",
 	"name":"Lord Voldemort",
 	"image":"img/user.png",
 	"number":"-google",

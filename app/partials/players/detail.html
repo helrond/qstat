@@ -1,9 +1,9 @@
 <div ng-controller="playerDetailCtrl" class="detailView">
-	<div class="title">
-    	<h2>{{player.name}}</h2>
+    <div class="title">
+        <img ng-src="{{player.image}}"/>
+        <h2><div click-to-edit="player.name"></div></h2>
     </div>
-    <p>{{player.number}}</p>
-    <p>Position: {{player.position}}</p>
-    <p>{{player.description}}</p>
-    <img ng-src="{{player.image}}"/>
+    <p><div click-to-edit="player.number"></div></p>
+    <p>Position: <div click-to-edit="player.position"></div></p>
+    <p><div click-to-edit="player.description"></div></p>
 </div>

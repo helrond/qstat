@@ -15,7 +15,8 @@ header h1 {
 	margin:0;
 }
 .glyphicon {
-    margin:0 5px;    
+    margin:0 5px;
+    vertical-align:text-top;
 }
 .content {
 	width:90%;
@@ -36,6 +37,10 @@ header h1 {
 }
 .listView .title {
 	float:left;
+	margin-right:2%
+}
+.listView .btn {
+    margin-top:20px;
 }
 .listView .search, .listView .sort {
 	float:right;

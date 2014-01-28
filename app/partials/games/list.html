@@ -1,8 +1,8 @@
 <div ng-controller="gameCtrl" class="listView">
 	<div class="top">
     	<div class="title">
-        	<h2>Games</h2>
-        </div>
+    		<h2>Games</h2>
+    	</div>
     	<div class="search">
 			<input type="text" placeholder="Search" ng-model="query" class="form-control"/>
         </div>
@@ -15,8 +15,9 @@
     </div>
 	<ul class="list">
     	<li ng-repeat="game in games | filter:query | orderBy:orderProp">
-    		<p class="name"><a href="#/games/{{game.id}}">{{ game.name }} ({{game.date}})</a></p>
-            <a class="edit" href="#/games/{{game.id}}/edit"><span class="glyphicon glyphicon-edit"></span></a>
+    		<p class="name"><a href="#/games/{{game.id}}">{{ game.name }} ({{game.date | date:'longDate'}})</a></p>
+            <a class="remove" href="#"><span class="glyphicon glyphicon-remove"></span></a>
         </li>
     </ul>
+	<a href="#/games/new" class="btn btn-success" role="button">add new<span class="glyphicon glyphicon-plus-sign"></span></a>
 </div>
