@@ -5,7 +5,7 @@
     <p>{{game.date}}</p>
     <p>Location: <a href="http://www.openstreetmap.org/search?query={{game.location.latitude}},{{game.location.longitude}}">{{game.location.name}}</a></p>
     <p>Time: {{game.time}}</p>
-    <p>Winner: <a href="#/teams/{{game.id}}">{{game.winner.name}}</a></p>
-    <p>Loser: <a href="#/teams/{{game.id}}">{{game.loser.name}}</a></p>
+    <p>Winner: <a href="#/teams/{{game.winner.id}}">{{game.winner.name}}</a></p>
+    <p>Loser: <a href="#/teams/{{game.loser.id}}">{{game.loser.name}}</a></p>
     <p>Score: {{game.winner.score}} - {{game.loser.score}}</p>
 </div>
