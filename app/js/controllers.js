@@ -25,7 +25,7 @@ qStat.controller('playerCtrl', function($scope, $http) {
 });
 
 qStat.controller('playerDetailCtrl', function($scope, $routeParams) {
-    $scope.id = $routeParams.id;
+    $scope.playerId = $routeParams.playerId;
     });
     
 /* Stat Controllers */
