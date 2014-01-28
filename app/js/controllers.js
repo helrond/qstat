@@ -17,7 +17,7 @@ qStat.controller('gameCtrl', function($scope, $http) {
 });
 qStat.controller('gameDetailCtrl', function($scope, $routeParams, $http) {
     $http.get('games/' + $routeParams.gameId + '.json').success(function(data) {
-        scope.game = data;
+        $scope.game = data;
     });
 });
 
@@ -30,7 +30,7 @@ qStat.controller('playerCtrl', function($scope, $http) {
 });
 qStat.controller('playerDetailCtrl', function($scope, $routeParams, $http) {
     $http.get('players/' + $routeParams.playerId + '.json').success(function(data) {
-        scope.player = data;
+        $scope.player = data;
     });
 });
     
@@ -48,6 +48,6 @@ qStat.controller('teamCtrl', function($scope, $http) {
 });
 qStat.controller('teamDetailCtrl', function($scope, $routeParams, $http) {
     $http.get('teams/' + $routeParams.teamId + '.json').success(function(data) {
-        scope.team = data;
+        $scope.team = data;
     });
 });
