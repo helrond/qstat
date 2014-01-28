@@ -16,6 +16,7 @@ qStat.controller('gameCtrl', function($scope, $http) {
 	$scope.orderProp = 'name';
 });
 qStat.controller('gameDetailCtrl', function($scope, $routeParams, $http) {
+    console.log($routeParams.gameID);
     $http.get('games/' + $routeParams.gameId + '.json').success(function(data) {
         scope.game = data;
         });
