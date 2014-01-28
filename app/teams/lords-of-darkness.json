@@ -1,9 +1,10 @@
 {
+    "@context":"http://schema.org/Organization",
     "id": "lords-of-darkness",
     "name": "Lords of Darkness",
     "players": [
         {"id":"lord-voldemort"},
         {"id":"george-w-bush"}
         ],
-    "website":"http://www.nsa.gov"
+    "url":"http://www.nsa.gov"
 }
