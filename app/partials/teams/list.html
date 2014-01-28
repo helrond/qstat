@@ -9,8 +9,8 @@
     </div>
 	<ul class="list">
     	<li ng-repeat="team in teams | filter:query | orderBy:orderProp">
-    		<p class="name"><a href="#/team/{{team.id}}">{{ team.name }}</a></p>
-            <a class="edit" href="#/team/{{team.id}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
+    		<p class="name"><a href="#/teams/{{team.id}}">{{ team.name }}</a></p>
+            <a class="edit" href="#/teams/{{team.id}}/edit"><span class="glyphicon glyphicon-pencil"></span></a>
         </li>
     </ul>
 </div>
