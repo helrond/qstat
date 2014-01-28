@@ -16,11 +16,10 @@ qStat.controller('gameCtrl', function($scope, $http) {
 	$scope.orderProp = 'name';
 });
 qStat.controller('gameDetailCtrl', function($scope, $routeParams, $http) {
-    console.log($routeParams.gameID);
     $http.get('games/' + $routeParams.gameId + '.json').success(function(data) {
         scope.game = data;
-        });
     });
+});
 
 /* Player Controllers */
 qStat.controller('playerCtrl', function($scope, $http) {
@@ -29,9 +28,11 @@ qStat.controller('playerCtrl', function($scope, $http) {
 		});
 	$scope.orderProp = 'name';
 });
-qStat.controller('playerDetailCtrl', function($scope, $routeParams) {
-    $scope.playerId = $routeParams.playerId;
+qStat.controller('playerDetailCtrl', function($scope, $routeParams, $http) {
+    $http.get('playerss/' + $routeParams.playerId + '.json').success(function(data) {
+        scope.player = data;
     });
+});
     
 /* Stat Controllers */
 qStat.controller('statCtrl', function() {
@@ -45,6 +46,8 @@ qStat.controller('teamCtrl', function($scope, $http) {
 		});
 	$scope.orderProp = 'name';
 });
-qStat.controller('teamDetailCtrl', function($scope, $routeParams) {
-    $scope.teamId = $routeParams.teamId;
+qStat.controller('teamDetailCtrl', function($scope, $routeParams, $http) {
+    $http.get('teams/' + $routeParams.teamId + '.json').success(function(data) {
+        scope.team = data;
     });
+});
