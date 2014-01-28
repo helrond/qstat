@@ -16,7 +16,11 @@ header h1 {
 }
 .glyphicon {
     margin:0 5px;
-    vertical-align:text-top;
+    vertical-align:middle;
+}
+.glyphicon:hover {
+    text-shadow: 0px 0px 3px #333;
+    cursor:pointer;
 }
 .content {
 	width:90%;
@@ -80,7 +84,7 @@ header h1 {
 }
 .list .remove {
 	float:right;
-	color:red;
+	color:red; 
 }
 
 .detailView .score {
