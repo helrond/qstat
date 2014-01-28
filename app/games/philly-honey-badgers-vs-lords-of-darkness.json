@@ -1,0 +1,23 @@
+{
+    "id": "philly-honey-badgers-vs-lords-of-darkness",
+    "name": "Philly Honey Badgers vs. Lords of Darkness",
+    "winner": {
+        "name": "Philly Honey Badgers",
+        "id":"philly-honey-badgers",
+        "score": "120",
+        "snitchCatch": true
+    },
+    "loser": {
+        "name": "Lords of Darkness",
+        "id":"lords-of-darkness",
+        "score": "97",
+        "snitchCatch": false
+    },
+    "location": {
+        "name": "Podunk Community College",
+        "latitude": null,
+        "longitude": null
+    },
+    "date": "2014-01-01",
+    "time": "00:54:00"
+}

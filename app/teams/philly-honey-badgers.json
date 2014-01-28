@@ -1,0 +1,9 @@
+{
+    "id": "philly-honey-badgers",
+    "name": "Philly Honey Badgers",
+        "players": [
+        {"id":"alvin-arnold"},
+        {"id":"calypso-montoya"}
+        ],
+    "website":"http://www.losers.org"
+}

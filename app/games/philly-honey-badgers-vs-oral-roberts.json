@@ -1,0 +1,12 @@
+{
+    "id": "philly-honey-badgers-vs-oral-roberts",
+    "name": "Philly Honey Badgers vs. Oral Roberts",
+    "winner": null,
+    "loser": null,
+    "location": {
+        "name": "Podunk Community College",
+        "latitude": null,
+        "longitude": null
+    },
+    "date": "2015-01-01"
+}
