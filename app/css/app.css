@@ -14,7 +14,9 @@ header h1 {
 	color:#fff;
 	margin:0;
 }
-
+.glyphicon {
+    margin:0 5px;    
+}
 .content {
 	width:90%;
 	margin-left:5%;
@@ -73,6 +75,26 @@ header h1 {
 }
 .list .edit {
 	float:right;
+}
+
+.detailView .score {
+    float:left;
+    width:100%;
+}
+.detailView .score .team {
+    float:left;
+    width:100%;
+}
+.detailView .score .team .icon {
+    float:left;
+    width:20px
+}
+.detailView .score .team .name {
+    float:left;
+    width:50%;
+}
+.detailView .score .team .score {
+    float:left;
 }
 footer {
 	background-color: #000;
