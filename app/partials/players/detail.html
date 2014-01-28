@@ -1,9 +1,7 @@
 <div ng-controller="playerDetailCtrl" class="detailView">
     <div class="title">
-        <img ng-src="{{player.image}}"/>
-        <h2><div click-to-edit="player.name"></div></h2>
+        <h2><div click-to-edit="player.name"></div> (#<div click-to-edit="player.number"></div>)</h2>
     </div>
-    <p><div click-to-edit="player.number"></div></p>
-    <p>Position: <div click-to-edit="player.position"></div></p>
+    <p><div click-to-edit="player.position"></div></p>
     <p><div click-to-edit="player.description"></div></p>
 </div>

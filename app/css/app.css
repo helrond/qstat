@@ -78,8 +78,9 @@ header h1 {
 .list h3 {
 	margin:0;
 }
-.list .edit {
+.list .remove {
 	float:right;
+	color:red;
 }
 
 .detailView .score {

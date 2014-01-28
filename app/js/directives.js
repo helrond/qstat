@@ -13,13 +13,13 @@ angular.module('qStat.directives', []).
     var editorTemplate = '<div class="click-to-edit">' +
         '<div ng-hide="view.editorEnabled">' +
             '{{value}} ' +
-            '<a href="#" ng-click="enableEditor()"><span class="glyphicon glyphicon-edit"></span></a>' +
+            '<span ng-click="enableEditor()" class="glyphicon glyphicon-edit"></span>' +
         '</div>' +
         '<div ng-show="view.editorEnabled">' +
             '<input ng-model="view.editableValue">' +
-            '<a href="#" ng-click="save()"><span class="glyphicon glyphicon-ok"></span></a>' +
+            '<span ng-click="save()" class="glyphicon glyphicon-ok"></span>' +
             ' or ' +
-            '<a href="#" ng-click="disableEditor()"><span class="glyphicon glyphicon-remove"></span></a>.' +
+            '<span ng-click="disableEditor()" class="glyphicon glyphicon-remove"></span>' +
         '</div>' +
     '</div>';
 
