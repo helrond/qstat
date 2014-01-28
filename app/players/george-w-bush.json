@@ -2,7 +2,7 @@
 	"@context":"http://schema.org/Person",
 	"id":4,
 	"name":"George W. Bush",
-	"image":null,
+	"image":"img/user.png",
 	"number":"13",
 	"description":"Bring 'em on.",
 	"position":"Beater"

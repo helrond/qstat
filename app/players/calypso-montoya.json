@@ -2,7 +2,8 @@
 	"@context":"http://schema.org/Person",
 	"id":2,
 	"name":"Calypso Montoya",
-	"image":null,"number":"1",
+	"image":"img/user.png",
+	"number":"1",
 	"description":"Prepare to die.",
 	"position":"Beater"
 }
