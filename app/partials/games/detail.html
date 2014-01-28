@@ -8,12 +8,10 @@
     <h3>Score</h3>
     <div class="score">
         <div class="team">
-            <div class="icon"><span class="glyphicon glyphicon-ok"></span></div>
             <div class="name"><a href="#/teams/{{game.winner.id}}">{{game.winner.name}}</a></div>
-            <div class="score">{{game.winner.score}}</div>
+            <div class="score">{{game.winner.score}} <span class="glyphicon glyphicon-ok"></span></div>
         </div>
         <div class="team">
-            <div class="icon"></div>
             <div class="name"><a href="#/teams/{{game.loser.id}}">{{game.loser.name}}</a></div>
             <div class="score">{{game.loser.score}}</div>
         </div>

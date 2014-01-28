@@ -85,16 +85,13 @@ header h1 {
     float:left;
     width:100%;
 }
-.detailView .score .team .icon {
-    float:left;
-    width:20px
-}
 .detailView .score .team .name {
     float:left;
-    width:50%;
+    width:15%;
 }
 .detailView .score .team .score {
     float:left;
+    width:auto;
 }
 footer {
 	background-color: #000;
