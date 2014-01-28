@@ -15,8 +15,8 @@
     },
     "location": {
         "name": "Podunk Community College",
-        "latitude": 42.6089239,
-        "longitude": -85.3583423
+        "latitude": "42.6089239",
+        "longitude": "-85.3583423"
     },
     "date": "2014-01-01",
     "time": "00:54:00"
