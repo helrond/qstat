@@ -24,9 +24,9 @@ qStat.controller('playerCtrl', function($scope, $http) {
 	$scope.orderProp = 'name';
 });
 
-qStat.controller('playerDetailCtrl', function($scope, $routeParams) {
+qStat.controller('playerDetailCtrl', [$scope, $routeParams, function($scope, $routeParams) {
     $scope.playerId = $routeParams.playerId;
-    });
+    }]);
     
 /* Stat Controllers */
 qStat.controller('statCtrl', function() {
