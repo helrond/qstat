@@ -3,9 +3,9 @@
     	<h2>{{game.name}}</h2>
     </div>
     <p>{{game.date}}</p>
-    <p>Location: {{game.location}}</p>
+    <p>Location: <a href="http://www.openstreetmap.org/search?query={{game.location.latitude}},{game.location.longitude}}">{{game.location.name}}</a></p>
     <p>Time: {{game.time}}</p>
-    <p>Winner: {{game.winner}}</p>
-    <p>Loser: {{game.loser}}</p>
+    <p>Winner: <a href="/teams/{{id}}">{{game.winner.name}}</a></p>
+    <p>Loser: <a href="/teams/{{id}}">{{game.loser.name}}</a></p>
     <p>Score: {{game.winner.score}} - {{game.loser.score}}</p>
 </div>

@@ -5,8 +5,8 @@
     "loser": null,
     "location": {
         "name": "Podunk Community College",
-        "latitude": null,
-        "longitude": null
+        "latitude": 42.6089239,
+        "longitude": -85.3583423
     },
     "date": "2015-01-01"
 }
