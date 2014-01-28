@@ -29,7 +29,7 @@ qStat.controller('playerCtrl', function($scope, $http) {
 	$scope.orderProp = 'name';
 });
 qStat.controller('playerDetailCtrl', function($scope, $routeParams, $http) {
-    $http.get('playerss/' + $routeParams.playerId + '.json').success(function(data) {
+    $http.get('players/' + $routeParams.playerId + '.json').success(function(data) {
         scope.player = data;
     });
 });
