@@ -15,8 +15,10 @@ qStat.controller('gameCtrl', function($scope, $http) {
 		});
 	$scope.orderProp = 'name';
 });
-qStat.controller('gameDetailCtrl', function($scope, $routeParams) {
-    $scope.gameId = $routeParams.gameId;
+qStat.controller('gameDetailCtrl', function($scope, $routeParams, $http) {
+    $http.get('game/' + $routeParams.gameId + '.json').success(function(data) {
+        scope.game = data;
+        });
     });
 
 /* Player Controllers */
