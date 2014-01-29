@@ -30,4 +30,7 @@ config(['$routeProvider',
   .when('/stats/start', {templateUrl: 'partials/stats/gameStart.html', controller: 'statsCtrl'})
   .when('/stats/record', {templateUrl: 'partials/stats/record.html', controller: 'statsCtrl'})
   .otherwise({redirectTo: '/'});
-}]);
+}])
+.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+});;

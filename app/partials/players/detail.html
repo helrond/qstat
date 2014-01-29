@@ -8,12 +8,13 @@
         </p>
     </div>
     <div class="detailRow">
-        <p>&nbsp;#</p>
+        <h4>Number</h4>
         <p>
             <div editable-text="player.number">{{player.number}}</div>
         </p>
     </div>
     <div class="detailRow">
+        <h4>Position</h4>
         <p>
             <div editable-select="player.position" onshow="positions" e-ng-options="position.name as position.name for position in positions">
                 {{player.position}}
@@ -23,6 +24,7 @@
     <div class="detailRow">
     </div>
     <div class="detailRow" ng-controller="teamCtrl">
-        <p>Plays for:&nbsp;<div editable-select="player.team[0].name" onshow="teams" e-ng-options="team.name as team.name for team in teams">{{player.team[0].name}}</div></p>
+        <h4>Plays for</h4>
+        <p><div editable-select="player.team[0].name" onshow="teams" e-ng-options="team.name as team.name for team in teams">{{player.team[0].name}}</div></p>
     </div>
 </div>
