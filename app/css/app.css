@@ -10,9 +10,13 @@ header {
 	height:2.5em;
 }
 
-header h1 {
+header h1 a {
 	color:#fff;
 	margin:0;
+}
+header h1 a:hover {
+    color: #ccc;
+    text-decoration:none;
 }
 .glyphicon {
     margin:0 5px;
@@ -34,7 +38,10 @@ header h1 {
 	list-style-type:none;
 	font-size:2em;
 }
-
+.listView {
+    float:left;
+    width:100%
+}
 .listView .top {
 	width:100%;
 	float: left;
@@ -45,6 +52,7 @@ header h1 {
 }
 .listView .btn {
     margin-top:20px;
+    float: left
 }
 .listView .search, .listView .sort {
 	float:right;
@@ -84,9 +92,14 @@ header h1 {
 }
 .list .remove {
 	float:right;
-	color:red; 
 }
-
+.detailView .title, .detailView .detailRow {
+    width:100%;
+    float:left;
+}
+.detailView .title h2, .detailView .detailRow p {
+    float:left;
+}
 .detailView .score {
     float:left;
     width:100%;

@@ -1,9 +1,15 @@
 {
-	"@context":"http://schema.org/Person",
-	"id":"calpyso-montoya",
-	"name":"Calypso Montoya",
-	"image":"img/user.png",
-	"number":"1",
-	"description":"Prepare to die.",
-	"position":"Beater"
+    "@context": "http://schema.org/Person",
+    "id": "calpyso-montoya",
+    "name": "Calypso Montoya",
+    "image": "img/user.png",
+    "number": "1",
+    "description": "Prepare to die.",
+    "team": [
+        {"name": "Philly Honey Badgers"},
+        {"id": "philly-honey-badgers"},
+        {"dateFrom": "2013-01-02"},
+        {"dateTo": null}
+    ],
+    "position": "Beater"
 }

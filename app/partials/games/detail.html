@@ -1,19 +1,48 @@
 <div ng-controller="gameDetailCtrl" class="detailView">
-	<div class="title">
-	    <h2><div click-to-edit="game.name"></div></h2>
+    <div class="title" ng-controller="teamCtrl">
+        <h2>
+            <div editable-select="game.teams[0].name" onshow="teams" e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[1].name}}'">{{game.teams[0].name}}</div></h2>
+            <h2>&nbsp;vs&nbsp;</h2> 
+            <h2><div editable-select="game.teams[1].name" onshow="teams" e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[0].name}}'">{{game.teams[1].name}}</div>
+        </h2>
     </div>
-    <p><div click-to-edit="game.date | date:'longDate'"></div></p>
-    <p><span class="glyphicon glyphicon-screenshot"></span><a target="_blank" href="http://www.openstreetmap.org/search?query={{game.location.latitude}},{{game.location.longitude}}">{{game.location.name}}</a><span class="glyphicon glyphicon-new-window"></span></p>
-    <p><span class="glyphicon glyphicon-time"></span><div click-to-edit="game.time"></div></p>
-    <h3>Score</h3>
-    <div class="score">
-        <div class="team">
-            <div class="name"><a href="#/teams/{{game.winner.id}}">{{game.winner.name}}</a></div>
-            <div class="score">{{game.winner.score}} <span class="glyphicon glyphicon-ok"></span></div>
-        </div>
-        <div class="team">
-            <div class="name"><a href="#/teams/{{game.loser.id}}">{{game.loser.name}}</a></div>
-            <div class="score">{{game.loser.score}}</div>
+    <div class="detailRow">
+        <p>
+            <div editable-date="game.date">{{game.date | date:'longDate'}}</div>
+        </p>
+    </div>
+    <div class="detailRow">
+        <p>
+            <span class="glyphicon glyphicon-screenshot"/>
+            <div editable-text="game.location.name">{{game.location.name}}</div>
+            <a target="_blank"
+                href="http://www.openstreetmap.org/search?query={{game.location.latitude}},{{game.location.longitude}}">
+                <span class="glyphicon glyphicon-new-window"/>
+            </a>
+        </p>
+    </div>
+    <div class="detailRow">
+        <p>
+            <span class="glyphicon glyphicon-time"/>
+            <div editable-text="game.time">{{game.time}}</div>
+        </p>
+    </div>
+    <div class="detailRow">
+        <h3>Score</h3>
+        <div class="score">
+            <div class="team">
+                <div class="name">
+                    <a href="#/teams/{{game.teams[0].id}}">{{game.teams[0].name}}</a>
+                </div>
+                <div class="score">{{game.teams[0].score}} <span class="glyphicon glyphicon-ok"
+                    /></div>
+            </div>
+            <div class="team">
+                <div class="name">
+                    <a href="#/teams/{{game.teams[1].id}}">{{game.teams[1].name}}</a>
+                </div>
+                <div class="score">{{game.teams[1].score}}</div>
+            </div>
         </div>
     </div>
 </div>

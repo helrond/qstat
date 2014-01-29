@@ -1,14 +1,17 @@
 <div ng-controller="teamDetailCtrl" class="detailView">
-	<div class="title">
-    	<h2><div click-to-edit="team.name"></div></h2>
+	<div class="title" ng-controller="teamCtrl">
+		<h2><div editable-text="team.name">{{team.name}}</div></h2>
     </div>
-    <p>Website: <div click-to-edit="team.url"></div></p>
+	<div class="detailRow">
+		<p>
+			<span class="glyphicon glyphicon-link"/>
+			<div editable-url="team.url">{{team.url}}</div>
+		</p>
+	</div>
 	<div class="listView">
-		<div class="top">
 			<div class="title">
 				<h4>Roster</h4>
 			</div>
-		</div>
 		<ul class="list">
 			<!-- filter by team? -->
 			<li ng-repeat="player in team.players | orderBy:orderProp">
@@ -16,6 +19,6 @@
 				<a class="remove" href="#"><span class="glyphicon glyphicon-remove"></span></a>
 			</li>
 		</ul>
-		<a href="#" class="btn btn-success" role="button">add more players<span class="glyphicon glyphicon-plus-sign"></span></a>
+		<a class="btn btn-success" role="button">add more players<span class="glyphicon glyphicon-plus-sign"></span></a>
 	</div>
 </div>

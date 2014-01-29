@@ -1,9 +1,15 @@
 {
-	"@context":"http://schema.org/Person",
-	"id":"alvin-arnold",
-	"name":"Alvin Arnold",
-	"image":"img/user.png",
-	"number":"13",
-	"description":"World's biggest nerd.",
-	"position":"Chaser"
+    "@context": "http://schema.org/Person",
+    "id": "alvin-arnold",
+    "name": "Alvin Arnold",
+    "image": "img/user.png",
+    "number": "13",
+    "description": "World's biggest nerd.",
+    "team": [
+        {"name": "Philly Honey Badgers"},
+        {"id": "philly-honey-badgers"},
+        {"dateFrom": "2013-01-02"},
+        {"dateTo": null}
+    ],
+    "position": "Chaser"
 }

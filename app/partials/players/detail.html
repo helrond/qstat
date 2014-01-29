@@ -1,7 +1,28 @@
 <div ng-controller="playerDetailCtrl" class="detailView">
     <div class="title">
-        <h2><div click-to-edit="player.name"></div> (#<div click-to-edit="player.number"></div>)</h2>
+        <h2><div editable-text="player.name">{{player.name}}</div></h2>
     </div>
-    <p><div click-to-edit="player.position"></div></p>
-    <p><div click-to-edit="player.description"></div></p>
+    <div class="detailRow">
+        <p>
+            <div editable-text="player.description">{{player.description}}</div>
+        </p>
+    </div>
+    <div class="detailRow">
+        <p>&nbsp;#</p>
+        <p>
+            <div editable-text="player.number">{{player.number}}</div>
+        </p>
+    </div>
+    <div class="detailRow">
+        <p>
+            <div editable-select="player.position" onshow="positions" e-ng-options="position.name as position.name for position in positions">
+                {{player.position}}
+            </div>
+        </p>
+    </div>
+    <div class="detailRow">
+    </div>
+    <div class="detailRow" ng-controller="teamCtrl">
+        <p>Plays for:&nbsp;<div editable-select="player.team[0].name" onshow="teams" e-ng-options="team.name as team.name for team in teams">{{player.team[0].name}}</div></p>
+    </div>
 </div>

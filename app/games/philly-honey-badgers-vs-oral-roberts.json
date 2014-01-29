@@ -1,8 +1,22 @@
 {
     "id": "philly-honey-badgers-vs-oral-roberts",
     "name": "Philly Honey Badgers vs. Oral Roberts",
-    "winner": null,
-    "loser": null,
+    "teams": [
+        {
+            "name": "Philly Honey Badgers",
+            "id": "philly-honey-badgers",
+            "score": null,
+            "snitchCatch": null,
+            "winner": null
+        },
+        {
+            "name": "Oral Roberts",
+            "id": "oral-roberts",
+            "score": null,
+            "snitchCatch": null,
+            "winner": null
+        }
+    ],
     "location": {
         "name": "Podunk Community College",
         "latitude": 42.6089239,
