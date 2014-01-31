@@ -7,22 +7,18 @@
         <option value="">-- Select a game --</option>
     </select>
 
-    <div ng-controller="statCtrl">
+    <div>
         <div class="start" ng-show="selectedGame && !record">
             <button class="btn btn-lg btn-success" ng-click="record = true">Start</button>
             <p class="help-block">Timer will start for {{ selectedGame.name }}</p>
         </div>
 
         <div ng-show="record && !confirm" class="record">
-            
-
             <form>
-                <select ng-model="selectedTeam" class="form-control">
+                <select ng-model="selectedTeam" class="form-control" ng-options="team.name for team in selectedGame.teams">
                     <option>-- Select a team --</option>
-                    <option value="{{selectedGame.teams[0]}}">{{selectedGame.teams[0].name}}</option>
-                    <option value="{{selectedGame.teams[1]}}">{{selectedGame.teams[1].name}}</option>
                 </select>
-                {{selectedTeam}}
+                {{selectedTeam.name}}
                 <select ng-model="selectedPosition" class="form-control">
                     <option>-- Select a position --</option>
                 </select>

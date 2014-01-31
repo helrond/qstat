@@ -49,10 +49,7 @@ qStat.controller('playerDetailCtrl', function ($scope, $routeParams, $http) {
 
 /* Stat Controllers */
 qStat.controller('statCtrl', function ($scope) {
- $scope.startGame = function() {
- var record = true;
- var buttonHide = true;
- }
+ $scope.selectedTeam = function(selectedTeam) {new selectedTeam};
 });
 
 /* Team Controllers */
