@@ -32,7 +32,7 @@ function ($routeProvider) {
         templateUrl: 'partials/players/detail.html', controller: 'playerDetailCtrl'
     }).when('/players/:playerId', {
         templateUrl: 'partials/players/detail.html', controller: 'playerDetailCtrl'
-    }).when('/stats/', {
+    }).when('/stats', {
         templateUrl: 'partials/stats/stats.html', controller: 'statCtrl'
     }).otherwise({
         redirectTo: '/'

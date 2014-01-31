@@ -2,22 +2,61 @@
     <div class="title">
         <h2>Record Stats</h2>
     </div>
-	<select class="form-control" ng-model="selectedGame" ng-options="game.name for game in games" ng-hide="selectedGame">
-	    <option value="">-- Select a game --</option>
-	</select>
-    
+    <select class="form-control" ng-model="selectedGame" ng-options="game.name for game in games"
+        ng-hide="selectedGame">
+        <option value="">-- Select a game --</option>
+    </select>
+
     <div ng-controller="statCtrl">
-    <div class="start" ng-show="selectedGame && !record">
-        <button class="btn btn-lg btn-success" ng-click="record = true">Start</button>
-        <p class="help-block">Timer will start for {{ selectedGame.name }}</p>
-    </div>
-    
-    <div ng-show="record" class="record">
-        <p>Here you will record stats for {{ selectedGame.name }}</p>
-        <button class="btn btn-lg btn-danger">Stop</button>
-    </div>
-    
-    <!-- 
+        <div class="start" ng-show="selectedGame && !record">
+            <button class="btn btn-lg btn-success" ng-click="record = true">Start</button>
+            <p class="help-block">Timer will start for {{ selectedGame.name }}</p>
+        </div>
+
+        <div ng-show="record && !confirm" class="record">
+            
+
+            <form>
+                <select ng-model="selectedTeam" class="form-control">
+                    <option>-- Select a team --</option>
+                    <option value="{{selectedGame.teams[0]}}">{{selectedGame.teams[0].name}}</option>
+                    <option value="{{selectedGame.teams[1]}}">{{selectedGame.teams[1].name}}</option>
+                </select>
+                {{selectedTeam}}
+                <select ng-model="selectedPosition" class="form-control">
+                    <option>-- Select a position --</option>
+                </select>
+                <form-group ng-model="selectedPlayer">
+                    <select ng-model="selectedPlayerName" class="form-control">
+                        <option>-- Select a player --</option>
+                    </select>
+                    <select ng-model="selectedPlayerNumber" class="form-control">
+                        <option>-- Select a number --</option>
+                    </select>
+                </form-group>
+                <form-group ng-model="selectedStat">
+                    <select ng-model="selectedStatStatistic" class="form-control">
+                        <option>-- Select a statistic --</option>
+                    </select>
+                    <select ng-model="selectedStatValue" class="form-control">
+                        <option>-- Select a value --</option>
+                    </select>
+                </form-group>
+                <p>Here you will see the statistic being recorded.</p>
+                <button class="btn btn-primary">Add</button>
+            </form>
+            <div>
+                <p>Here you will see a running list of stats recorded</p>
+            </div>
+            <button class="btn btn-lg btn-danger" ng-click="confirm = true">Stop</button>
+            <p class="help-block">Timer will stop for {{selectedGame.name}}</p>
+        </div>
+
+        <div ng-show="confirm">
+            <button class="btn btn-lg btn-primary">Confirm</button>
+        </div>
+
+        <!-- 
     game start hide on click, show record
         onclick event to button to start time
     
