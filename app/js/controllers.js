@@ -2,16 +2,20 @@
 
 /* Controllers */
 
-var qStat = angular.module('qStat.controllers',[]);
+var qStat = angular.module('qStat.controllers',[ 'ngResource']);
 
 qStat.controller('homeCtrl',[ function () {
 }]);
 
+qStat.controller('navCtrl', function($scope, $location) {
+    $scope.isActive = function(route) {
+        return route === $location.path();
+    }
+});
+
 /* Game Controllers */
-qStat.controller('gameCtrl', function ($scope, $http) {
-    $http.get('games/games.json').success(function (data) {
-        $scope.games = data;
-    });
+qStat.controller('gameCtrl', function (Games, $scope) {
+    $scope.games = Games.query();
     $scope.orderProp = 'name';
 });
 qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
@@ -21,10 +25,8 @@ qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
 });
 
 /* Player Controllers */
-qStat.controller('playerCtrl', function ($scope, $http) {
-    $http.get('players/players.json').success(function (data) {
-        $scope.players = data;
-    });
+qStat.controller('playerCtrl', function (Players, $scope) {
+    $scope.players = Players.query();
     $scope.orderProp = 'name';
 });
 qStat.controller('playerDetailCtrl', function ($scope, $routeParams, $http) {
@@ -33,24 +35,29 @@ qStat.controller('playerDetailCtrl', function ($scope, $routeParams, $http) {
     });
     $scope.positions =[ {
         "id": 1, "name": "Beater"
-    }, {
+    },
+    {
         "id": 2, "name": "Chaser"
-    }, {
+    },
+    {
         "id": 2, "name": "Keeper"
-    }, {
+    },
+    {
         "id": 2, "name": "Utility"
     }]
 });
 
 /* Stat Controllers */
-qStat.controller('statCtrl', function () {
+qStat.controller('statCtrl', function ($scope) {
+ $scope.startGame = function() {
+ var record = true;
+ var buttonHide = true;
+ }
 });
 
 /* Team Controllers */
-qStat.controller('teamCtrl', function ($scope, $http) {
-    $http.get('teams/teams.json').success(function (data) {
-        $scope.teams = data;
-    });
+qStat.controller('teamCtrl', function (Teams, $scope) {
+        $scope.teams = Teams.query();
     $scope.orderProp = 'name';
 });
 qStat.controller('teamDetailCtrl', function ($scope, $routeParams, $http) {

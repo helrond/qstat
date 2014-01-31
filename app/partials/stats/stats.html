@@ -1,0 +1,32 @@
+<div class="teamSelect" ng-controller="gameCtrl">
+    <div class="title">
+        <h2>Record Stats</h2>
+    </div>
+	<select class="form-control" ng-model="selectedGame" ng-options="game.name for game in games" ng-hide="selectedGame">
+	    <option value="">-- Select a game --</option>
+	</select>
+    
+    <div ng-controller="statCtrl">
+    <div class="start" ng-show="selectedGame && !record">
+        <button class="btn btn-lg btn-success" ng-click="record = true">Start</button>
+        <p class="help-block">Timer will start for {{ selectedGame.name }}</p>
+    </div>
+    
+    <div ng-show="record" class="record">
+        <p>Here you will record stats for {{ selectedGame.name }}</p>
+        <button class="btn btn-lg btn-danger">Stop</button>
+    </div>
+    
+    <!-- 
+    game start hide on click, show record
+        onclick event to button to start time
+    
+    Record
+       get team rosters
+       get positions
+       get stats
+    
+    
+    -->
+    </div>
+</div>

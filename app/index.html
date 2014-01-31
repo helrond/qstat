@@ -12,11 +12,11 @@
 <header>
 <h1><a href="#">q.stat</a></h1>
 </header>
-	<ul class="nav nav-tabs">
-    	<li><a href="#/games">Games</a></li>
-    	<li><a href="#/teams">Teams</a></li>
-    	<li><a href="#/players">Players</a></li>
-        <li class="pull-right"><a href="#/stats/select">Stats</a></li>
+	<ul class="nav nav-tabs" ng-controller="navCtrl">
+	  <li ng-class="{active:isActive('/games')}"><a href="#/games">Games</a></li>
+	  <li ng-class="{active:isActive('/teams')}"><a href="#/teams">Teams</a></li>
+	  <li ng-class="{active:isActive('/players')}"><a href="#/players">Players</a></li>
+	  <li ng-class="{active:isActive('/stats')}"class="pull-right"><a href="#/stats">Stats</a></li>
   	</ul>
   
 	<div class="content">
@@ -31,6 +31,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
   -->
   <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
   <script src="lib/angular/angular-route.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
