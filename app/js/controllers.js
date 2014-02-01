@@ -48,6 +48,9 @@ qStat.controller('statCtrl', function (Players, Positions, Statistics, $scope) {
     $scope.endTime = function() {
         var time = new Date()
         $scope.endTime = time;};
+    $scope.gameTime = function() {
+        var time = $scope.endTime - $scope.startTime;
+        $scope.gameTime = time;};
     $scope.stats =[];
     $scope.Add = function () {
         var newStat =[ {
