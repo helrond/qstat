@@ -7,59 +7,60 @@
         <option value="">-- Select a game --</option>
     </select>
 
-    <div>
+    <div ng-controller="statCtrl">
         <div class="start" ng-show="selectedGame && !record">
-            <button class="btn btn-lg btn-success" ng-click="record = true">Start</button>
+            <button class="btn btn-lg btn-success" ng-click="record = true; startTime()">Start</button>
             <p class="help-block">Timer will start for {{ selectedGame.name }}</p>
         </div>
 
         <div ng-show="record && !confirm" class="record">
             <form>
-                <select ng-model="selectedTeam" class="form-control" ng-options="team.name for team in selectedGame.teams">
-                    <option>-- Select a team --</option>
+                <select name="team" ng-model="selectedTeam" class="form-control" ng-options="team.name for team in selectedGame.teams">
+                    <option value="">-- Select a team --</option>
                 </select>
-                {{selectedTeam.name}}
-                <select ng-model="selectedPosition" class="form-control">
-                    <option>-- Select a position --</option>
-                </select>
-                <form-group ng-model="selectedPlayer">
-                    <select ng-model="selectedPlayerName" class="form-control">
-                        <option>-- Select a player --</option>
+                    <select ng-model="selectedPosition" class="form-control"
+                        ng-options="position.name for position in positions">
+                        <option value="">-- Select a position --</option>
                     </select>
-                    <select ng-model="selectedPlayerNumber" class="form-control">
-                        <option>-- Select a number --</option>
-                    </select>
-                </form-group>
-                <form-group ng-model="selectedStat">
-                    <select ng-model="selectedStatStatistic" class="form-control">
-                        <option>-- Select a statistic --</option>
-                    </select>
-                    <select ng-model="selectedStatValue" class="form-control">
-                        <option>-- Select a value --</option>
-                    </select>
-                </form-group>
-                <p>Here you will see the statistic being recorded.</p>
-                <button class="btn btn-primary">Add</button>
+                    <form-group ng-model="selectedPlayer">
+                        <select ng-model="selectedPlayerName" class="form-control" ng-options="player.name for player in players">
+                            <option value="">-- Select a player --</option>
+                        </select>
+                        <select ng-model="selectedPlayerNumber" class="form-control" ng-options="player.number for player in players">
+                            <option value="">-- Select a number --</option>
+                        </select>
+                    </form-group>
+                    <form-group ng-model="selectedStat" class="form-horizontal">
+                        <select ng-model="selectedStatStatistic" class="form-control" ng-options="statistic.name for statistic in statistics">
+                            <option value="">-- Select a statistic --</option>
+                        </select>
+                        <select ng-model="selectedStatValue" class="form-control">
+                            <option value="">-- Select a value --</option>
+                        </select>
+                    </form-group>
+                    <p class="help-block" ng-model="thing">{{selectedStatStatistic.name}}&nbsp;by&nbsp;{{selectedPlayerName.name}}&nbsp;({{selectedPosition.name}}) of {{selectedTeam.name}}</p>
+                    <button class="btn btn-primary" ng-click="Add()">Add</button>
             </form>
             <div>
-                <p>Here you will see a running list of stats recorded</p>
+                <p>Game started at {{startTime}}</p>
+                <p ng-model="stats">{{stats}}</p>
             </div>
-            <button class="btn btn-lg btn-danger" ng-click="confirm = true">Stop</button>
+            <button class="btn btn-lg btn-danger" ng-click="confirm = true; endTime()">Stop</button>
             <p class="help-block">Timer will stop for {{selectedGame.name}}</p>
         </div>
 
         <div ng-show="confirm">
+            <p>Game ended at {{endTime}}</p>
+            <p ng-model="stats">{{stats}}</p>
             <button class="btn btn-lg btn-primary">Confirm</button>
+        
         </div>
-
         <!-- 
-    game start hide on click, show record
-        onclick event to button to start time
-    
-    Record
-       get team rosters
-       get positions
-       get stats
+   
+       Tie teams and players together (filter in control?)
+       Tie players and numbers together
+        
+       get stats list from Json array?
     
     
     -->

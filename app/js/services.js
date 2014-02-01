@@ -8,7 +8,7 @@
 angular.module('qStat.services',[]).
 value('version', '0.1').
 factory('Players', function ($resource) {
-    return $resource('players/players.json', {
+    return $resource('data/players.json', {
     }, {
         query: {
             method: 'GET',
@@ -17,7 +17,7 @@ factory('Players', function ($resource) {
     });
 }).
 factory('Games', function ($resource) {
-    return $resource('games/games.json', {
+    return $resource('data/games.json', {
     },
     {
         query: {
@@ -27,7 +27,27 @@ factory('Games', function ($resource) {
     });
 }).
 factory('Teams', function ($resource) {
-    return $resource('teams/teams.json', {
+    return $resource('data/teams.json', {
+    },
+    {
+        query: {
+            method: 'GET',
+            isArray: true
+        }
+    });
+}).
+factory('Positions', function ($resource) {
+    return $resource('data/positions.json', {
+    },
+    {
+        query: {
+            method: 'GET',
+            isArray: true
+        }
+    });
+}).
+factory('Statistics', function ($resource) {
+    return $resource('data/statistics.json', {
     },
     {
         query: {

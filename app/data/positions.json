@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Beater",
+        "description": "",
+        "statistics": [{
+            "name": "",
+            "type": "",
+            "id": ""
+        }]
+    },
+    {
+        "name": "Chaser",
+        "description": "",
+        "statistics": [{
+            "name": "",
+            "type": "",
+            "id": ""
+        }]
+    },
+    {
+        "name": "Keeper",
+        "description": "",
+        "statistics": [{
+            "name": "",
+            "type": "",
+            "id": ""
+        }]
+    },
+    {
+        "name": "Utility",
+        "description": "",
+        "statistics": [{
+            "name": "",
+            "type": "",
+            "id": ""
+        }]
+    }
+]
