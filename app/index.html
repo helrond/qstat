@@ -2,11 +2,12 @@
 <html lang="en" ng-app="qStat">
 <head>
   <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>q.stat</title>
   <link href="css/xeditable.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/app.css"/>
   <link href="css/bootstrap.css" rel="stylesheet">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
 <header>
@@ -19,7 +20,7 @@
 	  <li ng-class="{active:isActive('/stats')}" class="pull-right"><a href="#/stats">Stats</a></li>
   	</ul>
   
-	<div class="content">
+	<div class="content col-xs-11 center-block">
   		<div ng-view></div>
   	</div><br>
   
