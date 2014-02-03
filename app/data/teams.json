@@ -1,10 +1,34 @@
 [
     {
+        "@context": "http://schema.org/Organization",
         "id": "philly-honey-badgers",
-        "name": "Philly Honey Badgers"
+        "name": "Philly Honey Badgers",
+        "players": [
+            {
+                "name": "Alvin Arnold",
+                "id": "alvin-arnold"
+            },
+            {
+                "name": "Calypso Montoya",
+                "id": "calypso-montoya"
+            }
+        ],
+        "url": "http://www.losers.org"
     },
     {
+        "@context": "http://schema.org/Organization",
         "id": "lords-of-darkness",
-        "name": "Lords of Darkness"
+        "name": "Lords of Darkness",
+        "players": [
+            {
+                "name": "Lord Voldemort",
+                "id": "lord-voldemort"
+            },
+            {
+                "name": "George W Bush",
+                "id": "george-w-bush"
+            }
+        ],
+        "url": "http://www.nsa.gov"
     }
 ]

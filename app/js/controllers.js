@@ -18,9 +18,13 @@ qStat.controller('gameCtrl', function (Games, $scope) {
     $scope.games = Games.query();
     $scope.orderProp = 'name';
 });
-qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
-    $http.get('games/' + $routeParams.gameId + '.json').success(function (data) {
-        $scope.game = data;
+qStat.controller('gameDetailCtrl', function ($scope, $routeParams, Games) {
+    var data = Games.query
+    (function (data) {
+        angular.forEach(data, function (game) {
+            if (game.id == $routeParams.gameId)
+            $scope.game = game;
+        });
     });
 });
 
@@ -29,9 +33,13 @@ qStat.controller('playerCtrl', function (Players, $scope) {
     $scope.players = Players.query();
     $scope.orderProp = 'name';
 });
-qStat.controller('playerDetailCtrl', function (Players, Positions, $scope, $routeParams, $http) {
-    $http.get('players/' + $routeParams.playerId + '.json').success(function (data) {
-        $scope.player = data;
+qStat.controller('playerDetailCtrl', function (Players, Positions, $scope, $routeParams) {
+    var data = Players.query
+    (function (data) {
+        angular.forEach(data, function (player) {
+            if (player.id == $routeParams.playerId)
+            $scope.player = player;
+        });
     });
     $scope.positions = Positions.query();
 });
@@ -90,8 +98,12 @@ qStat.controller('teamCtrl', function (Teams, $scope) {
     $scope.teams = Teams.query();
     $scope.orderProp = 'name';
 });
-qStat.controller('teamDetailCtrl', function ($scope, $routeParams, $http) {
-    $http.get('teams/' + $routeParams.teamId + '.json').success(function (data) {
-        $scope.team = data;
+qStat.controller('teamDetailCtrl', function (Teams, $scope, $routeParams) {
+    var data = Teams.query
+    (function (data) {
+        angular.forEach(data, function (team) {
+            if (team.id == $routeParams.teamId)
+            $scope.team = team;
+        });
     });
 });
