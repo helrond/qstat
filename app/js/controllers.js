@@ -37,20 +37,24 @@ qStat.controller('playerDetailCtrl', function (Players, Positions, $scope, $rout
 });
 
 /* Stat Controllers */
-qStat.controller('statCtrl', function (Players, Positions, Statistics, $scope) {
+qStat.controller('statCtrl', function (Players, Positions, Statistics, Teams, $scope) {
     $scope.players = Players.query();
     <!-- needs to be improved so it only selects players from selectedTeam -->
     $scope.positions = Positions.query();
     $scope.statistics = Statistics.query();
-    $scope.startTime = function() {
+    $scope.teams = Teams.query();
+    $scope.startTime = function () {
         var time = new Date()
-        $scope.startTime = time;};
-    $scope.endTime = function() {
+        $scope.startTime = time;
+    };
+    $scope.endTime = function () {
         var time = new Date()
-        $scope.endTime = time;};
-    $scope.gameTime = function() {
+        $scope.endTime = time;
+    };
+    $scope.gameTime = function () {
         var time = $scope.endTime - $scope.startTime;
-        $scope.gameTime = time;};
+        $scope.gameTime = time;
+    };
     $scope.stats =[];
     $scope.Add = function () {
         var newStat =[ {
@@ -60,6 +64,21 @@ qStat.controller('statCtrl', function (Players, Positions, Statistics, $scope) {
             'statistic': $scope.selectedStatStatistic,
             'time': new Date()
         }]
+        console.log(newStat)
+        var currentStats = $scope.stats;
+        var updatedStats = currentStats.concat(newStat);
+        $scope.stats = updatedStats
+    };
+    $scope.AddPossession = function () {
+        var newStat =[ {
+            'team': $scope.possessionTeam,
+            'statistic': {
+                'name': 'possession',
+                'value': true
+            },
+            'time': new Date()
+        }]
+        console.log(newStat)
         var currentStats = $scope.stats;
         var updatedStats = currentStats.concat(newStat);
         $scope.stats = updatedStats

@@ -1,21 +1,31 @@
 [
     {
         "name": "beater stat",
+        "role": "beater",
         "type": "",
         "id": ""
     },
     {
         "name": "keeper stat",
+        "role": "keeper",
         "type": "",
         "id": ""
     },
     {
         "name": "seeker stat",
+        "role": "seeker",
         "type": "",
         "id": ""
     },
     {
         "name": "utility stat",
+        "role": "utility",
+        "type": "",
+        "id": ""
+    },
+    {
+        "name": "test stat",
+        "role": "keeper",
         "type": "",
         "id": ""
     }

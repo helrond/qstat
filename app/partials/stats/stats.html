@@ -14,39 +14,59 @@
         </div>
 
         <div ng-show="record && !confirm" class="record">
+            <form class="form-horizontal text-center">
+                <div class="form-group form-inline">
+                    <label>Possession</label>
+                    <select name="team" class="form-control" ng-model="possessionTeam"
+                        ng-options="team.name for team in selectedGame.teams">
+                        <option value="">-- Select a team --</option>
+                    </select>
+                    <button class="btn btn-primary" ng-click="AddPossession()">Add</button>
+                </div>
+            </form>
             <form>
-                <form-group ng-model="possession">
-                    <label for="possession">Possession:</label>
-                    <input name="possession" type="radio" ng-repeat="team in selectedGame.teams">{{team .name}}</input>
-                </form-group>
-                <select name="team" ng-model="selectedTeam" class="form-control"
-                    ng-options="team.name for team in selectedGame.teams">
-                    <option value="">-- Select a team --</option>
-                </select>
-                <select ng-model="selectedPosition" class="form-control"
-                    ng-options="position.name for position in positions">
-                    <option value="">-- Select a position --</option>
-                </select>
-                <form-group ng-model="selectedPlayer">
+                <div class="form-group">
+                    <label class="sr-only">Team</label>
+                    <select name="team" class="form-control" ng-model="selectedTeam"
+                        ng-options="team.name for team in selectedGame.teams | filter:selectedPlayerName.team">
+                        <option value="">-- Select a team --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Position</label>
+                    <select class="form-control" ng-model="selectedPosition" 
+                        ng-options="position.name for position in positions | filter:selectedPlayerName.position">
+                        <option value="">-- Select a position --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Player Name</label>
                     <select ng-model="selectedPlayerName" class="form-control"
-                        ng-options="player.name for player in players">
-                        <option value="">-- Select a player --</option>
+                        ng-options="player.name for player in players  | filter:selectedPosition.name:selectedPlayerNumber.name">
+                        <option ng-hide="selectedPlayerNumber" value="">-- Select a player --</option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Player Number</label>
                     <select ng-model="selectedPlayerNumber" class="form-control"
-                        ng-options="player.number for player in players">
-                        <option value="">-- Select a number --</option>
+                        ng-options="player.number for player in players | filter:selectedPlayerName.number">
+                        <option ng-hide="selectedPlayerName" value="">-- Select a number --</option>
                     </select>
-                </form-group>
-                <form-group ng-model="selectedStat" class="form-horizontal">
-                    <select ng-model="selectedStatStatistic" class="form-control"
-                        ng-options="statistic.name for statistic in statistics">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Statistic Name</label>
+                    <select class="form-control" ng-model="selectedStatStatistic" 
+                        ng-options="statistic.role as statistic.name for statistic in statistics | filter:selectedPosition.name">
                         <option value="">-- Select a statistic --</option>
                     </select>
-                    <select ng-model="selectedStatValue" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only">Statistic Value</label>
+                    <select class="form-control" ng-model="selectedStatValue">
                         <option value="">-- Select a value --</option>
                     </select>
-                </form-group>
-                <p class="help-block" ng-model="thing"
+                </div>
+                <p class="help-block" ng-model="stat"
                     >{{selectedStatStatistic.name}}&nbsp;by&nbsp;{{selectedPlayerName.name}}&nbsp;({{selectedPosition.name}})
                     of {{selectedTeam.name}}</p>
                 <button class="btn btn-primary" ng-click="Add()">Add</button>
@@ -67,6 +87,7 @@
                         <td class="col-xs-3">{{stat.team.name}}</td>
                         <td class="col-xs-2">{{stat.statistic.name}}, {{stat.statistic.value}}</td>
                         <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}</td>
+                        <td class="text-danger pull-right"><span class="glyphicon glyphicon-remove"></span></td>
                     </tr>
                 </table>
             </div>
@@ -92,6 +113,7 @@
                     <td class="col-xs-3">{{stat.team.name}}</td>
                     <td class="col-xs-2">{{stat.statistic.name}}, {{stat.statistic.value}}</td>
                     <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}</td>
+                    <td class="text-danger pull-right"><span class="glyphicon glyphicon-remove"></span></td>
                 </tr>
             </table>
             <button class="btn btn-lg btn-primary">Confirm</button>

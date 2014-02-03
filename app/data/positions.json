@@ -1,38 +1,18 @@
 [
     {
         "name": "Beater",
-        "description": "",
-        "statistics": [{
-            "name": "",
-            "type": "",
-            "id": ""
-        }]
+        "description": ""
     },
     {
         "name": "Chaser",
-        "description": "",
-        "statistics": [{
-            "name": "",
-            "type": "",
-            "id": ""
-        }]
+        "description": ""
     },
     {
         "name": "Keeper",
-        "description": "",
-        "statistics": [{
-            "name": "",
-            "type": "",
-            "id": ""
-        }]
+        "description": ""
     },
     {
         "name": "Utility",
-        "description": "",
-        "statistics": [{
-            "name": "",
-            "type": "",
-            "id": ""
-        }]
+        "description": ""
     }
 ]
