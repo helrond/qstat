@@ -1,4 +1,9 @@
 <div ng-controller="teamDetailCtrl" class="detailView">
+	<ol class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#/teams">Teams</a></li>
+		<li class="active">Team</li>
+	</ol>
 	<div class="title" ng-controller="teamCtrl">
 		<h2><div editable-text="team.name">{{team.name}}</div></h2>
     </div>

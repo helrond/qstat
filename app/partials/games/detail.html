@@ -1,4 +1,9 @@
 <div ng-controller="gameDetailCtrl" class="detailView">
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#/games">Games</a></li>
+        <li class="active">Game</li>
+    </ol>
     <div class="title" ng-controller="teamCtrl">
         <h2>
             <div editable-select="game.teams[0].name" onshow="teams" e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[1].name}}'">{{game.teams[0].name}}</div></h2>
