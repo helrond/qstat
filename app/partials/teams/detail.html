@@ -17,13 +17,13 @@
 			<div class="title">
 				<h4>Roster</h4>
 			</div>
-		<ul class="list">
+		<table class="table table-striped">
 			<!-- filter by team? -->
-			<li ng-repeat="player in team.players | orderBy:orderProp">
-				<p class="name"><a href="#/players/{{player.id}}">{{ player.name }}</a></p>
-				<a class="remove" href="#"><span class="glyphicon glyphicon-remove"></span></a>
-			</li>
-		</ul>
-		<a class="btn btn-success" role="button">add more players<span class="glyphicon glyphicon-plus-sign"></span></a>
+			<tr ng-repeat="player in team.players | orderBy:orderProp">
+				<td class="col-xs-12"><a href="#/players/{{player.id}}">{{ player.name }}</a></td>
+				<td class="pull-right text-danger" href="#"><span class="glyphicon glyphicon-remove"></span></td>
+			</tr>
+		</table>
+		<a class="btn btn-success" role="button">add more players</a>
 	</div>
 </div>

@@ -60,8 +60,8 @@ qStat.controller('statCtrl', function (Players, Positions, Statistics, Teams, $s
         var newStat =[ {
             'team': $scope.selectedTeam,
             'position': $scope.selectedPosition,
-            'player': $scope.selectedPlayerName,
-            'statistic': $scope.selectedStatStatistic,
+            'player': $scope.selectedPlayer,
+            'statistic': $scope.selectedStat,
             'time': new Date()
         }]
         console.log(newStat)
