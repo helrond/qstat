@@ -1,5 +1,6 @@
 [
     {
+        "@context": "http://schema.org/SportsEvent",
         "id": "philly-honey-badgers-vs-lords-of-darkness",
         "name": "Philly Honey Badgers vs. Lords of Darkness",
         "teams": [
@@ -27,6 +28,7 @@
         "time": "00:54:00"
     },
     {
+        "@context": "http://schema.org/SportsEvent",
         "id": "philly-honey-badgers-vs-oral-roberts",
         "name": "Philly Honey Badgers vs. Oral Roberts",
         "teams": [

@@ -12,7 +12,6 @@
             <button class="btn btn-lg btn-success" ng-click="record = true; startTime()">Start</button>
             <p class="help-block">Timer will start for {{ selectedGame.name }}</p>
         </div>
-
         <div ng-show="record && !confirm" class="record">
             <form name="possession">
                 <div class="form-group col-xs-9">
@@ -35,38 +34,46 @@
                 <div class="form-group col-xs-12">
                     <label class="sr-only">Position</label>
                     <select class="form-control" ng-model="selectedPosition" 
-                        ng-options="position.name for position in positions | filter:selectedPlayer.position:selectedStat.role" required> <!--apparently multiple parameters are not supported, so may need to write custom filter, or create a filtered scope: http://stackoverflow.com/questions/15259732/angularjs-filter-multiple-select-inputs-->
+                        ng-options="position.name for position in positions | filter:selectedPlayer.position:selectedStat.role" required> <!--may need to write custom filter, or create a filtered scope: http://stackoverflow.com/questions/15259732/angularjs-filter-multiple-select-inputs-->
                         <option value="">-- Select a position --</option>
                     </select>
                 </div>
                 <div class="form-group col-xs-8">
                     <label class="sr-only">Player Name</label>
                     <select ng-model="selectedPlayer" class="form-control"
-                        ng-options="player.name for player in players | filter:selectedPosition.name" required>
+                        ng-options="player.name for player in players | filter:selectedPosition.name" required><!-- also filter by selectedTeam -->
                         <option value="">-- Select a player --</option>
                     </select>
                 </div>
                 <div class="form-group col-xs-4">
                     <label class="sr-only">Player Number</label>
                     <select ng-model="selectedPlayer" class="form-control"
-                        ng-options="player.number for player in players | filter:selectedPosition.name" required>
+                        ng-options="player.number for player in players | filter:selectedPosition.name" required><!-- also filter by selectedTeam -->
                         <option value="">-- Select a number --</option>
                     </select>
                 </div>
                 <div class="form-group col-xs-8">
                     <label class="sr-only">Statistic Name</label>
                     <select class="form-control" ng-model="selectedStat" 
-                        ng-options="statistic.name for statistic in statistics | filter:selectedPosition.name" required>
+                        ng-options="statistic.name for statistic in statistics | filter:selectedPosition.name:selectedPlayer.position" required><!--custom filter or filtered scope required -->
                         <option value="">-- Select a statistic --</option>
                     </select>
                 </div>
-                <div class="form-group col-xs-4">
+                <div class="form-group col-xs-2">
                     <label class="sr-only">Statistic Value</label>
-                    <select class="form-control" ng-model="selectedStat" ng-options="statistic.type for statistic in statistics">
+                    <select class="form-control" ng-model="selectedStat" 
+                        ng-options="statistic.type for statistic in statistics | filter:selectedPosition.name:selectedPlayer.position" required><!--custom filter or filtered scope required -->
                         <option value="">-- Select a value --</option>
                     </select>
                 </div>
-                <p class="help-block text-center" ng-model="stat">{{selectedStat.name}}&nbsp;by&nbsp;{{selectedPlayer.name}}&nbsp;({{selectedPosition.name}}/#{{selectedPlayer.number}})
+                <div class="form-group col-xs-2">
+                    <label class="sr-only">Statistic Attribute</label>
+                    <select class="form-control" ng-model="selectedStat" 
+                        ng-options="statistic.attribute.name for statistic in statistics | filter:selectedPosition.name:selectedPlayer.position" required><!--custom filter or filtered scope required -->
+                        <option value="">-- Select a value --</option>
+                    </select>
+                </div>
+                <p class="help-block text-center" ng-hide="stat.$error.required" ng-model="stat">{{selectedStat.name}}&nbsp;by&nbsp;{{selectedPlayer.name}}&nbsp;({{selectedPosition.name}}/#{{selectedPlayer.number}})
                     of {{selectedTeam.name}}</p>
                 <button ng-show="stat.$error.required" class="btn btn-primary center-block" disabled="disabled">Add</button>
                 <button ng-hide="stat.$error.required" class="btn btn-primary center-block" ng-click="Add()">Add</button>
@@ -92,7 +99,7 @@
                 </table>
             </div>
             <button class="btn btn-lg btn-danger center-block" ng-click="confirm = true; endTime(); gameTime();">Stop</button>
-            <p class="help-block">Timer will stop for {{selectedGame.name}}</p>
+            <p class="help-block text-center">Timer will stop for {{selectedGame.name}}</p>
         </div>
 
         <div ng-show="confirm">

@@ -47,7 +47,7 @@ qStat.controller('playerDetailCtrl', function (Players, Positions, $scope, $rout
 /* Stat Controllers */
 qStat.controller('statCtrl', function (Players, Positions, Statistics, Teams, $scope) {
     $scope.players = Players.query();
-    <!-- needs to be improved so it only selects players from selectedTeam -->
+    <!-- needs to be improved so it only selects players from game.selectedTeams -->
     $scope.positions = Positions.query();
     $scope.statistics = Statistics.query();
     $scope.teams = Teams.query();

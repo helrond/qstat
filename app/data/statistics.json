@@ -1,32 +1,153 @@
 [
     {
-        "name": "beater stat",
-        "role": "beater",
-        "type": "",
-        "id": ""
+        "name": "Beat Attempt",
+        "id": "beatAttempt",
+        "role": [
+            "beater",
+            "utility"
+        ],
+        "type": "integer",
+        "time": "time"
     },
     {
-        "name": "keeper stat",
-        "role": "keeper",
-        "type": "",
-        "id": ""
+        "name": "Beat",
+        "id": "beat",
+        "role": [
+            "beater",
+            "utility"
+        ],
+        "type": "integer",
+        "time": "time"
     },
     {
-        "name": "seeker stat",
-        "role": "seeker",
-        "type": "",
-        "id": ""
+        "name": "Repossession Attempt",
+        "id": "repossessionAttempt",
+        "role": [
+            "beater",
+            "utility"
+        ],
+        "type": "integer"
     },
     {
-        "name": "utility stat",
-        "role": "utility",
-        "type": "",
-        "id": ""
+        "name": "Repossession",
+        "id": "repossession",
+        "role": [
+            "beater",
+            "utility"
+        ],
+        "type": "integer",
+        "time": "time"
     },
     {
-        "name": "test stat",
-        "role": "keeper",
-        "type": "",
-        "id": ""
-    }
+        "name": "Tackle",
+        "id": "tackle",
+        "role": [
+            "beater",
+            "utility",
+            "chaser"
+        ],
+        "type": "integer",
+        "time": "time"
+    },
+    {
+        "name": "Goal Attempt",
+        "id": "goalAttempt",
+        "role": [
+            "chaser",
+            "utility"
+        ],
+        "type": "integer",
+        "attribute": [
+            "drive",
+            "shot"
+        ],
+        "time": "time"
+    },
+    {
+        "name": "Goal",
+        "id": "goal",
+        "role": [
+            "chaser",
+            "utility"
+        ],
+        "type": "integer",
+        "attribute": [
+            "drive",
+            "shot"
+        ],
+        "time": "time"
+    },
+    {
+        "name": "Goal Attempt",
+        "id": "goalAttempt",
+        "role": [
+            "chaser",
+            "utility"
+        ],
+        "type": "integer",
+        "attribute": [
+            "drive",
+            "shot"
+        ]
+    },
+    {
+        "name": "Assist",
+        "id": "assist",
+        "role": [
+            "chaser",
+            "utility"
+        ],
+        "type": "integer",
+        "time": "time"
+    },
+    {
+        "name": "Takeaway",
+        "id": "takeaway",
+        "role": [
+            "chaser",
+            "utility"
+        ],
+        "type": "integer",
+        "time": "time"
+    },
+    {
+        "name": "Giveaway",
+        "id": "giveaway",
+        "role": [
+            "chaser",
+            "utility"
+        ],
+        "type": "integer",
+        "time": "time"
+    },
+    {
+        "name": "Goal Allowed",
+        "id": "goalAllowed",
+        "role": [
+            "keeper",
+            "utility"
+        ],
+        "type": "integer",
+        "time": "time"
+    },
+    {
+        "name": "Goal Saved",
+        "id": "goalSaved",
+        "role": [
+            "keeper",
+            "utility"
+        ],
+        "type": "integer",
+        "time": "time"
+    },
+    {
+        "name": "Snitch Catch",
+        "id": "snitchCatch",
+        "role": [
+            "seeker",
+            "utility"
+        ],
+        "type": "integer",
+        "time": "time"
+    },
 ]

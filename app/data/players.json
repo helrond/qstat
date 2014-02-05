@@ -12,7 +12,7 @@
             {"dateFrom": "2012-01-02"},
             {"dateTo": null}
         ],
-        "position": "Utility"
+        "position": "utility"
     },
     {
         "@context": "http://schema.org/Person",
@@ -27,7 +27,7 @@
             {"dateFrom": "2012-02-04"},
             {"dateTo": "2014-01-01"}
         ],
-        "position": "Beater"
+        "position": "beater"
     },
     {
         "@context": "http://schema.org/Person",
@@ -42,7 +42,7 @@
             {"dateFrom": "2013-01-02"},
             {"dateTo": null}
         ],
-        "position": "Beater"
+        "position": "keeper"
     },
     {
         "@context": "http://schema.org/Person",
@@ -57,6 +57,6 @@
             {"dateFrom": "2013-01-02"},
             {"dateTo": null}
         ],
-        "position": "Chaser"
+        "position": "chaser"
     }
 ]
