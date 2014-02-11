@@ -11,7 +11,7 @@ var playerSchema = new Schema({
     image: String,
     number: String,
     description: String,
-    team: [{
+    team:[ {
         name: String,
         team_id: String,
         dateFrom: String,
@@ -40,6 +40,7 @@ var gameSchema = new Schema({
         type: String, default: 'http://schema.org/SportsEvent'
     },
     name: String,
+    game_id: String,
     teams:[ {
         name: String,
         team_id: String,
@@ -49,8 +50,7 @@ var gameSchema = new Schema({
     }],
     location: {
         name: String,
-        latitude: Number,
-        longitude: Number
+        url: String,
     },
     date: String,
     time: String,
@@ -105,7 +105,7 @@ exports.playerAdd = function (req, res) {
 exports.playerUpdate = function (req, res) {
     var id = req.body._id;
     if (id) {
-        playerModel.findById(id, function (err, player) {     
+        playerModel.findById(id, function (err, player) {
             player.name = req.body.name,
             player.image = req.body.image,
             player.number = req.body.number,
@@ -164,7 +164,7 @@ exports.teamAdd = function (req, res) {
 exports.teamUpdate = function (req, res) {
     var id = req.body._id;
     if (id) {
-        teamModel.findById(id, function (err, team) {     
+        teamModel.findById(id, function (err, team) {
             team.name = req.body.name,
             team.players = req.body.players,
             team.url = req.body.url,
@@ -216,29 +216,33 @@ exports.gameDetail = function (req, res) {
 }
 exports.gameAdd = function (req, res) {
     var game = req.body;
+    var raw = req.body.team1.name + ' vs ' + req.body.team2.name
+    var id = raw.replace(/\.,\/#!$%\^&\*;:{}=\-_`~()/g, "").replace(/\s/g, "-").toLowerCase();
     game = new gameModel({
-      name: req.body.team1.name + ' vs ' + req.body.team2.name,
-      teams: req.body.teams,
-      location: req.body.location,
-      date: req.body.date,
-      time: req.body.time,
-      statistics: req.body.statistics
+        name: req.body.team1.name + ' vs ' + req.body.team2.name,
+        game_id: id,
+        teams: [req.body.team1, req.body.team2],
+        location: {
+            name: req.body.location.name,
+            url: req.body.location.url},
+        date: req.body.date,
+        time: req.body.time,
     });
     game.save(function (err) {
-      if (!err) {
-        console.log("Game created");
-        res.json(true);
-      } else {
-        console.log(err);
-        res.json(false);
-      }
+        if (! err) {
+            console.log("Game created");
+            res.json(true);
+        } else {
+            console.log(err);
+            res.json(false);
+        }
     });
     return res.json(req.body);
 }
 exports.gameUpdate = function (req, res) {
     var id = req.body._id;
     if (id) {
-        gameModel.findById(id, function (err, game) {     
+        gameModel.findById(id, function (err, game) {
             game.name = req.body.name,
             game.teams = req.body.teams,
             game.location = req.body.location,
