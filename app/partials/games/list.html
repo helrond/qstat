@@ -15,8 +15,8 @@
     </div>
 	<table class="table table-striped">
     	<tr ng-repeat="game in games | filter:query | orderBy:orderProp">
-    		<td class="col-xs-12"><a href="#/games/{{game.id}}">{{ game.name }} ({{game.date | date:'longDate'}})</a></td>
-            <td class="text-danger pull-right" href="#"><span class="glyphicon glyphicon-remove"></span></td>
+    		<td class="col-xs-12"><a href="#/games/{{game._id}}">{{ game.name }} ({{game.date | date:'longDate'}})</a></td>
+            <td class="text-danger pull-right" href="#"><span class="glyphicon glyphicon-remove" ng-click="Delete(game)"></span></td>
         </tr>
     </table>
 	<a href="#/games/new" class="btn btn-sm btn-success" role="button">add new</a>

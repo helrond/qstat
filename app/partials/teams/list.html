@@ -9,8 +9,8 @@
     </div>
 	<table class="table table-striped">
     	<tr ng-repeat="team in teams | filter:query | orderBy:orderProp">
-    		<td class="col-xs-12"><a href="#/teams/{{team.id}}">{{ team.name }}</a></td>
-            <td class="text-danger pull-right" href="#"><span class="glyphicon glyphicon-remove"></span></td>
+    		<td class="col-xs-12"><a href="#/teams/{{team._id}}">{{ team.name }}</a></td>
+            <td class="text-danger pull-right" href="#"><span class="glyphicon glyphicon-remove" ng-click="Delete(team)"></span></td>
         </tr>
     </table>
 	<a href="#/teams/new" class="btn btn-sm btn-success" role="button">add new</a>

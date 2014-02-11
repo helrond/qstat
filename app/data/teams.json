@@ -1,19 +1,13 @@
 [
     {
         "@context": "http://schema.org/Organization",
-        "id": "philly-honey-badgers",
         "name": "Philly Honey Badgers",
         "players": [
-            {
-                "name": "Alvin Arnold",
-                "id": "alvin-arnold"
-            },
-            {
-                "name": "Calypso Montoya",
-                "id": "calypso-montoya"
-            }
+            {"name": "Alvin Arnold"},
+            {"name": "Calypso Montoya"}
         ],
-        "url": "http://www.losers.org"
+        "url": "http://www.losers.org",
+        "description": "We're a bunch of memes"
     },
     {
         "@context": "http://schema.org/Organization",
@@ -29,6 +23,7 @@
                 "id": "george-w-bush"
             }
         ],
-        "url": "http://www.nsa.gov"
+        "url": "http://www.nsa.gov",
+        "description": "We will rock you"
     }
 ]

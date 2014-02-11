@@ -8,6 +8,8 @@
 		<h2><div editable-text="team.name">{{team.name}}</div></h2>
     </div>
 	<div class="detailRow">
+		<p><div editable-text="team.description">{{team.description}}</div></p>
+	<div class="detailRow">
 		<p>
 			<span class="glyphicon glyphicon-link"/>
 			<div editable-url="team.url">{{team.url}}</div>
@@ -20,8 +22,7 @@
 		<table class="table table-striped">
 			<!-- filter by team? -->
 			<tr ng-repeat="player in team.players | orderBy:orderProp">
-				<td class="col-xs-12"><a href="#/players/{{player.id}}">{{ player.name }}</a></td>
-				<td class="pull-right text-danger" href="#"><span class="glyphicon glyphicon-remove"></span></td>
+				<td class="col-xs-12"><a href="#/players/{{player._id}}">{{ player.name }}</a></td>
 			</tr>
 		</table>
 		<a class="btn btn-success" role="button">add more players</a>

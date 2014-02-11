@@ -1,19 +1,16 @@
 [
     {
         "@context": "http://schema.org/SportsEvent",
-        "id": "philly-honey-badgers-vs-lords-of-darkness",
         "name": "Philly Honey Badgers vs. Lords of Darkness",
         "teams": [
             {
                 "name": "Philly Honey Badgers",
-                "id": "philly-honey-badgers",
                 "score": "120",
                 "snitchCatch": true,
                 "winner": true
             },
             {
                 "name": "Lords of Darkness",
-                "id": "lords-of-darkness",
                 "score": "97",
                 "snitchCatch": false,
                 "winner": false
@@ -29,19 +26,16 @@
     },
     {
         "@context": "http://schema.org/SportsEvent",
-        "id": "philly-honey-badgers-vs-oral-roberts",
         "name": "Philly Honey Badgers vs. Oral Roberts",
         "teams": [
             {
                 "name": "Philly Honey Badgers",
-                "id": "philly-honey-badgers",
                 "score": null,
                 "snitchCatch": null,
                 "winner": null
             },
             {
                 "name": "Oral Roberts",
-                "id": "oral-roberts",
                 "score": null,
                 "snitchCatch": null,
                 "winner": null

@@ -14,39 +14,63 @@ qStat.controller('navCtrl', function ($scope, $location) {
 });
 
 /* Game Controllers */
-qStat.controller('gameCtrl', function (Games, $scope) {
-    $scope.games = Games.query();
-    $scope.orderProp = 'name';
-});
-qStat.controller('gameDetailCtrl', function ($scope, $routeParams, Games) {
-    var data = Games.query
-    (function (data) {
-        angular.forEach(data, function (game) {
-            if (game.id == $routeParams.gameId)
-            $scope.game = game;
-        });
+qStat.controller('gameCtrl', function ($http, $scope) {
+    $http.get('/api/games').success(function (data, status, headers, config) {
+        $scope.games = data;
     });
+    $scope.orderProp = 'name';
+    $scope.Delete = function (game) {
+        var index = $scope.games.indexOf(game)
+        var id = $scope.games[index]._id
+        $http. delete ('/api/games/' + id).success(function () {
+            $scope.games.splice(index, 1);
+        });
+    }
+});
+qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
+    $http.get('/api/games/' + $routeParams.gameId).success(function (data) {
+        $scope.game = data;
+    });
+    $scope.Add = function () {
+        // Add function here
+    };
+    $scope.Update = function () {
+        // Add function here
+    };
 });
 
 /* Player Controllers */
-qStat.controller('playerCtrl', function (Players, $scope) {
-    $scope.players = Players.query();
-    $scope.orderProp = 'name';
-});
-qStat.controller('playerDetailCtrl', function (Players, Positions, $scope, $routeParams) {
-    var data = Players.query
-    (function (data) {
-        angular.forEach(data, function (player) {
-            if (player.id == $routeParams.playerId)
-            $scope.player = player;
-        });
+qStat.controller('playerCtrl', function ($http, $scope) {
+    $http.get('/api/players').success(function (data, status, headers, config) {
+        $scope.players = data;
     });
+    $scope.orderProp = 'name';
+    $scope. Delete = function (player) {
+        var index = $scope.players.indexOf(player)
+        var id = $scope.players[index]._id
+        $http. delete ('/api/players/' + id).success(function () {
+            $scope.players.splice(index, 1);
+        });
+    }
+});
+qStat.controller('playerDetailCtrl', function (Positions, $scope, $routeParams, $http) {
+    $http.get('/api/players/' + $routeParams.playerId).success(function (data) {
+        $scope.player = data;
+    });
+    $scope.Add = function () {
+        // Add function here
+    };
+    $scope.Update = function () {
+        // Add function here
+    };
     $scope.positions = Positions.query();
 });
 
 /* Stat Controllers */
-qStat.controller('statCtrl', function (Players, Positions, Statistics, Teams, $scope) {
-    $scope.players = Players.query();
+qStat.controller('statCtrl', function ($http, Positions, Statistics, Teams, $scope) {
+    $http.get('/api/players').success(function (data, status, headers, config) {
+        $scope.players = data;
+    });
     <!-- needs to be improved so it only selects players from game.selectedTeams -->
     $scope.positions = Positions.query();
     $scope.statistics = Statistics.query();
@@ -94,16 +118,30 @@ qStat.controller('statCtrl', function (Players, Positions, Statistics, Teams, $s
 });
 
 /* Team Controllers */
-qStat.controller('teamCtrl', function (Teams, $scope) {
-    $scope.teams = Teams.query();
-    $scope.orderProp = 'name';
-});
-qStat.controller('teamDetailCtrl', function (Teams, $scope, $routeParams) {
-    var data = Teams.query
-    (function (data) {
-        angular.forEach(data, function (team) {
-            if (team.id == $routeParams.teamId)
-            $scope.team = team;
-        });
+qStat.controller('teamCtrl', function ($scope, $http) {
+    $http.get('/api/teams').success(function (data, status, headers, config) {
+        $scope.teams = data;
     });
+    $scope.orderProp = 'name';
+    $scope. Delete = function (team) {
+        var index = $scope.teams.indexOf(team)
+        var id = $scope.teams[index]._id
+        $http. delete ('/api/teams/' + id).success(function () {
+            $scope.teams.splice(index, 1);
+        });
+    }
+    $http.get('/api/players').success(function (data, status, headers, config) {
+        $scope.players = data;
+    });
+});
+qStat.controller('teamDetailCtrl', function ($http, $scope, $routeParams) {
+    $http.get('/api/teams/' + $routeParams.teamId).success(function (data) {
+        $scope.team = data;
+    });
+    $scope.Add = function () {
+        // Add function here
+    };
+    $scope.Update = function () {
+        // Add function here
+    };
 });

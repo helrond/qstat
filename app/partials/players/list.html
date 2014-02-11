@@ -9,8 +9,8 @@
     </div>
 	<table class="table table-striped">
     	<tr ng-repeat="player in players | filter:query | orderBy:orderProp">
-    		<td class="col-xs-12"><a href="#/players/{{player.id}}">{{ player.name }} (#{{player.number}})</a></td>
-            <td class="text-danger pull-right"><span class="glyphicon glyphicon-remove"></span></td>
+    		<td class="col-xs-12"><a href="#/players/{{player._id}}">{{ player.name }} (#{{player.number}})</a></td>
+    		<td class="text-danger pull-right"><span class="glyphicon glyphicon-remove" ng-click="Delete(player)"></span></td>
         </tr>
     </table>
 	<a href="#/players/new" class="btn btn-sm btn-success" role="button">add new</a>

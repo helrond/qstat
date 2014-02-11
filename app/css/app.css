@@ -1,101 +1,111 @@
 /* app css stylesheet */
-html, body {
-	height:100%;
-	width:100%;
+html,
+body{
+    height:100%;
+    width:100%;
 }
 
-header {
-	text-align:center;
-	background-color:#000;
-	height:2.5em;
+#wrap{
+    min-height:100%;
+    height:100%;
+    margin:0 auto -20px;
 }
-header h1 {
+
+header{
+    text-align:center;
+    background-color:#000;
+    height:2.5em;
+}
+header h1{
     margin:0;
     font-size:2em;
 }
-header h1 a {
-	color:#fff;
-	margin:0;
+header h1 a{
+    color:#fff;
+    margin:0;
 }
-header h1 a:hover {
-    color: #ccc;
+header h1 a:hover{
+    color:#ccc;
     text-decoration:none;
 }
-.breadcrumb {
+.breadcrumb{
     margin-top:20px;
 }
-.content {
+.content{
     float:none !important;
 }
-.glyphicon {
+.glyphicon{
     margin:0 5px;
     vertical-align:middle;
 }
-.glyphicon:hover {
-    text-shadow: 0px 0px 3px #333;
+.glyphicon:hover{
+    text-shadow:0px 0px 3px #333;
     cursor:pointer;
 }
-.home ul, .home li {
-	list-style-type:none;
-	font-size:2em;
+.home ul,
+.home li{
+    list-style-type:none;
+    font-size:2em;
 }
-.listView {
+.listView{
     float:left;
     width:100%
 }
-.listView .top {
-	width:100%;
-	float: left;
+.listView .top{
+    width:100%;
+    float:left;
 }
-.listView .title {
-	float:left;
-	margin-right:2%
+.listView .title{
+    float:left;
+    margin-right:2%
 }
-.listView .btn {
+.listView .btn{
     margin-top:20px;
-    float: left
+    float:left
 }
-.listView .search, .listView .sort {
-	float:right;
-	margin-top:20px;
-	padding-right:0;
+.listView .search,
+.listView .sort{
+    float:right;
+    margin-top:20px;
+    padding-right:0;
 }
-.list h3 {
-	margin:0;
+.list h3{
+    margin:0;
 }
 
-.detailView .title, .detailView .detailRow {
+.detailView .title,
+.detailView .detailRow{
     width:100%;
     float:left;
 }
-.detailView .title h2, .detailView .detailRow p {
+.detailView .title h2,
+.detailView .detailRow p{
     float:left;
 }
-.detailView .score {
-    float:left;
-    width:100%;
-}
-.detailView .score .team {
+.detailView .score{
     float:left;
     width:100%;
 }
-.detailView .score .team .name {
+.detailView .score .team{
+    float:left;
+    width:100%;
+}
+.detailView .score .team .name{
     float:left;
     width:15%;
 }
-.detailView .score .team .score {
+.detailView .score .team .score{
     float:left;
     width:auto;
 }
-footer {
-	background-color: #000;
-	text-align:center;
-	height:3%;
-	width:100%;
-	float:left;
-	margin-top:1%;
+#footer{
+    background-color:#000;
+    text-align:center;
+    height:20px;
+    width:100%;
+    float:left;
 }
 
-footer p {
-	color:#fff;
+#footer p{
+    color:#fff;
 }

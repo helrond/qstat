@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
+  <div id="wrap">
 <header>
 <h1><a href="#">q.stat</a></h1>
 </header>
@@ -19,13 +20,13 @@
 	  <li ng-class="{active:isActive('/stats')}" class="pull-right"><a href="#/stats">Stats</a></li>
   	</ul>
   
-	<div class="content col-xs-11 center-block">
+	   <div class="content col-xs-11 center-block">
   		<div ng-view></div>
-  	</div><br>
-  
-  <footer>
+  	</div>
+  </div>
+  <div id="footer">
   <p><small>version 0.1</small></p>
-  </footer>
+  </div>
   
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>

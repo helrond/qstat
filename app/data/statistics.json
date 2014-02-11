@@ -1,7 +1,7 @@
 [
     {
         "name": "Beat Attempt",
-        "id": "beatAttempt",
+        "_id": "beatAttempt",
         "role": [
             "beater",
             "utility"
@@ -11,7 +11,7 @@
     },
     {
         "name": "Beat",
-        "id": "beat",
+        "_id": "beat",
         "role": [
             "beater",
             "utility"
@@ -21,7 +21,7 @@
     },
     {
         "name": "Repossession Attempt",
-        "id": "repossessionAttempt",
+        "_id": "repossessionAttempt",
         "role": [
             "beater",
             "utility"
@@ -30,7 +30,7 @@
     },
     {
         "name": "Repossession",
-        "id": "repossession",
+        "_id": "repossession",
         "role": [
             "beater",
             "utility"
@@ -40,7 +40,7 @@
     },
     {
         "name": "Tackle",
-        "id": "tackle",
+        "_id": "tackle",
         "role": [
             "beater",
             "utility",
@@ -51,7 +51,7 @@
     },
     {
         "name": "Goal Attempt",
-        "id": "goalAttempt",
+        "_id": "goalAttempt",
         "role": [
             "chaser",
             "utility"
@@ -65,7 +65,7 @@
     },
     {
         "name": "Goal",
-        "id": "goal",
+        "_id": "goal",
         "role": [
             "chaser",
             "utility"
@@ -78,21 +78,8 @@
         "time": "time"
     },
     {
-        "name": "Goal Attempt",
-        "id": "goalAttempt",
-        "role": [
-            "chaser",
-            "utility"
-        ],
-        "type": "integer",
-        "attribute": [
-            "drive",
-            "shot"
-        ]
-    },
-    {
         "name": "Assist",
-        "id": "assist",
+        "_id": "assist",
         "role": [
             "chaser",
             "utility"
@@ -102,7 +89,7 @@
     },
     {
         "name": "Takeaway",
-        "id": "takeaway",
+        "_id": "takeaway",
         "role": [
             "chaser",
             "utility"
@@ -112,7 +99,7 @@
     },
     {
         "name": "Giveaway",
-        "id": "giveaway",
+        "_id": "giveaway",
         "role": [
             "chaser",
             "utility"
@@ -122,7 +109,7 @@
     },
     {
         "name": "Goal Allowed",
-        "id": "goalAllowed",
+        "_id": "goalAllowed",
         "role": [
             "keeper",
             "utility"
@@ -132,7 +119,7 @@
     },
     {
         "name": "Goal Saved",
-        "id": "goalSaved",
+        "_id": "goalSaved",
         "role": [
             "keeper",
             "utility"
@@ -142,7 +129,7 @@
     },
     {
         "name": "Snitch Catch",
-        "id": "snitchCatch",
+        "_id": "snitchCatch",
         "role": [
             "seeker",
             "utility"

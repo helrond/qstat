@@ -1,14 +1,13 @@
 [
     {
         "@context": "http://schema.org/Person",
-        "id": "lord-voldemort",
         "name": "Lord Voldemort",
         "image": "img/user.png",
         "number": "-google",
         "description": "I am the Lord of Darkness.",
         "team": [
             {"name": "Lords of Darkness"},
-            {"id": "lords-of-darkness"},
+            {"team_id": "lords-of-darkness"},
             {"dateFrom": "2012-01-02"},
             {"dateTo": null}
         ],
@@ -16,14 +15,13 @@
     },
     {
         "@context": "http://schema.org/Person",
-        "id": "george-w-bush",
         "name": "George W. Bush",
         "image": "img/user.png",
         "number": "13",
         "description": "Bring 'em on.",
         "team": [
             {"name": "Lords of Darkness"},
-            {"id": "lords-of-darkness"},
+            {"team_id": "lords-of-darkness"},
             {"dateFrom": "2012-02-04"},
             {"dateTo": "2014-01-01"}
         ],
@@ -31,7 +29,6 @@
     },
     {
         "@context": "http://schema.org/Person",
-        "id": "calpyso-montoya",
         "name": "Calypso Montoya",
         "image": "img/user.png",
         "number": "1",
@@ -46,14 +43,13 @@
     },
     {
         "@context": "http://schema.org/Person",
-        "id": "alvin-arnold",
         "name": "Alvin Arnold",
         "image": "img/user.png",
         "number": "13",
         "description": "World's biggest nerd.",
         "team": [
             {"name": "Philly Honey Badgers"},
-            {"id": "philly-honey-badgers"},
+            {"team_id": "philly-honey-badgers"},
             {"dateFrom": "2013-01-02"},
             {"dateTo": null}
         ],
