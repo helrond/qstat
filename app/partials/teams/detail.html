@@ -42,8 +42,7 @@
 			<button type="button" class="btn btn-default" ng-click="teamForm.$show()"
 				ng-show="!teamForm.$visible"> Edit </button>
 			<span ng-show="teamForm.$visible">
-				<button type="submit" class="btn btn-primary" ng-disabled="teamForm.$waiting"
-					ng-click="Update(team)"> Save </button>
+				<button type="submit" class="btn btn-primary" ng-disabled="teamForm.$waiting"> Save </button>
 				<button type="button" class="btn btn-danger" ng-disabled="teamForm.$waiting"
 					ng-click="teamForm.$cancel()"> Cancel </button>
 			</span>

@@ -17,19 +17,19 @@ function ($routeProvider) {
     }).when('/games', {
         templateUrl: 'partials/games/list.html', controller: 'gameCtrl'
     }).when('/games/new', {
-        templateUrl: 'partials/games/detail.html', controller: 'gameDetailCtrl'
+        templateUrl: 'partials/games/new.html', controller: 'gameDetailCtrl'
     }).when('/games/:gameId', {
         templateUrl: 'partials/games/detail.html', controller: 'gameDetailCtrl'
     }).when('/teams', {
         templateUrl: 'partials/teams/list.html', controller: 'teamCtrl'
     }).when('/teams/new', {
-        templateUrl: 'partials/teams/detail.html', controller: 'teamDetailCtrl'
+        templateUrl: 'partials/teams/new.html', controller: 'teamDetailCtrl'
     }).when('/teams/:teamId', {
         templateUrl: 'partials/teams/detail.html', controller: 'teamDetailCtrl'
     }).when('/players', {
         templateUrl: 'partials/players/list.html', controller: 'playerCtrl'
     }).when('/players/new', {
-        templateUrl: 'partials/players/detail.html', controller: 'playerDetailCtrl'
+        templateUrl: 'partials/players/new.html', controller: 'playerDetailCtrl'
     }).when('/players/:playerId', {
         templateUrl: 'partials/players/detail.html', controller: 'playerDetailCtrl'
     }).when('/stats', {

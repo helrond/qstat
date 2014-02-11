@@ -19,7 +19,7 @@ qStat.controller('gameCtrl', function ($http, $scope) {
         $scope.games = data;
     });
     $scope.orderProp = 'name';
-    $scope.Delete = function (game) {
+    $scope. Delete = function (game) {
         var index = $scope.games.indexOf(game)
         var id = $scope.games[index]._id
         $http. delete ('/api/games/' + id).success(function () {
@@ -28,16 +28,25 @@ qStat.controller('gameCtrl', function ($http, $scope) {
     }
 });
 qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
-    $http.get('/api/games/' + $routeParams.gameId).success(function (data) {
-        $scope.game = data;
-    });
+    if ($routeParams.gameId) {
+        $http.get('/api/games/' + $routeParams.gameId).success(function (data) {
+            $scope.game = data;
+        });
+    } else {
+        $http.get('/api/teams').success(function (data, status, headers, config) {
+            $scope.teams = data;
+        });
+        $scope.game ={};
+    }
     $scope.Add = function () {
-        // Add function here
+        $http.post('/api/games', $scope.game).success(function (data) {
+            window.location.href = "/#/games";
+        })
     };
     $scope.Update = function () {
         $http.put('/api/games/' + $routeParams.gameId, $scope.game).
-            success(function(data) {
-      });
+        success(function (data) {
+        });
     };
 });
 
@@ -56,16 +65,21 @@ qStat.controller('playerCtrl', function ($http, $scope) {
     }
 });
 qStat.controller('playerDetailCtrl', function (Positions, $scope, $routeParams, $http) {
-    $http.get('/api/players/' + $routeParams.playerId).success(function (data) {
-        $scope.player = data;
-    });
+    if ($routeParams.playerId) {
+        $http.get('/api/players/' + $routeParams.playerId).success(function (data) {
+            $scope.player = data;
+        })
+    } else {
+        $scope.player =[];
+    };
+    
     $scope.Add = function () {
         // Add function here
     };
     $scope.Update = function () {
-         $http.put('/api/players/' + $routeParams.playerId, $scope.player).
-            success(function(data) {
-      });
+        $http.put('/api/players/' + $routeParams.playerId, $scope.player).
+        success(function (data) {
+        });
     };
     $scope.positions = Positions.query();
 });
@@ -146,8 +160,8 @@ qStat.controller('teamDetailCtrl', function ($http, $scope, $routeParams) {
         // Add function here
     };
     $scope.Update = function () {
-         $http.put('/api/teams/' + $routeParams.teamId, $scope.team).
-            success(function(data) {
-      });
+        $http.put('/api/teams/' + $routeParams.teamId, $scope.team).
+        success(function (data) {
+        });
     };
 });

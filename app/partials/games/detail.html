@@ -8,8 +8,9 @@
         <div class="title" ng-controller="teamCtrl">
             <h2>
                 <div editable-select="game.teams[0].name" onshow="teams"
-                    e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[1].name}}'"
-                    >{{game.teams[0].name}}</div>
+                    e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[1].name}}'">
+                    {{game.teams[0].name}}
+                </div>
             </h2>
             <h2>&nbsp;vs&nbsp;</h2>
             <h2>

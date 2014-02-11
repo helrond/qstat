@@ -37,8 +37,7 @@
         <button type="button" class="btn btn-default" ng-click="playerForm.$show()"
             ng-show="!playerForm.$visible"> Edit </button>
         <span ng-show="playerForm.$visible">
-            <button type="submit" class="btn btn-primary" ng-disabled="playerForm.$waiting"
-                ng-click="Update(player)"> Save </button>
+            <button type="submit" class="btn btn-primary" ng-disabled="playerForm.$waiting"> Save </button>
             <button type="button" class="btn btn-danger" ng-disabled="playerForm.$waiting"
                 ng-click="playerForm.$cancel()"> Cancel </button>
         </span>

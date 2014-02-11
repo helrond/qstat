@@ -215,7 +215,25 @@ exports.gameDetail = function (req, res) {
     });
 }
 exports.gameAdd = function (req, res) {
-    // Add function here
+    var game = req.body;
+    game = new gameModel({
+      name: req.body.team1.name + ' vs ' + req.body.team2.name,
+      teams: req.body.teams,
+      location: req.body.location,
+      date: req.body.date,
+      time: req.body.time,
+      statistics: req.body.statistics
+    });
+    game.save(function (err) {
+      if (!err) {
+        console.log("Game created");
+        res.json(true);
+      } else {
+        console.log(err);
+        res.json(false);
+      }
+    });
+    return res.json(req.body);
 }
 exports.gameUpdate = function (req, res) {
     var id = req.body._id;
