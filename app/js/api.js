@@ -11,17 +11,17 @@ var playerSchema = new Schema({
     image: String,
     number: String,
     description: String,
-    team:[ {
+    team: [{
         name: String,
         team_id: String,
-        dateFrom: Date,
-        dateTo: Date
+        dateFrom: String,
+        dateTo: String
     }],
-    position:[ {
+    position: {
         name: String,
         position_id: String
-    }],
-    statistics:[]
+    },
+    statistics:[statSchema]
 });
 var teamSchema = new Schema({
     '@context': {
@@ -33,34 +33,34 @@ var teamSchema = new Schema({
     }],
     url: String,
     description: String,
-    statistics:[]
+    statistics:[statSchema]
 });
 var gameSchema = new Schema({
-'@context': {type: String, default: 'http://schema.org/SportsEvent'},
+    '@context': {
+        type: String, default: 'http://schema.org/SportsEvent'
+    },
+    name: String,
+    teams:[ {
         name: String,
-        teams: [
-            {
-                name: String,
-                team_id: String,
-                score: Number,
-                snitchCatch: Boolean,
-                winner: Boolean
-            }
-        ],
-        location: {
-            name: String,
-            latitude: Number,
-            longitude: Number
-        },
-        date: Date,
-        time: Date,
-        statistics: []
+        team_id: String,
+        score: Number,
+        snitchCatch: Boolean,
+        winner: Boolean
+    }],
+    location: {
+        name: String,
+        latitude: Number,
+        longitude: Number
+    },
+    date: String,
+    time: String,
+    statistics:[statSchema]
 });
 var statSchema = new Schema({
     name: String,
     role:[String],
     type: String,
-    time: Date,
+    time: String,
     player:[ {
         name: String,
         player_id: String
@@ -100,34 +100,30 @@ exports.playerDetail = function (req, res) {
     });
 }
 exports.playerAdd = function (req, res) {
-    var player;
-    player = new playerModel({
-        name: req.body.name,
-        phone: req.body.number,
-    });
-    player.save(function (err) {
-        if (! err) {
-            console.log("created");
-        } else {
-            console.log(err);
-        }
-    });
-    
-    return res.send(player);
+    // Add function
 }
 exports.playerUpdate = function (req, res) {
-    return playerModel.findById(req.params.id, function (err, player) {
-        player.name = req.body.name;
-        player.number = req.body.number;
-        player.save(function (err) {
-            if (! err) {
-                console.log("updated");
-            } else {
-                console.log(err);
-            }
-            res.send(player);
+    var id = req.body._id;
+    if (id) {
+        playerModel.findById(id, function (err, player) {     
+            player.name = req.body.name,
+            player.image = req.body.image,
+            player.number = req.body.number,
+            player.description = req.body.description,
+            player.team = req.body.teams,
+            player.position = req.body.position,
+            player.statistics = req.body.statistics
+            player.save(function (err) {
+                if (! err) {
+                    res.json(true);
+                    console.log("Player updated");
+                } else {
+                    res.json(false);
+                    console.log(err);
+                }
+            });
         });
-    });
+    }
 }
 
 exports.playerDelete = function (req, res) {
@@ -166,7 +162,25 @@ exports.teamAdd = function (req, res) {
     // Add function here
 }
 exports.teamUpdate = function (req, res) {
-    // Add function here
+    var id = req.body._id;
+    if (id) {
+        teamModel.findById(id, function (err, team) {     
+            team.name = req.body.name,
+            team.players = req.body.players,
+            team.url = req.body.url,
+            team.description = req.body.description,
+            team.statistics = req.body.statistics
+            team.save(function (err) {
+                if (! err) {
+                    res.json(true);
+                    console.log("Team updated");
+                } else {
+                    res.json(false);
+                    console.log(err);
+                }
+            });
+        });
+    }
 }
 exports.teamDelete = function (req, res) {
     return teamModel.findById(req.params.id, function (err, team) {
@@ -204,7 +218,26 @@ exports.gameAdd = function (req, res) {
     // Add function here
 }
 exports.gameUpdate = function (req, res) {
-    // Add function here
+    var id = req.body._id;
+    if (id) {
+        gameModel.findById(id, function (err, game) {     
+            game.name = req.body.name,
+            game.teams = req.body.teams,
+            game.location = req.body.location,
+            game.date = req.body.date,
+            game.time = req.body.time,
+            game.statistics = req.body.statistics
+            game.save(function (err) {
+                if (! err) {
+                    res.json(true);
+                    console.log("Game updated");
+                } else {
+                    res.json(false);
+                    console.log(err);
+                }
+            });
+        });
+    }
 }
 exports.gameDelete = function (req, res) {
     return gameModel.findById(req.params.id, function (err, game) {

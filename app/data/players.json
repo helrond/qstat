@@ -5,12 +5,12 @@
         "image": "img/user.png",
         "number": "-google",
         "description": "I am the Lord of Darkness.",
-        "team": [
-            {"name": "Lords of Darkness"},
-            {"team_id": "lords-of-darkness"},
-            {"dateFrom": "2012-01-02"},
-            {"dateTo": null}
-        ],
+        "team": [{
+            "name": "Lords of Darkness",
+            "team_id": "lords-of-darkness",
+            "dateFrom": "2012-01-02",
+            "dateTo": null
+        }],
         "position": "utility"
     },
     {
@@ -19,12 +19,12 @@
         "image": "img/user.png",
         "number": "13",
         "description": "Bring 'em on.",
-        "team": [
-            {"name": "Lords of Darkness"},
-            {"team_id": "lords-of-darkness"},
-            {"dateFrom": "2012-02-04"},
-            {"dateTo": "2014-01-01"}
-        ],
+        "team": [{
+            "name": "Lords of Darkness",
+            "team_id": "lords-of-darkness",
+            "dateFrom": "2012-02-04",
+            "dateTo": "2014-01-01"
+        }],
         "position": "beater"
     },
     {
@@ -33,12 +33,12 @@
         "image": "img/user.png",
         "number": "1",
         "description": "Prepare to die.",
-        "team": [
-            {"name": "Philly Honey Badgers"},
-            {"id": "philly-honey-badgers"},
-            {"dateFrom": "2013-01-02"},
-            {"dateTo": null}
-        ],
+        "team": [{
+            "name": "Philly Honey Badgers",
+            "id": "philly-honey-badgers",
+            "dateFrom": "2013-01-02",
+            "dateTo": null
+        }],
         "position": "keeper"
     },
     {
@@ -47,12 +47,12 @@
         "image": "img/user.png",
         "number": "13",
         "description": "World's biggest nerd.",
-        "team": [
-            {"name": "Philly Honey Badgers"},
-            {"team_id": "philly-honey-badgers"},
-            {"dateFrom": "2013-01-02"},
-            {"dateTo": null}
-        ],
+        "team": [{
+            "name": "Philly Honey Badgers",
+            "team_id": "philly-honey-badgers",
+            "dateFrom": "2013-01-02",
+            "dateTo": null
+        }],
         "position": "chaser"
     }
 ]

@@ -4,6 +4,7 @@
         <li><a href="#/players">Players</a></li>
         <li class="active">Player</li>
     </ol>
+    <form editable-form name="playerForm" onaftersave="Update()">
     <div class="title">
         <h2><div editable-text="player.name">{{player.name}}</div></h2>
     </div>
@@ -32,4 +33,15 @@
         <h4>Plays for</h4>
         <p><div editable-select="player.team[0].name" onshow="teams" e-ng-options="team.name as team.name for team in teams">{{player.team[0].name}}</div></p>
     </div>
+    <div>
+        <button type="button" class="btn btn-default" ng-click="playerForm.$show()"
+            ng-show="!playerForm.$visible"> Edit </button>
+        <span ng-show="playerForm.$visible">
+            <button type="submit" class="btn btn-primary" ng-disabled="playerForm.$waiting"
+                ng-click="Update(player)"> Save </button>
+            <button type="button" class="btn btn-danger" ng-disabled="playerForm.$waiting"
+                ng-click="playerForm.$cancel()"> Cancel </button>
+        </span>
+    </div>
+    </form>
 </div>

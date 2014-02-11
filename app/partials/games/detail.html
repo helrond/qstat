@@ -4,50 +4,67 @@
         <li><a href="#/games">Games</a></li>
         <li class="active">Game</li>
     </ol>
-    <div class="title" ng-controller="teamCtrl">
-        <h2>
-            <div editable-select="game.teams[0].name" onshow="teams" e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[1].name}}'">{{game.teams[0].name}}</div></h2>
-            <h2>&nbsp;vs&nbsp;</h2> 
-            <h2><div editable-select="game.teams[1].name" onshow="teams" e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[0].name}}'">{{game.teams[1].name}}</div>
-        </h2>
-    </div>
-    <div class="detailRow">
-        <p>
-            <div editable-date="game.date">{{game.date | date:'longDate'}}</div>
-        </p>
-    </div>
-    <div class="detailRow">
-        <p>
-            <span class="glyphicon glyphicon-screenshot"/>
-            <div editable-text="game.location.name">{{game.location.name}}</div>
-            <a target="_blank"
-                href="http://www.openstreetmap.org/search?query={{game.location.latitude}},{{game.location.longitude}}">
-                <span class="glyphicon glyphicon-new-window"/>
-            </a>
-        </p>
-    </div>
-    <div class="detailRow">
-        <p>
-            <span class="glyphicon glyphicon-time"/>
-            <div editable-text="game.time">{{game.time}}</div>
-        </p>
-    </div>
-    <div class="detailRow">
-        <h3>Score</h3>
-        <div class="score">
-            <div class="team">
-                <div class="name">
-                    <a href="#/teams/{{game.teams[0].id}}">{{game.teams[0].name}}</a>
+    <form editable-form name="gameForm" onaftersave="Update()">
+        <div class="title" ng-controller="teamCtrl">
+            <h2>
+                <div editable-select="game.teams[0].name" onshow="teams"
+                    e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[1].name}}'"
+                    >{{game.teams[0].name}}</div>
+            </h2>
+            <h2>&nbsp;vs&nbsp;</h2>
+            <h2>
+                <div editable-select="game.teams[1].name" onshow="teams"
+                    e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[0].name}}'"
+                    >{{game.teams[1].name}}</div>
+            </h2>
+        </div>
+        <div class="detailRow">
+            <p>
+                <div editable-date="game.date">{{game.date | date:'longDate'}}</div>
+            </p>
+        </div>
+        <div class="detailRow">
+            <p>
+                <span class="glyphicon glyphicon-screenshot"/>
+                <div editable-text="game.location.name">{{game.location.name}}</div>
+                <a target="_blank"
+                    href="http://www.openstreetmap.org/search?query={{game.location.latitude}},{{game.location.longitude}}">
+                    <span class="glyphicon glyphicon-new-window"/>
+                </a>
+            </p>
+        </div>
+        <div class="detailRow">
+            <p>
+                <span class="glyphicon glyphicon-time"/>
+                <div editable-text="game.time">{{game.time}}</div>
+            </p>
+        </div>
+        <div class="detailRow">
+            <h3>Score</h3>
+            <div class="score">
+                <div class="team">
+                    <div class="name">
+                        <a href="#/teams/{{game.teams[0].id}}">{{game.teams[0].name}}</a>
+                    </div>
+                    <div class="score">{{game.teams[0].score}} <span class="glyphicon glyphicon-ok"
+                        /></div>
                 </div>
-                <div class="score">{{game.teams[0].score}} <span class="glyphicon glyphicon-ok"
-                    /></div>
-            </div>
-            <div class="team">
-                <div class="name">
-                    <a href="#/teams/{{game.teams[1].id}}">{{game.teams[1].name}}</a>
+                <div class="team">
+                    <div class="name">
+                        <a href="#/teams/{{game.teams[1].id}}">{{game.teams[1].name}}</a>
+                    </div>
+                    <div class="score">{{game.teams[1].score}}</div>
                 </div>
-                <div class="score">{{game.teams[1].score}}</div>
             </div>
         </div>
-    </div>
+        <div>
+            <button type="button" class="btn btn-default" ng-click="gameForm.$show()"
+                ng-show="!gameForm.$visible"> Edit </button>
+            <span ng-show="gameForm.$visible">
+                <button class="btn btn-primary" ng-disabled="gameForm.$waiting"> Save </button>
+                <button type="button" class="btn btn-danger" ng-disabled="gameForm.$waiting"
+                    ng-click="gameForm.$cancel()"> Cancel </button>
+            </span>
+        </div>
+    </form>
 </div>

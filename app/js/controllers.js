@@ -35,7 +35,9 @@ qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
         // Add function here
     };
     $scope.Update = function () {
-        // Add function here
+        $http.put('/api/games/' + $routeParams.gameId, $scope.game).
+            success(function(data) {
+      });
     };
 });
 
@@ -61,7 +63,9 @@ qStat.controller('playerDetailCtrl', function (Positions, $scope, $routeParams, 
         // Add function here
     };
     $scope.Update = function () {
-        // Add function here
+         $http.put('/api/players/' + $routeParams.playerId, $scope.player).
+            success(function(data) {
+      });
     };
     $scope.positions = Positions.query();
 });
@@ -142,6 +146,8 @@ qStat.controller('teamDetailCtrl', function ($http, $scope, $routeParams) {
         // Add function here
     };
     $scope.Update = function () {
-        // Add function here
+         $http.put('/api/teams/' + $routeParams.teamId, $scope.team).
+            success(function(data) {
+      });
     };
 });
