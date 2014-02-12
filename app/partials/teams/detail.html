@@ -9,16 +9,16 @@
 		<li class="active">Team</li>
 	</ol>
 	<form editable-form name="teamForm" onaftersave="Update()">
-	<div class="title" ng-controller="teamCtrl">
+		<div class="title col-xs-12" ng-controller="teamCtrl">
 		<h2>
 			<div editable-text="team.name">{{team.name}}</div>
 		</h2>
 	</div>
-	<div class="detailRow">
+	<div class="col-xs-12">
 		<p>
 			<div editable-text="team.description">{{team.description}}</div>
 		</p>
-		<div class="detailRow">
+		<div class="col-xs-12">
 			<p>
 				<div editable-url="team.url"><a href="{{team.url}}">{{team.url}}</a></div>
 			</p>

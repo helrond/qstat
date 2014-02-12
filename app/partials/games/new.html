@@ -12,14 +12,14 @@
         <div class="title col-xs-12">
             <div class="form-group col-xs-5 pull-left">
                 <select class="form-control" ng-model="game.team1"
-                    ng-options="team.name for team in teams"><!-- needs filter to exclude value already selected -->
+                    ng-options="team.name for team in teams" required><!-- needs filter to exclude value already selected -->
                     <option value="">-- Select a team --</option>
                 </select>
             </div>
             <div class="col-xs-2 center-block text-center"><p>vs</p></div>
             <div class="form-group col-xs-5 pull-right">
                 <select class="form-control" ng-model="game.team2"
-                    ng-options="team.name for team in teams"><!-- needs filter to exclude value already selected -->
+                    ng-options="team.name for team in teams" required><!-- needs filter to exclude value already selected -->
                     <option value="">-- Select a team --</option>
                 </select>
             </div>
@@ -40,7 +40,7 @@
         {{game.location.name}}
 
         <div class="center-block">
-            <button class="btn btn-primary" ng-disabled="gameForm.$waiting" ng-click="Add()"> Save </button>
+            <button class="btn btn-primary" ng-disabled="gameForm.$error.required" ng-click="Add()"> Save </button>
             <button type="button" class="btn btn-danger" ng-disabled="gameForm.$waiting"
                 ng-click="gameForm.$cancel()"> Cancel </button>
         </div>

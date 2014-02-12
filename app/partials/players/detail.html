@@ -5,31 +5,31 @@
         <li class="active">Player</li>
     </ol>
     <form editable-form name="playerForm" onaftersave="Update()">
-    <div class="title">
+        <div class="title col-xs-12">
         <h2><div editable-text="player.name">{{player.name}}</div></h2>
     </div>
-    <div class="detailRow">
+        <div class="col-xs-12">
         <p>
             <div editable-text="player.description">{{player.description}}</div>
         </p>
     </div>
-    <div class="detailRow">
+        <div class="col-xs-12">
         <h4>Number</h4>
         <p>
             <div editable-text="player.number">{{player.number}}</div>
         </p>
     </div>
-    <div class="detailRow">
+        <div class="col-xs-12">
         <h4>Position</h4>
         <p>
             <div editable-select="player.position" onshow="positions" e-ng-options="position.name as position.name for position in positions">
-                {{player.position}}
+                {{player.position.name}}
             </div>
         </p>
     </div>
-    <div class="detailRow">
+        <div class="col-xs-12">
     </div>
-    <div class="detailRow" ng-controller="teamCtrl">
+        <div class="col-xs-12" ng-controller="teamCtrl">
         <h4>Plays for</h4>
         <p><div editable-select="player.team[0].name" onshow="teams" e-ng-options="team.name as team.name for team in teams">{{player.team[0].name}}</div></p>
     </div>
