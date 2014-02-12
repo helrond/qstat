@@ -20,20 +20,15 @@
             </h2>
         </div>
         <div class="col-xs-12">
-            <p>
-                <div editable-date="game.date">{{game.date | date:'longDate'}}</div>
-            </p>
+            <div editable-date="game.date">{{game.date | date:'longDate'}}</div>
         </div>
         <div class="col-xs-12">
-            <div editable-text="game.location.name">{{game.location.name}}</div></p>
+            <div editable-text="game.location.name">{{game.location.name}}</div>
             <div editable-text="game.location.url"><a href="{{game.location.url}}">{{game.location.url}}</a></div>
         </div>
         <h3>Statistics</h3>
         <div class="col-xs-12">
-            <p>
-                <span class="glyphicon glyphicon-time"/>
-                <div>{{game.time}}</div>
-            </p>
+            <div>{{game.time}}</div>
         </div>
         <div class="col-xs-12">
             <div class="score">

@@ -15,36 +15,33 @@
 		</h2>
 	</div>
 	<div class="col-xs-12">
-		<p>
-			<div editable-text="team.description">{{team.description}}</div>
-		</p>
-		<div class="col-xs-12">
-			<p>
-				<div editable-url="team.url"><a href="{{team.url}}">{{team.url}}</a></div>
-			</p>
+		<div editable-text="team.description">{{team.description}}</div>
+	</div>
+	<div class="col-xs-12">
+		<div editable-url="team.url"><a href="{{team.url}}">{{team.url}}</a></div>
+	</div>
+	<div class="listView">
+		<div class="title">
+			<h4>Roster</h4>
 		</div>
-		<div class="listView">
-			<div class="title">
-				<h4>Roster</h4>
-			</div>
-			<table class="table table-striped">
-				<!-- filter by team? -->
-				<tr ng-repeat="player in team.players | orderBy:orderProp">
-					<td class="col-xs-12">
-						<a href="#/players/{{player._id}}">{{ player.name }}</a>
-					</td>
-				</tr>
-			</table>
-			<a class="btn btn-sm btn-success pull-right" role="button">add more players</a>
-		</div>
-		<div>
-			<button type="button" class="btn btn-default" ng-click="teamForm.$show()"
-				ng-show="!teamForm.$visible"> Edit </button>
-			<span ng-show="teamForm.$visible">
-				<button type="submit" class="btn btn-primary" ng-disabled="teamForm.$waiting"> Save </button>
-				<button type="button" class="btn btn-danger" ng-disabled="teamForm.$waiting"
-					ng-click="teamForm.$cancel()"> Cancel </button>
-			</span>
+		<table class="table table-striped">
+			<!-- filter by team? -->
+			<tr ng-repeat="player in team.players | orderBy:orderProp">
+				<td class="col-xs-12">
+					<a href="#/players/{{player._id}}">{{ player.name }}</a>
+				</td>
+			</tr>
+		</table>
+		<a class="btn btn-sm btn-success pull-right" role="button">add more players</a>
+	</div>
+	<div>
+		<button type="button" class="btn btn-default" ng-click="teamForm.$show()"
+			ng-show="!teamForm.$visible"> Edit </button>
+		<span ng-show="teamForm.$visible">
+			<button type="submit" class="btn btn-primary" ng-disabled="teamForm.$waiting"> Save </button>
+			<button type="button" class="btn btn-danger" ng-disabled="teamForm.$waiting"
+				ng-click="teamForm.$cancel()"> Cancel </button>
+		</span>
 		</div>
 	</div>
 	</form>

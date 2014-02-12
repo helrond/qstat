@@ -64,7 +64,7 @@ qStat.controller('playerCtrl', function ($http, $scope) {
         });
     }
 });
-qStat.controller('playerDetailCtrl', function (Positions, $scope, $routeParams, $http) {
+qStat.controller('playerDetailCtrl', function ($scope, $routeParams, $http) {
     if ($routeParams.playerId) {
         $http.get('/api/players/' + $routeParams.playerId).success(function (data) {
             $scope.player = data;
@@ -83,7 +83,12 @@ qStat.controller('playerDetailCtrl', function (Positions, $scope, $routeParams, 
         success(function (data) {
         });
     };
-    $scope.positions = Positions.query();
+    $http.get('/api/positions').success(function (data, status, headers, config) {
+        $scope.positions = data;
+    });
+    $http.get('/api/teams').success(function (data, status, headers, config) {
+        $scope.teams = data;
+    });
 });
 
 /* Stat Controllers */

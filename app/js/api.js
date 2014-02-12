@@ -11,12 +11,12 @@ var playerSchema = new Schema({
     image: String,
     number: String,
     description: String,
-    team:[ {
+    team:{
         name: String,
         team_id: String,
         dateFrom: String,
         dateTo: String
-    }],
+    },
     position: {
         name: String,
         position_id: String
@@ -130,7 +130,7 @@ exports.playerUpdate = function (req, res) {
             player.image = req.body.image,
             player.number = req.body.number,
             player.description = req.body.description,
-            player.team = req.body.teams,
+            player.team = req.body.team,
             player.position = req.body.position,
             player.statistics = req.body.statistics
             player.save(function (err) {
