@@ -5,7 +5,7 @@
         <li class="active">Game</li>
     </ol>
     <form editable-form name="gameForm" onaftersave="Update()">
-        <div class="title text-center col-xs-12" ng-controller="teamCtrl">
+        <div class="text-center col-xs-12" ng-controller="teamCtrl">
             <h2>
                 <div editable-select="game.teams[0].name" onshow="teams"
                     e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[1].name}}'">
@@ -26,6 +26,7 @@
             <div editable-text="game.location.name">{{game.location.name}}</div>
             <div editable-text="game.location.url"><a href="{{game.location.url}}">{{game.location.url}}</a></div>
         </div>
+        <div class="statistics" ng-show="game.statistics">
         <h3>Statistics</h3>
         <div class="col-xs-12">
             <div>{{game.time}}</div>
@@ -46,6 +47,7 @@
                     <div class="score">{{game.teams[1].score}}</div>
                 </div>
             </div>
+        </div>
         </div>
         <div>
             <button type="button" class="btn btn-default" ng-click="gameForm.$show()"

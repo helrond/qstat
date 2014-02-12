@@ -28,9 +28,9 @@ var teamSchema = new Schema({
         type: String, default: 'http://schema.org/Organization'
     },
     name: String,
-    players:[ {
+    players: {
         name: String, player_id: String
-    }],
+    },
     url: String,
     description: String,
     statistics:[statSchema]

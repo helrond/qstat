@@ -8,20 +8,17 @@
         <div class="title col-xs-12">
         <h2><div editable-text="player.name">{{player.name}}</div></h2>
     </div>
+        <div class="col-xs-12">
+            <div class="pull-left" editable-select="player.position" onshow="positions" e-ng-options="position.name for position in positions">
+                {{player.position.name}}
+            </div>
+            <div ng-hide="playerForm.$visible" class="pull-left" > / </div>
+            <div editable-text="player.number">{{player.number}}</div>
+        </div>
     <div class="col-xs-12">
         <div editable-text="player.description">{{player.description}}</div>
     </div>
     <div class="col-xs-12">
-        <h4>Number</h4>
-        <div editable-text="player.number">{{player.number}}</div>
-    </div>
-    <div class="col-xs-6">
-        <h4>Position</h4>
-        <div editable-select="player.position" onshow="positions" e-ng-options="position.name for position in positions">
-            {{player.position.name}}
-        </div>
-    </div>
-    <div class="col-xs-6">
         <h4>Plays for</h4>
         <div editable-select="player.team" onshow="teams" e-ng-options="team.name for team in teams">{{player.team.name}}</div>
     </div>

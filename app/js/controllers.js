@@ -177,4 +177,20 @@ qStat.controller('teamDetailCtrl', function ($http, $scope, $routeParams) {
         success(function (data) {
         });
     };
+    $scope.AddPlayer = function (player) {
+        if ($scope.team.players) {$scope.team.players = $scope.team.players} else {$scope.team.players = [];}
+        var addPlayer = $scope.addPlayer
+        var currentPlayers = $scope.team.players;
+        console.log(currentPlayers)
+        var updatedPlayers = currentPlayers.concat(addPlayer);
+        $scope.team.players = updatedPlayers
+    };
+    $scope.DeletePlayer = function (player) {
+        var index = $scope.team.players.indexOf(player)
+        var id = $scope.team.players[index]._id
+         $scope.team.players.splice(index, 1);
+        };
+    $http.get('/api/players').success(function (data, status, headers, config) {
+        $scope.players = data;
+    });
 });

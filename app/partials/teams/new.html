@@ -19,18 +19,19 @@
 			<input type="text" class="form-control" ng-model="team.url" placeholder="Link"/>
 		</div>
 	
-		<div class="form-group col-xs-12">
-			<label for="players">Players</label>
-			<select id="players" class="form-control"
-				ng-options="player.name for player in players">
-				<option value="">-- Select a team --</option>
+		<div class="form-inline col-xs-12">
+			<select class="form-control" ng-model="addPlayer" ng-options="player.name for player in players"><!-- filter to remove players in team.players -->
+				{{player.name}}
+				<option value="">-- Select players --</option>
 			</select>
-			<button role="button" class="btn btn-success" ng-click="PlayerAdd()">Add</button><!--need to write this function-->
+			<a class="btn btn-sm btn-success" role="button" ng-click="AddPlayer()">Add player</a>
 		</div>
 			<table class="table table-striped">
+				<h3>Roster</h3>
 				<tr ng-repeat="player in team.players | orderBy:orderProp" ng-model="team.players">
 					<td class="col-xs-12">
 						<a href="#/players/{{player._id}}">{{ player.name }}</a>
+						<td class="text-danger pull-right" href="#"><span class="glyphicon glyphicon-remove" ng-click="DeletePlayer(player)"></span></td>
 					</td>
 				</tr>
 			</table>
