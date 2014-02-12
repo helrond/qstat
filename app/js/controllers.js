@@ -33,11 +33,11 @@ qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
             $scope.game = data;
         });
     } else {
-        $http.get('/api/teams').success(function (data, status, headers, config) {
-            $scope.teams = data;
-        });
         $scope.game ={};
     }
+    $http.get('/api/teams').success(function (data, status, headers, config) {
+            $scope.teams = data;
+        });
     $scope.Add = function () {
         $http.post('/api/games', $scope.game).success(function (data) {
             window.location.href = "/#/games";
@@ -70,11 +70,13 @@ qStat.controller('playerDetailCtrl', function (Positions, $scope, $routeParams, 
             $scope.player = data;
         })
     } else {
-        $scope.player =[];
+        $scope.player ={};
     };
     
     $scope.Add = function () {
-        // Add function here
+        $http.post('/api/players', $scope.player).success(function (data) {
+            window.location.href = "/#/players";
+        })
     };
     $scope.Update = function () {
         $http.put('/api/players/' + $routeParams.playerId, $scope.player).
@@ -153,11 +155,17 @@ qStat.controller('teamCtrl', function ($scope, $http) {
     });
 });
 qStat.controller('teamDetailCtrl', function ($http, $scope, $routeParams) {
-    $http.get('/api/teams/' + $routeParams.teamId).success(function (data) {
-        $scope.team = data;
-    });
+    if ($routeParams.teamId) {
+        $http.get('/api/teams/' + $routeParams.teamId).success(function (data) {
+            $scope.team = data;
+        });
+    } else {
+    $scope.team ={};
+    }
     $scope.Add = function () {
-        // Add function here
+        $http.post('/api/teams', $scope.team).success(function (data) {
+            window.location.href = "/#/teams";
+        })
     };
     $scope.Update = function () {
         $http.put('/api/teams/' + $routeParams.teamId, $scope.team).

@@ -1,0 +1,48 @@
+<div ng-controller="playerDetailCtrl" class="detailView">
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#/players">Players</a></li>
+        <li class="active">New Player</li>
+    </ol>
+    <form name="playerForm">
+        <div class="form-group col-xs-12">
+            <input type="text" class="form-control" ng-model="player.name" placeholder="Name"/>
+        </div>
+        <div class="form-group col-xs-12">
+            <input type="text" class="form-control" ng-model="player.description"
+                placeholder="Description"/>
+        </div>
+        <div class="form-group col-xs-12">
+            <input type="text" class="form-control" ng-model="player.number" placeholder="Number"/>
+        </div>
+
+        <div class="form-group col-xs-12">
+            <select class="form-control" ng-model="player.position"
+                ng-options="position.name for position in positions">
+                <option value="">-- Select a position --</option>
+            </select>
+        </div>
+
+        <div class="form-group col-xs-12">
+            <label for="team">Plays for</label>
+            <select id="team" class="form-control" ng-model="player.team"
+                ng-options="team.name for team in teams">
+                <option value="">-- Select a team --</option>
+            </select>
+        </div>
+        <div class="form-group col-xs-6">
+            <label for="fromDate">From</label>
+            <input id="fromDate" type="date" class="form-control" ng-model="player.team.fromDate"/>
+        </div>
+        <div class="form-group col-xs-6">
+            <label for="toDate">To</label>
+            <input id="toDate" type="date" class="form-control" ng-model="player.team.toDate"/>
+        </div>
+
+        <div class="center-block">
+            <button class="btn btn-primary" ng-disabled="playerForm.$waiting" ng-click="Add()"> Save </button>
+            <button type="button" class="btn btn-danger" ng-disabled="playerForm.$waiting"
+                ng-click="playerForm.$cancel()"> Cancel </button>
+        </div>
+    </form>
+</div>

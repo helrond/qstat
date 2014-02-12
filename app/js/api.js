@@ -100,7 +100,27 @@ exports.playerDetail = function (req, res) {
     });
 }
 exports.playerAdd = function (req, res) {
-    // Add function
+    var player = req.body;
+    var raw = req.body.name
+    var id = raw.replace(/\.,\/#!$%\^&\*;:{}=\-_`~()/g, "").replace(/\s/g, "-").toLowerCase();
+    player = new playerModel({
+        name: req.body.name,
+        player_id: id,
+        number: req.body.number,
+        description: req.body.description,
+        team:[req.body.team],
+        position: req.body.position
+    });
+    player.save(function (err) {
+        if (! err) {
+            console.log("Player created");
+            res.json(true);
+        } else {
+            console.log(err);
+            res.json(false);
+        }
+    });
+    return res.json(req.body);
 }
 exports.playerUpdate = function (req, res) {
     var id = req.body._id;
@@ -159,7 +179,26 @@ exports.teamDetail = function (req, res) {
     });
 }
 exports.teamAdd = function (req, res) {
-    // Add function here
+    var team = req.body;
+    var raw = req.body.name
+    var id = raw.replace(/\.,\/#!$%\^&\*;:{}=\-_`~()/g, "").replace(/\s/g, "-").toLowerCase();
+    team = new teamModel({
+        name: req.body.name,
+        team_id: id,
+        url: req.body.url,
+        description: req.body.description,
+        players:[req.body.players],
+    });
+    team.save(function (err) {
+        if (! err) {
+            console.log("Team created");
+            res.json(true);
+        } else {
+            console.log(err);
+            res.json(false);
+        }
+    });
+    return res.json(req.body);
 }
 exports.teamUpdate = function (req, res) {
     var id = req.body._id;
@@ -221,10 +260,11 @@ exports.gameAdd = function (req, res) {
     game = new gameModel({
         name: req.body.team1.name + ' vs ' + req.body.team2.name,
         game_id: id,
-        teams: [req.body.team1, req.body.team2],
+        teams:[req.body.team1, req.body.team2],
         location: {
             name: req.body.location.name,
-            url: req.body.location.url},
+            url: req.body.location.url
+        },
         date: req.body.date,
         time: req.body.time,
     });
@@ -243,7 +283,7 @@ exports.gameUpdate = function (req, res) {
     var id = req.body._id;
     if (id) {
         gameModel.findById(id, function (err, game) {
-            game.name = req.body.name,
+            game.name = req.body.teams[0].name + ' vs ' + req.body.teams[1].name,
             game.teams = req.body.teams,
             game.location = req.body.location,
             game.date = req.body.date,

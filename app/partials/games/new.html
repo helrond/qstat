@@ -8,7 +8,7 @@
         </li>
         <li class="active">New Game</li>
     </ol>
-    <form name="gameForm" ng-model="game">
+    <form name="gameForm">
         <div class="title col-xs-12">
             <div class="form-group col-xs-5 pull-left">
                 <select class="form-control" ng-model="game.team1"
@@ -25,9 +25,9 @@
             </div>
         </div>
         <div class="form-group col-xs-12">
-            <input class="form-control" type="date" ng-model="game.date" placeholder="Date.new()"/>
+            <input class="form-control" type="date" ng-model="game.date"/>
         </div>
-        <div ng-model="game.location">
+        <div ng-model="location">
             <div class="form-group col-xs-12">
                 <input class="form-control" type="text" ng-model="game.location.name"
                     placeholder="Location"/>
@@ -37,10 +37,12 @@
                     placeholder="Link to location"/>
             </div>
         </div>
-        
-        <div class="center-block col-xs-12">
+        {{game.location.name}}
+
+        <div class="center-block">
             <button class="btn btn-primary" ng-disabled="gameForm.$waiting" ng-click="Add()"> Save </button>
             <button type="button" class="btn btn-danger" ng-disabled="gameForm.$waiting"
-                ng-click="gameForm.$cancel()"> Cancel </button> </div>
+                ng-click="gameForm.$cancel()"> Cancel </button>
+        </div>
     </form>
 </div>
