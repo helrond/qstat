@@ -33,11 +33,12 @@ qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
             $scope.game = data;
         });
     } else {
-        $scope.game ={};
+        $scope.game = {
+        };
     }
     $http.get('/api/teams').success(function (data, status, headers, config) {
-            $scope.teams = data;
-        });
+        $scope.teams = data;
+    });
     $scope.Add = function () {
         $http.post('/api/games', $scope.game).success(function (data) {
             window.location.href = "/#/games";
@@ -70,7 +71,8 @@ qStat.controller('playerDetailCtrl', function ($scope, $routeParams, $http) {
             $scope.player = data;
         })
     } else {
-        $scope.player ={};
+        $scope.player = {
+        };
     };
     
     $scope.Add = function () {
@@ -92,14 +94,18 @@ qStat.controller('playerDetailCtrl', function ($scope, $routeParams, $http) {
 });
 
 /* Stat Controllers */
-qStat.controller('statCtrl', function ($http, Positions, Statistics, Teams, $scope) {
+qStat.controller('statCtrl', function ($http, $scope) {
     $http.get('/api/players').success(function (data, status, headers, config) {
         $scope.players = data;
     });
     <!-- needs to be improved so it only selects players from game.selectedTeams -->
-    $scope.positions = Positions.query();
-    $scope.statistics = Statistics.query();
-    $scope.teams = Teams.query();
+    $http.get('/api/positions').success(function (data, status, headers, config) {
+        $scope.positions = data;
+    });
+    $http.get('/api/statistics').success(function (data, status, headers, config) {
+        $scope.statistics = data;
+    });
+    
     $scope.startTime = function () {
         var time = new Date()
         $scope.startTime = time;
@@ -114,31 +120,63 @@ qStat.controller('statCtrl', function ($http, Positions, Statistics, Teams, $sco
     };
     $scope.stats =[];
     $scope.Add = function () {
-        var newStat =[ {
-            'team': $scope.selectedTeam,
-            'position': $scope.selectedPosition,
-            'player': $scope.selectedPlayer,
-            'statistic': $scope.selectedStat,
-            'time': new Date()
-        }]
+        if ($scope.selectedStat.double && $scope.success === true) {
+            var newStat =[ {
+                'name': $scope.selectedStat.primaryName,
+                'statistic_id': $scope.selectedStat.primary_id,
+                'team': $scope.selectedTeam,
+                'position': $scope.selectedPosition,
+                'player': $scope.selectedPlayer,
+                'time': new Date()
+            }, {
+                'name': $scope.selectedStat.secondaryName,
+                'statistic_id': $scope.selectedStat.secondary_id,
+                'team': $scope.selectedTeam,
+                'position': $scope.selectedPosition,
+                'player': $scope.selectedPlayer,
+                'time': new Date()
+            }]
+        } else {
+            var newStat =[ {
+                'name': $scope.selectedStat.primaryName,
+                'statistic_id': $scope.selectedStat.primary_id,
+                'team': $scope.selectedTeam,
+                'position': $scope.selectedPosition,
+                'player': $scope.selectedPlayer,
+                'time': new Date()
+            }]
+        }
         console.log(newStat)
         var currentStats = $scope.stats;
         var updatedStats = currentStats.concat(newStat);
         $scope.stats = updatedStats
     };
     $scope.AddPossession = function () {
+            if ($scope.selectedGame.teams[0]._id === $scope.possessionTeam) {
+                var team1value = true
+                var team2value = false
+            } else {
+                var team1value = false
+                var team2value = true
+            }
+        
         var newStat =[ {
-            'team': $scope.possessionTeam,
-            'statistic': {
-                'name': 'possession',
-                'value': true
-            },
+            'team': $scope.selectedGame.teams[0],
+            'name': 'possession',
+            'value': team1value,
+            'time': new Date()
+        }, {
+            'team': $scope.selectedGame.teams[1],
+            'name': 'possession',
+            'value': team2value,
             'time': new Date()
         }]
         console.log(newStat)
         var currentStats = $scope.stats;
         var updatedStats = currentStats.concat(newStat);
         $scope.stats = updatedStats
+        var team1value = []
+        var team2value = []
     }
 });
 
@@ -165,7 +203,8 @@ qStat.controller('teamDetailCtrl', function ($http, $scope, $routeParams) {
             $scope.team = data;
         });
     } else {
-    $scope.team ={};
+        $scope.team = {
+        };
     }
     $scope.Add = function () {
         $http.post('/api/teams', $scope.team).success(function (data) {
@@ -178,7 +217,11 @@ qStat.controller('teamDetailCtrl', function ($http, $scope, $routeParams) {
         });
     };
     $scope.AddPlayer = function (player) {
-        if ($scope.team.players) {$scope.team.players = $scope.team.players} else {$scope.team.players = [];}
+        if ($scope.team.players) {
+            $scope.team.players = $scope.team.players
+        } else {
+            $scope.team.players =[];
+        }
         var addPlayer = $scope.addPlayer
         var currentPlayers = $scope.team.players;
         console.log(currentPlayers)
@@ -188,8 +231,8 @@ qStat.controller('teamDetailCtrl', function ($http, $scope, $routeParams) {
     $scope.DeletePlayer = function (player) {
         var index = $scope.team.players.indexOf(player)
         var id = $scope.team.players[index]._id
-         $scope.team.players.splice(index, 1);
-        };
+        $scope.team.players.splice(index, 1);
+    };
     $http.get('/api/players').success(function (data, status, headers, config) {
         $scope.players = data;
     });

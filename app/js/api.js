@@ -21,7 +21,7 @@ var playerSchema = new Schema({
         name: String,
         position_id: String
     },
-    statistics:[statSchema]
+    statistics:[statisticSchema]
 });
 var teamSchema = new Schema({
     '@context': {
@@ -33,7 +33,7 @@ var teamSchema = new Schema({
     },
     url: String,
     description: String,
-    statistics:[statSchema]
+    statistics:[statisticSchema]
 });
 var gameSchema = new Schema({
     '@context': {
@@ -54,17 +54,24 @@ var gameSchema = new Schema({
     },
     date: String,
     time: String,
-    statistics:[statSchema]
+    statistics:[statisticSchema]
 });
-var statSchema = new Schema({
+var statisticSchema = new Schema({
     name: String,
-    role:[String],
-    type: String,
-    time: String,
+    stat_id: String,
     player:[ {
         name: String,
         player_id: String
-    }]
+    }],
+    position: [{
+        name: String,
+        position_id: String
+    }],
+    team:[ {
+        name: String,
+        team_id: String
+    }],
+    time: String
 });
 var positionSchema = new Schema({
     '@context': {
@@ -77,8 +84,8 @@ var positionSchema = new Schema({
 var playerModel = mongoose.model('Player', playerSchema);
 var teamModel = mongoose.model('Team', teamSchema);
 var gameModel = mongoose.model('Game', gameSchema);
-var statModel = mongoose.model('Stat', statSchema);
-var positionModel = mongoose.model('Position', statSchema);
+var statisticModel = mongoose.model('Statistic', statisticSchema);
+var positionModel = mongoose.model('Position', positionSchema);
 
 // PLAYER EXPORTS
 exports.playerList = function (req, res) {
@@ -315,10 +322,19 @@ exports.gameDelete = function (req, res) {
 }
 
 // STATISTICS EXPORTS
-exports.statAdd = function (req, res) {
+exports.statisticList = function (req, res) {
+    return statisticModel.find(function (err, stat) {
+        if (! err) {
+            res.json(stat);
+        } else {
+            console.log(err);
+        }
+    });
+}
+exports.statisticAdd = function (req, res) {
     // Add function here
 }
-exports.statDelete = function (req, res) {
+exports.statisticDelete = function (req, res) {
     return statModel.findById(req.params.id, function (err, stat) {
         return stat.remove(function (err) {
             if (! err) {

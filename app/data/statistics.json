@@ -1,62 +1,49 @@
-[
+[   
     {
-        "name": "Beat Attempt",
-        "_id": "beatAttempt",
+        "primaryName": "Beat Attempt",
+        "primary_id": "beatAttempt",
+        "secondaryName": "Beat",
+        "secondary_id": "beat",
         "role": [
             "beater",
             "utility"
         ],
-        "type": "integer",
+        "double": true,
         "time": "time"
     },
     {
-        "name": "Beat",
-        "_id": "beat",
+        "primaryName": "Repossession Attempt",
+        "primary_id": "repossessionAttempt",
+        "secondaryName": "Repossession",
+        "secondary_id": "repossession",
         "role": [
             "beater",
             "utility"
         ],
-        "type": "integer",
+        "double": true,
         "time": "time"
     },
     {
-        "name": "Repossession Attempt",
-        "_id": "repossessionAttempt",
-        "role": [
-            "beater",
-            "utility"
-        ],
-        "type": "integer"
-    },
-    {
-        "name": "Repossession",
-        "_id": "repossession",
-        "role": [
-            "beater",
-            "utility"
-        ],
-        "type": "integer",
-        "time": "time"
-    },
-    {
-        "name": "Tackle",
-        "_id": "tackle",
+        "primaryName": "Tackle",
+        "primary_id": "tackle",
         "role": [
             "beater",
             "utility",
             "chaser"
         ],
-        "type": "integer",
+        "double": false,
         "time": "time"
     },
     {
-        "name": "Goal Attempt",
-        "_id": "goalAttempt",
+        "primaryName": "Goal Attempt",
+        "primary_id": "goalAttempt",
+        "secondaryName": "Goal",
+        "secondary_id": "goal",
         "role": [
             "chaser",
             "utility"
         ],
-        "type": "integer",
+        "double": true,
         "attribute": [
             "drive",
             "shot"
@@ -64,77 +51,63 @@
         "time": "time"
     },
     {
-        "name": "Goal",
-        "_id": "goal",
+        "primaryName": "Assist",
+        "primary_id": "assist",
         "role": [
             "chaser",
             "utility"
         ],
-        "type": "integer",
-        "attribute": [
-            "drive",
-            "shot"
-        ],
+        "double": false,
         "time": "time"
     },
     {
-        "name": "Assist",
-        "_id": "assist",
+        "primaryName": "Takeaway",
+        "primary_id": "takeaway",
         "role": [
             "chaser",
             "utility"
         ],
-        "type": "integer",
+        "double": false,
         "time": "time"
     },
     {
-        "name": "Takeaway",
-        "_id": "takeaway",
+        "primaryName": "Giveaway",
+        "primary_id": "giveaway",
         "role": [
             "chaser",
             "utility"
         ],
-        "type": "integer",
+        "double": false,
         "time": "time"
     },
     {
-        "name": "Giveaway",
-        "_id": "giveaway",
-        "role": [
-            "chaser",
-            "utility"
-        ],
-        "type": "integer",
-        "time": "time"
-    },
-    {
-        "name": "Goal Allowed",
-        "_id": "goalAllowed",
+        "primaryName": "Goal Allowed",
+        "primary_id": "goalAllowed",
         "role": [
             "keeper",
             "utility"
         ],
-        "type": "integer",
+        "double": false,
         "time": "time"
     },
     {
-        "name": "Goal Saved",
-        "_id": "goalSaved",
+        "primaryName": "Goal Saved",
+        "primary_id": "goalSaved",
         "role": [
             "keeper",
             "utility"
         ],
-        "type": "integer",
+        "double": false,
         "time": "time"
     },
     {
-        "name": "Snitch Catch",
-        "_id": "snitchCatch",
+        "primaryName": "Snitch Catch",
+        "primary_id": "snitchCatch",
         "role": [
             "seeker",
             "utility"
         ],
-        "type": "integer",
+        "double": false,
         "time": "time"
     },
 ]

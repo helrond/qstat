@@ -38,4 +38,6 @@ app.post('/api/teams', api.teamAdd);
 app.put('/api/teams/:id', api.teamUpdate);
 app. delete ('/api/teams/:id', api.teamDelete);
 
+app.get('/api/statistics', api.statisticList);
+
 app.get('/api/positions', api.positionList);
