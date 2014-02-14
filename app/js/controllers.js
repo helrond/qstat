@@ -151,6 +151,11 @@ qStat.controller('statCtrl', function ($http, $scope) {
         var updatedStats = currentStats.concat(newStat);
         $scope.stats = updatedStats
     };
+    $scope. Delete = function (stat) {
+        var index = $scope.stats.indexOf(stat)
+        var id = $scope.stats[index]._id
+           $scope.stats.splice(index, 1);
+    }
     $scope.AddPossession = function () {
             if ($scope.selectedGame.teams[0]._id === $scope.possessionTeam) {
                 var team1value = true

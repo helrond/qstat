@@ -105,7 +105,7 @@
                         <td class="col-xs-3">{{stat.team.name}}</td>
                         <td class="col-xs-2">{{stat.name}}</td>
                         <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}</td>
-                        <td class="text-danger pull-right"><span class="glyphicon glyphicon-remove"></span></td>
+                        <td class="text-danger pull-right"><span class="glyphicon glyphicon-remove" ng-click="Delete(stat)"></span></td>
                     </tr>
                 </table>
             </div>
@@ -131,7 +131,7 @@
                     <td class="col-xs-3">{{stat.team.name}}</td>
                     <td class="col-xs-2">{{stat.name}}, {{stat.statistic.value}}</td>
                     <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}</td>
-                    <td class="text-danger pull-right"><span class="glyphicon glyphicon-remove"></span></td>
+                    <td class="text-danger pull-right"><span class="glyphicon glyphicon-remove" ng-click="Delete(stat)"></span></td>
                 </tr>
             </table>
             <button class="btn btn-lg btn-primary">Confirm</button>
