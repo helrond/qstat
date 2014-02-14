@@ -124,25 +124,53 @@ qStat.controller('statCtrl', function ($http, $scope) {
             var newStat =[ {
                 'name': $scope.selectedStat.primaryName,
                 'statistic_id': $scope.selectedStat.primary_id,
-                'team': $scope.selectedTeam,
-                'position': $scope.selectedPosition,
-                'player': $scope.selectedPlayer,
+                'team': {
+                    'name': $scope.selectedTeam.name,
+                    'team_id': $scope.selectedTeam._id
+                },
+                'position': {
+                    'name': $scope.selectedPosition.name,
+                    'position_id': $scope.selectedPosition.position_id
+                },
+                'player': {
+                    'name': $scope.selectedPlayer.name,
+                    'player_id': $scope.selectedPlayer._id
+                },
                 'time': new Date()
-            }, {
+            },
+            {
                 'name': $scope.selectedStat.secondaryName,
                 'statistic_id': $scope.selectedStat.secondary_id,
-                'team': $scope.selectedTeam,
-                'position': $scope.selectedPosition,
-                'player': $scope.selectedPlayer,
+                'team': {
+                    'name': $scope.selectedTeam.name,
+                    'team_id': $scope.selectedTeam._id
+                },
+                'position': {
+                    'name': $scope.selectedPosition.name,
+                    'position_id': $scope.selectedPosition.position_id
+                },
+                'player': {
+                    'name': $scope.selectedPlayer.name,
+                    'player_id': $scope.selectedPlayer._id
+                },
                 'time': new Date()
             }]
         } else {
             var newStat =[ {
                 'name': $scope.selectedStat.primaryName,
                 'statistic_id': $scope.selectedStat.primary_id,
-                'team': $scope.selectedTeam,
-                'position': $scope.selectedPosition,
-                'player': $scope.selectedPlayer,
+                'team': {
+                    'name': $scope.selectedTeam.name,
+                    'team_id': $scope.selectedTeam._id
+                },
+                'position': {
+                    'name': $scope.selectedPosition.name,
+                    'position_id': $scope.selectedPosition.position_id
+                },
+                'player': {
+                    'name': $scope.selectedPlayer.name,
+                    'player_id': $scope.selectedPlayer._id
+                },
                 'time': new Date()
             }]
         }
@@ -168,12 +196,19 @@ qStat.controller('statCtrl', function ($http, $scope) {
         }
         
         var newStat =[ {
-            'team': $scope.selectedGame.teams[0],
+            'team': {
+                'name': $scope.selectedGame.teams[0].name,
+                'team_id': $scope.selectedGame.teams[0]._id
+            },
             'name': 'possession',
             'value': team1value,
             'time': new Date()
-        }, {
-            'team': $scope.selectedGame.teams[1],
+        },
+        {
+            'team': {
+                'name': $scope.selectedGame.teams[1].name,
+                'team_id': $scope.selectedGame.teams[1]._id
+            },
             'name': 'possession',
             'value': team2value,
             'time': new Date()

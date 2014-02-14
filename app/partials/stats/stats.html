@@ -8,7 +8,6 @@
     </select>
     <div ng-controller="statCtrl">
         <div class="start" ng-show="selectedGame && !record">
-            {{selectedGame._id}}
             <button class="btn btn-lg btn-success" ng-click="record = true; startTime()">Start</button>
             <p class="help-block">Timer will start for {{ selectedGame.name }}</p>
         </div>
@@ -70,10 +69,6 @@
                     <label ng-show="selectedStat.double">Success?
                     <input type="checkbox" ng-model="success" value="statistic.secondaryName"/>
                     </label>
-                    <!--<select class="form-control" ng-model="selectedStat" ng-show="selectedStat.double"
-                        ng-options="statistic.secondaryName for statistic in statistics | filter:selectedPosition.name:selectedPlayer.position">
-                        <option value="">-- Select a value --</option>
-                    </select>-->
                 </div>
                 <div class="form-group col-xs-2">
                     <label class="sr-only">Statistic Attribute</label>
@@ -114,7 +109,6 @@
 
         <div ng-show="confirm">
             <h3>{{selectedGame.name}}</h3>
-            {{selectedGame._id}}
             <p>{{startTime | date:'MMMM dd, yyyy h:mm:ss a'}} - {{endTime | date:'h:mm:ss a'}}.</p>
             <p>Game Time: {{gameTime | date:'mm:ss'}}</p>
             <table ng-model="selectedGame.stats" class="table table-striped col-xs-12">

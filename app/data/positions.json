@@ -2,31 +2,31 @@
     {
         "@context": "http://schema.org/Person",
         "name": "Beater",
-        "_id":"beater",
+        "position_id":"beater",
         "description": "Player who attempts to hit opposing players with a bludger."
     },
     {
         "@context": "http://schema.org/Person",
         "name": "Chaser",
-        "_id":"chaser",
+        "position_id":"chaser",
         "description": "Player who attempts to score with the quaffle and keep opposing players from scoring with the quaffle."
     },
     {
         "@context": "http://schema.org/Person",
         "name": "Keeper",
-        "_id":"keeper",
+        "position_id":"keeper",
         "description": "Player whose primary purpose is to keep opposing players from scoring with the quaffle but may also score with the quaffle."
     },
     {
         "@context": "http://schema.org/Person",
         "name": "Utility",
-        "_id":"utility",
+        "position_id":"utility",
         "description": "A player who plays multiple positions."
     },
     {
         "@context": "http://schema.org/Person",
         "name": "Seeker",
-        "_id":"seeker",
+        "position_id":"seeker",
         "description": "A player whose purpose is to catch the snitch."
     }
 ]
