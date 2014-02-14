@@ -109,7 +109,7 @@
 
         <div ng-show="confirm">
             <h3>{{selectedGame.name}}</h3>
-            <p>{{startTime | date:'MMMM dd, yyyy h:mm:ss a'}} - {{endTime | date:'h:mm:ss a'}}.</p>
+            <!--<p>{{startTime | date:'MMMM dd, yyyy h:mm:ss a'}} - {{endTime | date:'h:mm:ss a'}}.</p>-->
             <p>Game Time: {{gameTime | date:'mm:ss'}}</p>
             <table ng-model="selectedGame.stats" class="table table-striped col-xs-12">
                 <tr>
@@ -129,6 +129,7 @@
                 </tr>
             </table>
             <button class="btn btn-lg btn-primary" ng-click="Confirm()">Confirm</button>
+            <a href="#/" class="btn btn-lg btn-danger">Cancel</a>
         </div>
     </div>
 </div>

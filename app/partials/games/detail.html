@@ -5,18 +5,15 @@
         <li class="active">Game</li>
     </ol>
     <form editable-form name="gameForm" onaftersave="Update()">
-        <div class="text-center col-xs-12" ng-controller="teamCtrl">
-            <h2>
-                <div editable-select="game.teams[0].name" onshow="teams"
+        <div class="col-xs-12" ng-controller="teamCtrl">
+            <h2 editable-select="game.teams[0].name" onshow="teams"
                     e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[1].name}}'">
                     {{game.teams[0].name}}
-                </div>
-            </h2>
-            <h2>&nbsp;vs&nbsp;</h2>
-            <h2>
-                <div editable-select="game.teams[1].name" onshow="teams"
+                </h2>
+                <div>vs</div>
+                <h2 editable-select="game.teams[1].name" onshow="teams"
                     e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[0].name}}'"
-                    >{{game.teams[1].name}}</div>
+                    >{{game.teams[1].name}}</h2>
             </h2>
         </div>
         <div class="col-xs-12">
@@ -26,7 +23,17 @@
             <div editable-text="game.location.name">{{game.location.name}}</div>
             <div editable-text="game.location.url"><a href="{{game.location.url}}">{{game.location.url}}</a></div>
         </div>
-        <div class="statistics" ng-show="game.statistics">
+        <div col-xs-12>
+            <button type="button" class="btn btn-default btn-sm" ng-click="gameForm.$show()"
+                ng-show="!gameForm.$visible"> Edit </button>
+            <span ng-show="gameForm.$visible">
+                <button class="btn btn-primary" ng-disabled="gameForm.$waiting"> Save </button>
+                <button type="button" class="btn btn-danger" ng-disabled="gameForm.$waiting"
+                    ng-click="gameForm.$cancel()"> Cancel </button>
+            </span>
+            <hr/>
+        </div>
+        <div class="statistics col-xs-12" ng-show="game.statistics">
         <h3>Statistics</h3>
             <p>Game Time: {{gameTime | date:'mm:ss'}}</p>
             <table class="table table-striped col-xs-12">
@@ -45,15 +52,6 @@
                     <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}</td>
                 </tr>
             </table>
-        </div>
-        <div>
-            <button type="button" class="btn btn-default" ng-click="gameForm.$show()"
-                ng-show="!gameForm.$visible"> Edit </button>
-            <span ng-show="gameForm.$visible">
-                <button class="btn btn-primary" ng-disabled="gameForm.$waiting"> Save </button>
-                <button type="button" class="btn btn-danger" ng-disabled="gameForm.$waiting"
-                    ng-click="gameForm.$cancel()"> Cancel </button>
-            </span>
         </div>
     </form>
 </div>
