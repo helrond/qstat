@@ -120,7 +120,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
     };
     $scope.stats =[];
     $scope.Add = function () {
-        if ($scope.selectedStat.double && $scope.success === true) {
+        if ($scope.selectedStat. double && $scope.success === true) {
             var newStat =[ {
                 'name': $scope.selectedStat.primaryName,
                 'statistic_id': $scope.selectedStat.primary_id,
@@ -146,24 +146,26 @@ qStat.controller('statCtrl', function ($http, $scope) {
                 'time': new Date()
             }]
         }
-        console.log(newStat)
         var currentStats = $scope.stats;
         var updatedStats = currentStats.concat(newStat);
         $scope.stats = updatedStats
+        var currentGameStats = $scope.selectedGame.statistics;
+        var updatedGameStats = currentGameStats.concat(newStat);
+        $scope.selectedGame.statistics = updatedGameStats
     };
     $scope. Delete = function (stat) {
         var index = $scope.stats.indexOf(stat)
         var id = $scope.stats[index]._id
-           $scope.stats.splice(index, 1);
+        $scope.stats.splice(index, 1);
     }
     $scope.AddPossession = function () {
-            if ($scope.selectedGame.teams[0]._id === $scope.possessionTeam) {
-                var team1value = true
-                var team2value = false
-            } else {
-                var team1value = false
-                var team2value = true
-            }
+        if ($scope.selectedGame.teams[0]._id === $scope.possessionTeam) {
+            var team1value = true
+            var team2value = false
+        } else {
+            var team1value = false
+            var team2value = true
+        }
         
         var newStat =[ {
             'team': $scope.selectedGame.teams[0],
@@ -176,12 +178,20 @@ qStat.controller('statCtrl', function ($http, $scope) {
             'value': team2value,
             'time': new Date()
         }]
-        console.log(newStat)
         var currentStats = $scope.stats;
         var updatedStats = currentStats.concat(newStat);
         $scope.stats = updatedStats
-        var team1value = []
-        var team2value = []
+        var currentGameStats = $scope.selectedGame.statistics;
+        var updatedGameStats = currentGameStats.concat(newStat);
+        $scope.selectedGame.statistics = updatedGameStats
+        var team1value =[]
+        var team2value =[]
+    }
+    $scope.Confirm = function () {
+        var gameId = $scope.selectedGame._id
+        $http.put('/api/games/' + gameId, $scope.selectedGame).success(function (data) {
+            window.location.href = "/#/games";
+        })
     }
 });
 

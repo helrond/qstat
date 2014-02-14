@@ -288,6 +288,7 @@ exports.gameAdd = function (req, res) {
 }
 exports.gameUpdate = function (req, res) {
     var id = req.body._id;
+    console.log(req.body)
     if (id) {
         gameModel.findById(id, function (err, game) {
             game.name = req.body.teams[0].name + ' vs ' + req.body.teams[1].name,
@@ -330,9 +331,6 @@ exports.statisticList = function (req, res) {
             console.log(err);
         }
     });
-}
-exports.statisticAdd = function (req, res) {
-    // Add function here
 }
 exports.statisticDelete = function (req, res) {
     return statModel.findById(req.params.id, function (err, stat) {

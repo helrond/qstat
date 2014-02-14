@@ -28,26 +28,23 @@
         </div>
         <div class="statistics" ng-show="game.statistics">
         <h3>Statistics</h3>
-        <div class="col-xs-12">
-            <div>{{game.time}}</div>
-        </div>
-        <div class="col-xs-12">
-            <div class="score">
-                <div class="team">
-                    <div class="name">
-                        <a href="#/teams/{{game.teams[0].id}}">{{game.teams[0].name}}</a>
-                    </div>
-                    <div class="score">{{game.teams[0].score}} <span class="glyphicon glyphicon-ok"
-                        /></div>
-                </div>
-                <div class="team">
-                    <div class="name">
-                        <a href="#/teams/{{game.teams[1].id}}">{{game.teams[1].name}}</a>
-                    </div>
-                    <div class="score">{{game.teams[1].score}}</div>
-                </div>
-            </div>
-        </div>
+            <p>Game Time: {{gameTime | date:'mm:ss'}}</p>
+            <table class="table table-striped col-xs-12">
+                <tr>
+                    <th class="col-xs-3">Player</th>
+                    <th class="col-xs-2">Position</th>
+                    <th class="col-xs-3">Team</th>
+                    <th class="col-xs-2">Statistic</th>
+                    <th class="col-xs-2">Time</th>
+                </tr>
+                <tr ng-repeat="stat in game.statistics">
+                    <td class="col-xs-3">{{stat.player.name}}</td>
+                    <td class="col-xs-2">{{stat.position.name}}</td>
+                    <td class="col-xs-3">{{stat.team.name}}</td>
+                    <td class="col-xs-2">{{stat.name}}</td>
+                    <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}</td>
+                </tr>
+            </table>
         </div>
         <div>
             <button type="button" class="btn btn-default" ng-click="gameForm.$show()"
