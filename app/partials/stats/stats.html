@@ -85,7 +85,7 @@
             </form>
             <div>
                 <p>Game started at {{startTime | date:'h:mm:ss a'}}</p>
-                <table ng-model="selectedGame.stats" class="table table-striped col-xs-12">
+                <table ng-model="selectedGame.statistics" class="table table-striped col-xs-12">
                     <tr>
                         <th class="col-xs-3">Player</th>
                         <th class="col-xs-2">Position</th>
@@ -93,7 +93,7 @@
                         <th class="col-xs-2">Statistic</th>
                         <th class="col-xs-2">Time</th>
                     </tr>
-                    <tr ng-repeat="stat in stats">
+                    <tr ng-repeat="stat in selectedGame.statistics">
                         <td class="col-xs-3">{{stat.player.name}}</td>
                         <td class="col-xs-2">{{stat.position.name}}</td>
                         <td class="col-xs-3">{{stat.team.name}}</td>
@@ -111,7 +111,7 @@
             <h3>{{selectedGame.name}}</h3>
             <!--<p>{{startTime | date:'MMMM dd, yyyy h:mm:ss a'}} - {{endTime | date:'h:mm:ss a'}}.</p>-->
             <p>Game Time: {{gameTime | date:'mm:ss'}}</p>
-            <table ng-model="selectedGame.stats" class="table table-striped col-xs-12">
+            <table ng-model="selectedGame.statistics" class="table table-striped col-xs-12">
                 <tr>
                     <th class="col-xs-3">Player</th>
                     <th class="col-xs-2">Position</th>
@@ -119,7 +119,7 @@
                     <th class="col-xs-2">Statistic</th>
                     <th class="col-xs-2">Time</th>
                 </tr>
-                <tr ng-repeat="stat in stats">
+                <tr ng-repeat="stat in selectedGame.statistics">
                     <td class="col-xs-3">{{stat.player.name}}</td>
                     <td class="col-xs-2">{{stat.position.name}}</td>
                     <td class="col-xs-3">{{stat.team.name}}</td>

@@ -118,7 +118,6 @@ qStat.controller('statCtrl', function ($http, $scope) {
         var time = $scope.endTime - $scope.startTime;
         $scope.gameTime = time;
     };
-    $scope.stats =[];
     $scope.Add = function () {
         if ($scope.selectedStat. double && $scope.success === true) {
             var newStat =[ {
@@ -213,9 +212,6 @@ qStat.controller('statCtrl', function ($http, $scope) {
             'value': team2value,
             'time': new Date()
         }]
-        var currentStats = $scope.stats;
-        var updatedStats = currentStats.concat(newStat);
-        $scope.stats = updatedStats
         var currentGameStats = $scope.selectedGame.statistics;
         var updatedGameStats = currentGameStats.concat(newStat);
         $scope.selectedGame.statistics = updatedGameStats
