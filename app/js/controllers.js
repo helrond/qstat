@@ -135,7 +135,8 @@ qStat.controller('statCtrl', function ($http, $scope) {
                     'name': $scope.selectedPlayer.name,
                     'player_id': $scope.selectedPlayer._id
                 },
-                'time': new Date()
+                'time': new Date(),
+                'attribute': $scope.selectedStat.attribute
             },
             {
                 'name': $scope.selectedStat.secondaryName,
@@ -152,7 +153,8 @@ qStat.controller('statCtrl', function ($http, $scope) {
                     'name': $scope.selectedPlayer.name,
                     'player_id': $scope.selectedPlayer._id
                 },
-                'time': new Date()
+                'time': new Date(),
+                'attribute': $scope.selectedStat.attribute
             }]
         } else {
             var newStat =[ {
@@ -170,12 +172,10 @@ qStat.controller('statCtrl', function ($http, $scope) {
                     'name': $scope.selectedPlayer.name,
                     'player_id': $scope.selectedPlayer._id
                 },
-                'time': new Date()
+                'time': new Date(),
+                'attribute': $scope.selectedStat.attribute
             }]
         }
-        var currentStats = $scope.stats;
-        var updatedStats = currentStats.concat(newStat);
-        $scope.stats = updatedStats
         var currentGameStats = $scope.selectedGame.statistics;
         var updatedGameStats = currentGameStats.concat(newStat);
         $scope.selectedGame.statistics = updatedGameStats

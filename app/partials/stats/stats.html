@@ -66,16 +66,27 @@
                     </select>
                 </div>
                 <div class="form-group col-xs-5">
-                    <label ng-show="selectedStat.double">Success?
+                    <label ng-show="selectedStat.double">
                     <input type="checkbox" ng-model="success" value="statistic.secondaryName"/>
+                        Success?
                     </label>
                 </div>
                 <div class="form-group col-xs-2">
                     <label class="sr-only">Statistic Attribute</label>
-                    <select class="form-control" ng-model="selectedStat" ng-show="selectedStat.double"
-                        ng-options="statistic.attribute for statistic in statistics | filter:selectedPosition.name:selectedPlayer.position">
-                        <option value="">-- Select a value --</option>
-                    </select>
+                    <div class="form-inline" ng-show="selectedStat.primaryName === 'Goal Attempt'">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" value="drive" ng-model="selectedStat.attribute">
+                                    Drive
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" value="shot" ng-model="selectedStat.attribute">
+                                    Shot
+                            </label>
+                        </div>
+                    </div>
                 </div>
                 </div>
                 <!--<p class="help-block text-center" ng-hide="stat.$error.required" ng-model="stat">{{selectedStat.name}}&nbsp;by&nbsp;{{selectedPlayer.name}}&nbsp;({{selectedPosition.name}}/#{{selectedPlayer.number}})
@@ -97,7 +108,7 @@
                         <td class="col-xs-3">{{stat.player.name}}</td>
                         <td class="col-xs-2">{{stat.position.name}}</td>
                         <td class="col-xs-3">{{stat.team.name}}</td>
-                        <td class="col-xs-2">{{stat.name}}</td>
+                        <td class="col-xs-2">{{stat.name}}<span ng-show="selectedStat.attribute">, {{stat.attribute}}</span></td>
                         <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}</td>
                         <td class="text-danger pull-right"><span class="glyphicon glyphicon-remove" ng-click="Delete(stat)"></span></td>
                     </tr>
