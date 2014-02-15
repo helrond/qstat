@@ -99,6 +99,12 @@ qStat.controller('statCtrl', function ($http, $scope) {
         $scope.players = data;
     });
     <!-- needs to be improved so it only selects players from game.selectedTeams -->
+    $http.get('/api/teams').success(function (data, status, headers, config) {
+        $scope.teams = data;
+    });
+    $http.get('/api/games').success(function (data, status, headers, config) {
+        $scope.games = data;
+    });
     $http.get('/api/positions').success(function (data, status, headers, config) {
         $scope.positions = data;
     });

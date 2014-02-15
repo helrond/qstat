@@ -44,9 +44,7 @@ var gameSchema = new Schema({
     teams:[ {
         name: String,
         team_id: String,
-        score: Number,
-        snitchCatch: Boolean,
-        winner: Boolean
+        players:[playerSchema]
     }],
     location: {
         name: String,

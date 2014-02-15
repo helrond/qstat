@@ -1,4 +1,4 @@
-<div class="teamSelect" ng-controller="gameCtrl">
+<div class="teamSelect" ng-controller="statCtrl">
     <div class="title">
         <h2>Record Stats</h2>
     </div>
@@ -6,7 +6,6 @@
         ng-hide="selectedGame">
         <option value="">-- Select a game --</option>
     </select>
-    <div ng-controller="statCtrl">
         <div class="start" ng-show="selectedGame && !record">
             <button class="btn btn-lg btn-success" ng-click="record = true; startTime()">Start</button>
             <p class="help-block">Timer will start for {{ selectedGame.name }}</p>
@@ -32,28 +31,29 @@
                 <div class="form-group col-xs-12">
                     <label class="sr-only">Team</label>
                     <select name="team" class="form-control" ng-model="selectedTeam"
-                        ng-options="team.name for team in selectedGame.teams | filter:selectedPlayerName.team" required>
+                        ng-options="team.name for team in teams | filter:selectedPlayer.team.name" required><!--filter by name in selectedGame.teams-->
                         <option value="">-- Select a team --</option>
                     </select>
                 </div>
                 <div class="form-group col-xs-12">
                     <label class="sr-only">Position</label>
                     <select class="form-control" ng-model="selectedPosition" 
-                        ng-options="position.name for position in positions | filter:selectedPlayer.position:selectedStat.role" required> <!--may need to write custom filter, or create a filtered scope: http://stackoverflow.com/questions/15259732/angularjs-filter-multiple-select-inputs-->
+                        ng-options="position.name for position in positions | filter:selectedPlayer.position" required><!-- also by values in selectedStat.role -->
                         <option value="">-- Select a position --</option>
                     </select>
                 </div>
+                {{selectedTeam}}
                 <div class="form-group col-xs-8">
                     <label class="sr-only">Player Name</label>
                     <select ng-model="selectedPlayer" class="form-control"
-                        ng-options="player.name for player in players | filter:selectedPosition.name" required><!-- also filter by selectedTeam -->
+                        ng-options="player.name for player in players | filter:selectedPosition.name"  required><!-- also filter by each name in selectedTeam.players -->
                         <option value="">-- Select a player --</option>
                     </select>
                 </div>
                 <div class="form-group col-xs-4">
                     <label class="sr-only">Player Number</label>
                     <select ng-model="selectedPlayer" class="form-control"
-                        ng-options="player.number for player in players | filter:selectedPosition.name" required><!-- also filter by selectedTeam -->
+                        ng-options="player.number for player in players | filter:selectedPosition.name" required><!-- also filter by each name in selectedTeam.players -->
                         <option value="">-- Select a number --</option>
                     </select>
                 </div>
@@ -61,7 +61,7 @@
                 <div class="form-group col-xs-5">
                     <label class="sr-only">Statistic Name</label>
                     <select class="form-control" ng-model="selectedStat" 
-                        ng-options="statistic.primaryName for statistic in statistics | filter:selectedPosition.name:selectedPlayer.position" required><!--custom filter or filtered scope required -->
+                        ng-options="statistic.primaryName for statistic in statistics | filter:selectedPosition.name | filter:selectedPlayer.position.name" required>
                         <option value="">-- Select a statistic --</option>
                     </select>
                 </div>
@@ -142,5 +142,4 @@
             <button class="btn btn-lg btn-primary" ng-click="Confirm()">Confirm</button>
             <a href="#/" class="btn btn-lg btn-danger">Cancel</a>
         </div>
-    </div>
 </div>
