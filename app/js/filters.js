@@ -24,4 +24,21 @@ angular.module('qStat.filters', []).
         return scope
     };
     }
+}).
+  filter('playerFilter', function () {
+    return function (scope, team) {
+    if (!angular.isUndefined(scope) && !angular.isUndefined(team) && team.length > 0) {
+        var matches = []
+        angular.forEach(scope, function (player) {
+            angular.forEach(team, function (team) {
+                if (angular.equals(team, player)) {
+               matches.push(player);
+            }
+          })
+        }, matches);
+       return(matches);
+    } else {
+        return scope
+    };
+    }
 });

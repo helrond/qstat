@@ -31,7 +31,7 @@
                 <div class="form-group col-xs-12">
                     <label class="sr-only">Team</label>
                     <select name="team" class="form-control" ng-model="selectedTeam"
-                        ng-options="team.name for team in teams | filter:selectedPlayer.team.name" required><!--filter by name in selectedGame.teams-->
+                        ng-options="team.name for team in teams | filter:selectedPlayer.team.name" required>
                         <option value="">-- Select a team --</option>
                     </select>
                 </div>
@@ -45,14 +45,14 @@
                 <div class="form-group col-xs-8">
                     <label class="sr-only">Player Name</label>
                     <select ng-model="selectedPlayer" class="form-control"
-                        ng-options="player.name for player in players | filter:selectedPosition.name" required><!-- also filter by each name in selectedTeam.players -->
+                        ng-options="player.name for player in players | filter:selectedPosition.name | playerFilter:selectedTeam.players" required>
                         <option value="">-- Select a player --</option>
                     </select>
                 </div>
                 <div class="form-group col-xs-4">
                     <label class="sr-only">Player Number</label>
                     <select ng-model="selectedPlayer" class="form-control"
-                        ng-options="player.number for player in players | filter:selectedPosition.name" required><!-- also filter by each name in selectedTeam.players -->
+                        ng-options="player.number for player in players | filter:selectedPosition.name | playerFilter:selectedTeam.players" required>
                         <option value="">-- Select a number --</option>
                     </select>
                 </div>
