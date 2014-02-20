@@ -58,4 +58,15 @@ angular.module('qStat.filters', []).
         return scope
     };
     }
+}).
+  filter('gameFilter', function () {
+    return function (scope, game) {
+        var matches = []
+        angular.forEach(scope, function (game) {
+                if (angular.isUndefined(game.date)) {
+               matches.push(game);
+          }
+        }, matches);
+       return(matches);
+       }
 });
