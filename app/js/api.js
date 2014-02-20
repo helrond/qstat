@@ -11,12 +11,6 @@ var playerSchema = new Schema({
     image: String,
     number: String,
     description: String,
-    team:{
-        name: String,
-        team_id: String,
-        dateFrom: String,
-        dateTo: String
-    },
     position: {
         name: String,
         position_id: String
@@ -29,7 +23,8 @@ var teamSchema = new Schema({
     },
     name: String,
     players: {
-        name: String, player_id: String
+        name: String, 
+        player_id: String
     },
     url: String,
     description: String,

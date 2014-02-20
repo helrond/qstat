@@ -69,4 +69,18 @@ angular.module('qStat.filters', []).
         }, matches);
        return(matches);
        }
+}).
+  filter('teamPlayerFilter', function () {
+    return function (scope, player) {
+        var matches = []
+        angular.forEach(scope, function (team) {
+            angular.forEach(team.players, function (players) {
+                if (angular.equals(players, player)) {
+               matches.push(team);
+            }
+
+          })
+        }, matches);
+       return(matches);
+    }
 });

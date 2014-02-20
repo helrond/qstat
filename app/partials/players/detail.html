@@ -18,9 +18,9 @@
     <div class="col-xs-12">
         <div editable-text="player.description">{{player.description}}</div>
     </div>
-    <div class="col-xs-12">
+        <div ng-hide="playerForm.$visible" class="col-xs-12">
         <h4>Plays for</h4>
-        <div editable-select="player.team" onshow="teams" e-ng-options="team.name for team in teams">{{player.team.name}}</div>
+        <div ng-repeat="team in teams | teamPlayerFilter:player">{{team.name}}</div>
     </div>
     <div>
         <button type="button" class="btn btn-default btn-sm" ng-click="playerForm.$show()"
