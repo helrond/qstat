@@ -38,7 +38,7 @@
                 <div class="form-group col-xs-12">
                     <label class="sr-only">Position</label>
                     <select class="form-control" ng-model="selectedPosition" 
-                        ng-options="position.name for position in positions | filter:selectedPlayer.position | positionFilter:selectedStat.role" required>
+                        ng-options="position.name for position in positions | filter:selectedPlayer.position | positionFilter:selectedStat.role | positionFilter:selectedPlayer.position" required>
                         <option value="">-- Select a position --</option>
                     </select>
                 </div>
