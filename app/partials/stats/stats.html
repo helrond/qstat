@@ -2,8 +2,8 @@
     <div class="title">
         <h2>Record Stats</h2>
     </div>
-    <select class="form-control" ng-model="selectedGame" ng-options="game.name for game in games" <!-- gameFilter:games -->
-        ng-hide="selectedGame">
+    <select class="form-control" ng-model="selectedGame" ng-options="game.name for game in games"
+        ng-hide="selectedGame"><!-- gameFilter:games -->
         <option value="">-- Select a game --</option>
     </select>
         <div class="start" ng-show="selectedGame && !record">
@@ -31,7 +31,7 @@
                 <div class="form-group col-xs-12">
                     <label class="sr-only">Team</label>
                     <select name="team" class="form-control" ng-model="selectedTeam"
-                        ng-options="team.name for team in teams | filter:selectedPlayer.team.name | teamFilter:selectedGame.teams" required><!-- replace filter on selectedplayer.team.name with custom filter -->
+                        ng-options="team.name for team in teams | teamPlayerFilter:selectedPlayer | teamFilter:selectedGame.teams" required>
                         <option value="">-- Select a team --</option>
                     </select>
                 </div>
@@ -101,7 +101,7 @@
                         <th class="col-xs-2">Statistic</th>
                         <th class="col-xs-2">Time</th>
                     </tr>
-                    <tr ng-repeat="stat in selectedGame.statistics | orderBy:stat.time:true">
+                    <tr ng-repeat="stat in selectedGame.statistics">
                         <td class="col-xs-3">{{stat.player.name}}</td>
                         <td class="col-xs-2">{{stat.position.name}}</td>
                         <td class="col-xs-3">{{stat.team.name}}</td>
@@ -127,7 +127,7 @@
                     <th class="col-xs-2">Statistic</th>
                     <th class="col-xs-2">Time</th>
                 </tr>
-                <tr ng-repeat="stat in selectedGame.statistics | orderBy:stat.time:true">
+                <tr ng-repeat="stat in selectedGame.statistics">
                     <td class="col-xs-3">{{stat.player.name}}</td>
                     <td class="col-xs-2">{{stat.position.name}}</td>
                     <td class="col-xs-3">{{stat.team.name}}</td>

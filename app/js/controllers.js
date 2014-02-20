@@ -184,12 +184,13 @@ qStat.controller('statCtrl', function ($http, $scope) {
         }
         var currentGameStats = $scope.selectedGame.statistics;
         var updatedGameStats = currentGameStats.concat(newStat);
+        updatedGameStats.sort(function(a,b){return a-b});
         $scope.selectedGame.statistics = updatedGameStats
     };
-    $scope. Delete = function (stat) {
-        var index = $scope.stats.indexOf(stat)
-        var id = $scope.stats[index]._id
-        $scope.stats.splice(index, 1);
+    $scope.Delete = function (stat) {
+        var index = $scope.selectedGame.statistics.indexOf(stat)
+        var id = $scope.selectedGame.statistics[index]._id
+        $scope.selectedGame.statistics.splice(index, 1);
     }
     $scope.AddPossession = function () {
         if ($scope.selectedGame.teams[0]._id === $scope.possessionTeam) {
@@ -220,6 +221,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
         }]
         var currentGameStats = $scope.selectedGame.statistics;
         var updatedGameStats = currentGameStats.concat(newStat);
+        updatedGameStats.sort(function(a,b){return a-b});
         $scope.selectedGame.statistics = updatedGameStats
         var team1value =[]
         var team2value =[]
