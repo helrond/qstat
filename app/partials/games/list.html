@@ -7,9 +7,31 @@
 			<input type="text" placeholder="Search" ng-model="query" class="form-control"/>
         </div>
     </div>
+	<h3>Upcoming Games</h3>
 	<table class="table table-striped">
-    	<tr ng-repeat="game in games | filter:query | orderBy:orderProp">
-    		<td class="col-xs-12"><a href="#/games/{{game._id}}">{{ game.name }} ({{game.date | date:'longDate'}})</a></td>
+		<tr>
+			<th class="col-xs-6">Game</th>
+			<th class="col-xs-3">Location</th>
+			<th class="col-xs-3">Date</th>
+		</tr>
+		<tr ng-repeat="game in games | filter:query | orderBy:orderProp" ng-hide="game.date">
+			<td class="col-xs-6"><a href="#/games/{{game._id}}">{{ game.name }}</a></td>
+			<td class="col-xs-3">{{game.location.name}}</td>
+			<td class="col-xs-3">{{game.date | date:'longDate'}}</td>
+			<td class="text-danger pull-right" href="#"><span class="glyphicon glyphicon-remove" ng-click="Delete(game)"></span></td>
+		</tr>
+	</table>
+	<h3>Past Games</h3>
+	<table class="table table-striped">
+		<tr>
+			<th class="col-xs-6">Game</th>
+			<th class="col-xs-3">Location</th>
+			<th class="col-xs-3">Date</th>
+		</tr>
+    	<tr ng-repeat="game in games | filter:query | orderBy:orderProp" ng-show="game.date">
+    		<td class="col-xs-6"><a href="#/games/{{game._id}}">{{ game.name }}</a></td>
+    		<td class="col-xs-3">{{game.location.name}}</td>
+    		<td class="col-xs-3">{{game.date | date:'longDate'}}</td>
             <td class="text-danger pull-right" href="#"><span class="glyphicon glyphicon-remove" ng-click="Delete(game)"></span></td>
         </tr>
     </table>
