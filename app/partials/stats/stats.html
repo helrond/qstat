@@ -2,10 +2,9 @@
     <div class="title">
         <h2>Record Stats</h2>
     </div>
-    <select class="form-control" ng-model="selectedGame"
+    <select class="form-control" ng-model="selectedGame" ng-options="game.name for game in games"
         ng-hide="selectedGame">
         <option value="">-- Select a game --</option>
-        <option ng-repeat="game in games" ng-hide="game.date">{{game.name}}</option>
     </select>
         <div class="start" ng-show="selectedGame && !record">
             <button class="btn btn-lg btn-success" ng-click="record = true; startTime()">Start</button>
@@ -102,7 +101,7 @@
                         <th class="col-xs-2">Statistic</th>
                         <th class="col-xs-2">Time</th>
                     </tr>
-                    <tr ng-repeat="stat in selectedGame.statistics">
+                    <tr ng-repeat="stat in selectedGame.statistics | orderBy:stat.time:true">
                         <td class="col-xs-3">{{stat.player.name}}</td>
                         <td class="col-xs-2">{{stat.position.name}}</td>
                         <td class="col-xs-3">{{stat.team.name}}</td>
@@ -128,7 +127,7 @@
                     <th class="col-xs-2">Statistic</th>
                     <th class="col-xs-2">Time</th>
                 </tr>
-                <tr ng-repeat="stat in selectedGame.statistics">
+                <tr ng-repeat="stat in selectedGame.statistics | orderBy:stat.time:true">
                     <td class="col-xs-3">{{stat.player.name}}</td>
                     <td class="col-xs-2">{{stat.position.name}}</td>
                     <td class="col-xs-3">{{stat.team.name}}</td>
