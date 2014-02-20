@@ -184,7 +184,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
         }
         var currentGameStats = $scope.selectedGame.statistics;
         var updatedGameStats = currentGameStats.concat(newStat);
-        updatedGameStats.sort(function(a,b){return a-b});
+        updatedGameStats.sort(function(a,b){return b.time-a.time});
         $scope.selectedGame.statistics = updatedGameStats
     };
     $scope.Delete = function (stat) {
@@ -221,7 +221,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
         }]
         var currentGameStats = $scope.selectedGame.statistics;
         var updatedGameStats = currentGameStats.concat(newStat);
-        updatedGameStats.sort(function(a,b){return a-b});
+        updatedGameStats.sort(function(a,b){return b.time-a.time});
         $scope.selectedGame.statistics = updatedGameStats
         var team1value =[]
         var team2value =[]
