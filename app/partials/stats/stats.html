@@ -38,15 +38,14 @@
                 <div class="form-group col-xs-12">
                     <label class="sr-only">Position</label>
                     <select class="form-control" ng-model="selectedPosition" 
-                        ng-options="position.name for position in positions | filter:selectedPlayer.position" required><!-- also by values in selectedStat.role -->
+                        ng-options="position.name for position in positions | filter:selectedPlayer.position | positionFilter:selectedStat.role" required>
                         <option value="">-- Select a position --</option>
                     </select>
                 </div>
-                {{selectedTeam}}
                 <div class="form-group col-xs-8">
                     <label class="sr-only">Player Name</label>
                     <select ng-model="selectedPlayer" class="form-control"
-                        ng-options="player.name for player in players | filter:selectedPosition.name"  required><!-- also filter by each name in selectedTeam.players -->
+                        ng-options="player.name for player in players | filter:selectedPosition.name" required><!-- also filter by each name in selectedTeam.players -->
                         <option value="">-- Select a player --</option>
                     </select>
                 </div>
@@ -89,8 +88,6 @@
                     </div>
                 </div>
                 </div>
-                <!--<p class="help-block text-center" ng-hide="stat.$error.required" ng-model="stat">{{selectedStat.name}}&nbsp;by&nbsp;{{selectedPlayer.name}}&nbsp;({{selectedPosition.name}}/#{{selectedPlayer.number}})
-                    of {{selectedTeam.name}}</p>-->
                 <button ng-show="stat.$error.required" class="btn btn-primary center-block" disabled="disabled">Add</button>
                 <button ng-hide="stat.$error.required" class="btn btn-primary center-block" ng-click="Add()">Add</button>
             </form>

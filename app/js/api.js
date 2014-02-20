@@ -44,7 +44,6 @@ var gameSchema = new Schema({
     teams:[ {
         name: String,
         team_id: String,
-        players:[playerSchema]
     }],
     location: {
         name: String,
