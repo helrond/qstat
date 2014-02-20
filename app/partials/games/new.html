@@ -24,13 +24,14 @@
                 </select>
             </div>
         </div>
-        <div class="form-group col-xs-12">
+        <!-- add this data from stats creation -->
+        <!-- <div class="form-group col-xs-12">
             <input class="form-control" type="date" ng-model="game.date"/>
-        </div>
+        </div> -->
         <div ng-model="location">
             <div class="form-group col-xs-12">
                 <input class="form-control" type="text" ng-model="game.location.name"
-                    placeholder="Location"/>
+                    placeholder="Location" required/>
             </div>
             <div class="form-group col-xs-12">
                 <input class="form-control" type="text" ng-model="game.location.url"
