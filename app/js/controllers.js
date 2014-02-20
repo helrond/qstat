@@ -114,15 +114,15 @@ qStat.controller('statCtrl', function ($http, $scope) {
     
     $scope.startTime = function () {
         var time = new Date()
-        $scope.startTime = time;
+        $scope.selectedGame.startTime = time;
     };
     $scope.endTime = function () {
         var time = new Date()
-        $scope.endTime = time;
+        $scope.selectedGame.endTime = time;
     };
     $scope.gameTime = function () {
-        var time = $scope.endTime - $scope.startTime;
-        $scope.gameTime = time;
+        var time = $scope.selectedGame.endTime - $scope.selectedGame.startTime;
+        $scope.selectedGame.gameTime = time;
     };
     $scope.Add = function () {
         if ($scope.selectedStat. double && $scope.success === true) {

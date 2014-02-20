@@ -92,7 +92,7 @@
                 <button ng-hide="stat.$error.required" class="btn btn-primary center-block" ng-click="Add()">Add</button>
             </form>
             <div>
-                <p>Game started at {{startTime | date:'h:mm:ss a'}}</p>
+                <p>Game started at {{selectedGame.startTime | date:'h:mm:ss a'}}</p>
                 <table ng-model="selectedGame.statistics" class="table table-striped col-xs-12">
                     <tr>
                         <th class="col-xs-3">Player</th>
@@ -118,7 +118,7 @@
         <div ng-show="confirm">
             <h3>{{selectedGame.name}}</h3>
             <!--<p>{{startTime | date:'MMMM dd, yyyy h:mm:ss a'}} - {{endTime | date:'h:mm:ss a'}}.</p>-->
-            <p>Game Time: {{gameTime | date:'mm:ss'}}</p>
+            <p>Game Time: {{selectedGame.gameTime | date:'mm:ss'}}</p>
             <table ng-model="selectedGame.statistics" class="table table-striped col-xs-12">
                 <tr>
                     <th class="col-xs-3">Player</th>

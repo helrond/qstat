@@ -269,8 +269,8 @@ exports.gameAdd = function (req, res) {
             name: req.body.location.name,
             url: req.body.location.url
         },
-        date: req.body.date,
-        time: req.body.time,
+        date: req.body.startTime,
+        time: req.body.gameTime,
     });
     game.save(function (err) {
         if (! err) {
@@ -291,8 +291,8 @@ exports.gameUpdate = function (req, res) {
             game.name = req.body.teams[0].name + ' vs ' + req.body.teams[1].name,
             game.teams = req.body.teams,
             game.location = req.body.location,
-            game.date = req.body.date,
-            game.time = req.body.time,
+            game.date = req.body.startTime,
+            game.time = req.body.gameTime,
             game.statistics = req.body.statistics
             game.save(function (err) {
                 if (! err) {
