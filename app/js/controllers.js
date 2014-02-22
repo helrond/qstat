@@ -143,8 +143,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
                 },
                 'time': new Date(),
                 'attribute': $scope.selectedStat.attribute
-            },
-            {
+            }, {
                 'name': $scope.selectedStat.secondaryName,
                 'statistic_id': $scope.selectedStat.secondary_id,
                 'team': {
@@ -184,10 +183,22 @@ qStat.controller('statCtrl', function ($http, $scope) {
         }
         var currentGameStats = $scope.selectedGame.statistics;
         var updatedGameStats = currentGameStats.concat(newStat);
-        updatedGameStats.sort(function(a,b){return b.time-a.time});
-        $scope.selectedGame.statistics = updatedGameStats
+        updatedGameStats.sort(function (a, b) {
+            return b.time - a.time
+        });
+        $scope.selectedGame.statistics = updatedGameStats;
+        
+        $scope.selectedTeam = {}
+        if ($scope.selectedPositionLock === true) {
+        } else {
+            $scope.selectedPosition = {}
+        }
+        $scope.selectedPlayer = {
+        };
+        $scope.selectedStat = {
+        };
     };
-    $scope.Delete = function (stat) {
+    $scope. Delete = function (stat) {
         var index = $scope.selectedGame.statistics.indexOf(stat)
         var id = $scope.selectedGame.statistics[index]._id
         $scope.selectedGame.statistics.splice(index, 1);
@@ -209,8 +220,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
             'name': 'possession',
             'value': team1value,
             'time': new Date()
-        },
-        {
+        }, {
             'team': {
                 'name': $scope.selectedGame.teams[1].name,
                 'team_id': $scope.selectedGame.teams[1]._id
@@ -221,7 +231,9 @@ qStat.controller('statCtrl', function ($http, $scope) {
         }]
         var currentGameStats = $scope.selectedGame.statistics;
         var updatedGameStats = currentGameStats.concat(newStat);
-        updatedGameStats.sort(function(a,b){return b.time-a.time});
+        updatedGameStats.sort(function (a, b) {
+            return b.time - a.time
+        });
         $scope.selectedGame.statistics = updatedGameStats
         var team1value =[]
         var team2value =[]
@@ -233,21 +245,21 @@ qStat.controller('statCtrl', function ($http, $scope) {
         })
         var stats = $scope.selectedGame.statistics
         angular.forEach(stats, function (stat) {
-        if (!angular.isUndefined(stat.player)){
-            var newStat = {
-                'player_id':stat.player.player_id,
-                'statistics': [{
-                'name': stat.name,
-                'statistic_id': stat.statistic_id,
-                'team': stat.team,
-                'position': stat.position,
-                'time': stat.time,
-                'attribute': stat.attribute
-            }]
-            }
-            var playerId = stat.player.player_id
-            console.log(newStat)
-            $http.put('api/players/' + playerId, newStat);
+            if (! angular.isUndefined(stat.player)) {
+                var newStat = {
+                    'player_id': stat.player.player_id,
+                    'statistics':[ {
+                        'name': stat.name,
+                        'statistic_id': stat.statistic_id,
+                        'team': stat.team,
+                        'position': stat.position,
+                        'time': stat.time,
+                        'attribute': stat.attribute
+                    }]
+                }
+                var playerId = stat.player.player_id
+                console.log(newStat)
+                $http.put('api/players/' + playerId, newStat);
             }
         });
         // iterate through stats, add stat matching stat.player.player_id with players.player_id

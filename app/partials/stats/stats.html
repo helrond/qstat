@@ -27,33 +27,38 @@
                 </div>
                 <hr/>
             </div>
-            <form name="stat">
+            <form name="stat" novalidate>
                 <div class="form-group col-xs-12">
                     <label class="sr-only">Team</label>
                     <select name="team" class="form-control" ng-model="selectedTeam"
                         ng-options="team.name for team in teams | teamPlayerFilter:selectedPlayer | teamFilter:selectedGame.teams" required>
-                        <option value="">-- Select a team --</option>
+                        <option value="">-- Team --</option>
                     </select>
                 </div>
                 <div class="form-group col-xs-12">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <input type="checkbox" ng-model="selectedPositionLock">
+                        </span>
                     <label class="sr-only">Position</label>
                     <select class="form-control" ng-model="selectedPosition" 
                         ng-options="position.name for position in positions | filter:selectedPlayer.position | positionFilter:selectedStat.role | positionFilter:selectedPlayer.position" required>
-                        <option value="">-- Select a position --</option>
+                        <option value="">-- Position --</option>
                     </select>
+                    </div>
                 </div>
                 <div class="form-group col-xs-8">
                     <label class="sr-only">Player Name</label>
                     <select ng-model="selectedPlayer" class="form-control"
                         ng-options="player.name for player in players | filter:selectedPosition.name | playerFilter:selectedTeam.players" required>
-                        <option value="">-- Select a player --</option>
+                        <option value="">-- Player name --</option>
                     </select>
                 </div>
                 <div class="form-group col-xs-4">
                     <label class="sr-only">Player Number</label>
                     <select ng-model="selectedPlayer" class="form-control"
                         ng-options="player.number for player in players | filter:selectedPosition.name | playerFilter:selectedTeam.players" required>
-                        <option value="">-- Select a number --</option>
+                        <option value="">-- Player number --</option>
                     </select>
                 </div>
                 <div class="col-xs-12">
@@ -61,7 +66,7 @@
                     <label class="sr-only">Statistic Name</label>
                     <select class="form-control" ng-model="selectedStat" 
                         ng-options="statistic.primaryName for statistic in statistics | filter:selectedPosition.name | filter:selectedPlayer.position.name" required>
-                        <option value="">-- Select a statistic --</option>
+                        <option value="">-- Statistic --</option>
                     </select>
                 </div>
                 <div class="form-group col-xs-5">
