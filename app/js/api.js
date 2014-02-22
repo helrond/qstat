@@ -15,7 +15,7 @@ var playerSchema = new Schema({
         name: String,
         position_id: String
     },
-    statistics:[statisticSchema]
+    statistics:[]
 });
 var teamSchema = new Schema({
     '@context': {
@@ -123,6 +123,7 @@ exports.playerAdd = function (req, res) {
 }
 exports.playerUpdate = function (req, res) {
     var id = req.body._id;
+    var player_id = req.body.player_id;
     if (id) {
         playerModel.findById(id, function (err, player) {
             player.name = req.body.name,
@@ -131,11 +132,23 @@ exports.playerUpdate = function (req, res) {
             player.description = req.body.description,
             player.team = req.body.team,
             player.position = req.body.position,
-            player.statistics = req.body.statistics
             player.save(function (err) {
                 if (! err) {
                     res.json(true);
                     console.log("Player updated");
+                } else {
+                    res.json(false);
+                    console.log(err);
+                }
+            });
+        });
+    } else if (player_id) {
+        playerModel.findById(player_id, function (err, player) {
+            player.statistics = player.statistics.concat(req.body.statistics)
+            player.save(function (err) {
+                if (! err) {
+                    res.json(true);
+                    console.log("Player stats updated");
                 } else {
                     res.json(false);
                     console.log(err);
@@ -280,7 +293,6 @@ exports.gameAdd = function (req, res) {
 }
 exports.gameUpdate = function (req, res) {
     var id = req.body._id;
-    console.log(req.body)
     if (id) {
         gameModel.findById(id, function (err, game) {
             game.name = req.body.teams[0].name + ' vs ' + req.body.teams[1].name,

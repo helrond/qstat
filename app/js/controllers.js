@@ -226,11 +226,32 @@ qStat.controller('statCtrl', function ($http, $scope) {
         var team1value =[]
         var team2value =[]
     }
-    $scope.Confirm = function () {
+    $scope.Confirm = function (stat) {
         var gameId = $scope.selectedGame._id
         $http.put('/api/games/' + gameId, $scope.selectedGame).success(function (data) {
             window.location.href = "/#/games";
         })
+        var stats = $scope.selectedGame.statistics
+        angular.forEach(stats, function (stat) {
+        if (!angular.isUndefined(stat.player)){
+            var newStat = {
+                'player_id':stat.player.player_id,
+                'statistics': [{
+                'name': stat.name,
+                'statistic_id': stat.statistic_id,
+                'team': stat.team,
+                'position': stat.position,
+                'time': stat.time,
+                'attribute': stat.attribute
+            }]
+            }
+            var playerId = stat.player.player_id
+            console.log(newStat)
+            $http.put('api/players/' + playerId, newStat);
+            }
+        });
+        // iterate through stats, add stat matching stat.player.player_id with players.player_id
+        // put stats in player
     }
 });
 

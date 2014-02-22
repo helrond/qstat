@@ -31,5 +31,22 @@
                 ng-click="playerForm.$cancel()"> Cancel </button>
         </span>
     </div>
+        <div class="statistics col-xs-12" ng-show="player.statistics">
+            <h3>Statistics</h3>
+            <table class="table table-striped col-xs-12">
+                <tr>
+                    <th class="col-xs-2">Position</th>
+                    <th class="col-xs-3">Team</th>
+                    <th class="col-xs-2">Statistic</th>
+                    <th class="col-xs-2">Time</th>
+                </tr>
+                <tr ng-repeat="stat in player.statistics">
+                    <td class="col-xs-2">{{stat.position.name}}</td>
+                    <td class="col-xs-3">{{stat.team.name}}</td>
+                    <td class="col-xs-2">{{stat.name}}</td>
+                    <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}</td>
+                </tr>
+            </table>
+        </div>
     </form>
 </div>
