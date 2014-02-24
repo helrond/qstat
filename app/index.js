@@ -3,7 +3,7 @@ var api = require("./js/api");
 
 var app = module.exports = express();
 
-app.listen(8000, "127.0.0.1");
+app.listen(process.env.PORT || 8000);
 
 app.configure(function () {
     app.locals.pretty = true;
