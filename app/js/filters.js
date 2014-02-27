@@ -87,4 +87,22 @@ angular.module('qStat.filters', []).
         return scope
     };
     }
+}).
+  filter('rosterFilter', function () {
+    return function (scope, players) {
+    if (!angular.isUndefined(scope) && !angular.isUndefined(players)) {
+        var matches = []
+        angular.forEach(scope, function (player) {
+            angular.forEach(players, function (players) {
+                if (angular.equals(players, player)) {
+                } else {
+               matches.push(player);
+            }
+          })
+        }, matches);
+       return(matches);
+    } else {
+        return scope
+    };
+    }
 });
