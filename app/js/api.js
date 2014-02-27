@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
-db_url = process.env.MONGOHQ_URL || "mongodb://app:qstat@troup.mongohq.com:10055/qstat"
-mongoose.connect(db_url);
+//db_url = process.env.MONGOHQ_URL || "mongodb://app:qstat@troup.mongohq.com:10055/qstat"
+//mongoose.connect(db_url);
+mongoose.connect('mongodb://localhost/qstat');
 var Schema = mongoose.Schema;
 
 // SCHEMAS
@@ -23,10 +24,7 @@ var teamSchema = new Schema({
         type: String, default: 'http://schema.org/Organization'
     },
     name: String,
-    players: {
-        name: String, 
-        player_id: String
-    },
+    players: [],
     url: String,
     description: String,
     statistics:[statisticSchema]
@@ -195,12 +193,13 @@ exports.teamAdd = function (req, res) {
     var team = req.body;
     var raw = req.body.name
     var id = raw.replace(/\.,\/#!$%\^&\*;:{}=\-_`~()/g, "").replace(/\s/g, "-").toLowerCase();
+    
     team = new teamModel({
         name: req.body.name,
         team_id: id,
         url: req.body.url,
         description: req.body.description,
-        players: req.body.players,
+        players: req.body.players
     });
     team.save(function (err) {
         if (! err) {

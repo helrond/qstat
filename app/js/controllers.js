@@ -309,7 +309,10 @@ qStat.controller('teamDetailCtrl', function ($http, $scope, $routeParams) {
         } else {
             $scope.team.players =[];
         }
-        var addPlayer = $scope.addPlayer
+        var addPlayer = {
+            'name':$scope.addPlayer.name,
+            'player_id':$scope.addPlayer._id
+            }
         var currentPlayers = $scope.team.players;
         console.log(currentPlayers)
         var updatedPlayers = currentPlayers.concat(addPlayer);
