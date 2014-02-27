@@ -200,7 +200,7 @@ exports.teamAdd = function (req, res) {
         team_id: id,
         url: req.body.url,
         description: req.body.description,
-        players:[req.body.players],
+        players: req.body.players,
     });
     team.save(function (err) {
         if (! err) {

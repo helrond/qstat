@@ -18,14 +18,6 @@
 		<div class="form-group col-xs-12">
 			<input type="text" class="form-control" ng-model="team.url" placeholder="Link"/>
 		</div>
-	
-		<div class="form-inline col-xs-12">
-			<select class="form-control" ng-model="addPlayer" ng-options="player.name for player in players"><!-- filter to remove players in team.players -->
-				{{player.name}}
-				<option value="">-- Select players --</option>
-			</select>
-			<a class="btn btn-sm btn-success" role="button" ng-click="AddPlayer()">Add player</a>
-		</div>
 			<table class="table table-striped">
 				<h3>Roster</h3>
 				<tr ng-repeat="player in team.players | orderBy:orderProp" ng-model="team.players">
@@ -35,6 +27,13 @@
 					</td>
 				</tr>
 			</table>
+			<div class="form-inline col-xs-12">
+				<select class="form-control" ng-model="addPlayer" ng-options="player.name for player in players"><!-- filter to remove players in team.players -->
+					<option value="">-- Select players --</option>
+					{{player.name}}
+				</select>
+				<a class="btn btn-sm btn-success" role="button" ng-click="AddPlayer()">Add player</a>
+			</div>
 		
 		<div class="center-block">
 			<button class="btn btn-primary" ng-disabled="teamForm.$error.required" ng-click="Add()"> Save </button>
