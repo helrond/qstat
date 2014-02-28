@@ -110,7 +110,7 @@
                         <td class="col-xs-3">{{stat.player.name}}</td>
                         <td class="col-xs-2">{{stat.position.name}}</td>
                         <td class="col-xs-3">{{stat.team.name}}</td>
-                        <td class="col-xs-2">{{stat.name}}<span ng-show="selectedStat.attribute">, {{stat.attribute}}</span></td>
+                        <td class="col-xs-2"><span ng-show="selectedStat.value">{{stat.value | checkmark}}&nbsp;</span>{{stat.name}}<span ng-show="selectedStat.attribute">, {{stat.attribute}}</span></td>
                         <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}</td>
                         <td class="text-danger pull-right"><span class="glyphicon glyphicon-remove" ng-click="Delete(stat)"></span></td>
                     </tr>
@@ -136,7 +136,7 @@
                     <td class="col-xs-3">{{stat.player.name}}</td>
                     <td class="col-xs-2">{{stat.position.name}}</td>
                     <td class="col-xs-3">{{stat.team.name}}</td>
-                    <td class="col-xs-2">{{stat.name}}</td>
+                    <td class="col-xs-2"><span ng-show="selectedStat.value">{{stat.value | checkmark}}&nbsp;</span>{{stat.name}}<span ng-show="selectedStat.attribute">, {{stat.attribute}}</span></td>
                     <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}</td>
                     <td class="text-danger pull-right"><span class="glyphicon glyphicon-remove" ng-click="Delete(stat)"></span></td>
                 </tr>
