@@ -6,16 +6,20 @@
     </ol>
     <form editable-form name="playerForm" onaftersave="Update()">
         <div class="title col-xs-12">
+            <div ng-show="playerForm.$visible">Name</div>
         <h2><div editable-text="player.name">{{player.name}}</div></h2>
     </div>
         <div class="col-xs-12">
+            <div ng-show="playerForm.$visible">Position</div>
             <div class="pull-left" editable-select="player.position" onshow="positions" e-ng-options="position.name for position in positions">
                 {{player.position.name}}
             </div>
             <div ng-hide="playerForm.$visible" class="pull-left" > / </div>
+            <div ng-show="playerForm.$visible">Number</div>
             <div editable-text="player.number">{{player.number}}</div>
         </div>
     <div class="col-xs-12">
+        <div ng-show="playerForm.$visible">Description</div>
         <div editable-text="player.description">{{player.description}}</div>
     </div>
     <div>

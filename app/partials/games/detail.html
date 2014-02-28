@@ -17,10 +17,13 @@
             </h2>
         </div>
         <div class="col-xs-12">
+            <div ng-show="gameForm.$visible">Date</div>
             <div editable-date="game.date">{{game.date | date:'longDate'}}</div>
         </div>
         <div class="col-xs-12">
+            <div ng-show="gameForm.$visible">Location Name</div>
             <div editable-text="game.location.name">{{game.location.name}}</div>
+            <div ng-show="gameForm.$visible">Location Link</div>
             <div editable-text="game.location.url"><a href="{{game.location.url}}">{{game.location.url}}</a></div>
         </div>
         <div col-xs-12>
