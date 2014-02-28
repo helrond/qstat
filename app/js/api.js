@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
-//db_url = process.env.MONGOHQ_URL || "mongodb://app:qstat@troup.mongohq.com:10055/qstat"
-//mongoose.connect(db_url);
-mongoose.connect('mongodb://localhost/qstat');
+db_url = process.env.MONGOHQ_URL || "mongodb://app:qstat@troup.mongohq.com:10055/qstat"
+mongoose.connect(db_url);
+//mongoose.connect('mongodb://localhost/qstat');
 var Schema = mongoose.Schema;
 
 // SCHEMAS
