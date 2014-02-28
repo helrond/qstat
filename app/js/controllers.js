@@ -320,7 +320,6 @@ qStat.controller('teamDetailCtrl', function ($http, $scope, $routeParams) {
     };
     $scope.DeletePlayer = function (player) {
         var index = $scope.team.players.indexOf(player)
-        var id = $scope.team.players[index]._id
         $scope.team.players.splice(index, 1);
     };
     $http.get('/api/players').success(function (data, status, headers, config) {

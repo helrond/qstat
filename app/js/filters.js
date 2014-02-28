@@ -91,12 +91,13 @@ angular.module('qStat.filters', []).
   filter('rosterFilter', function () {
     return function (scope, players) {
     if (!angular.isUndefined(scope) && !angular.isUndefined(players)) {
-        var matches = []
+        var matches = scope
         angular.forEach(scope, function (player) {
-            angular.forEach(players, function (players) {
-                if (angular.equals(players, player)) {
+        angular.forEach(players, function (teamPlayer) {
+                if (angular.equals(player._id, teamPlayer.player_id)) {
+                    var index = scope.indexOf(player)
+                    scope.splice(index, 1);
                 } else {
-               matches.push(player);
             }
           })
         }, matches);
