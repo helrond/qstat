@@ -76,7 +76,7 @@ angular.module('qStat.filters', []).
         var matches = []
         angular.forEach(scope, function (team) {
             angular.forEach(team.players, function (players) {
-                if (angular.equals(players, player)) {
+                if (angular.equals(players.player_id, player._id)) {
                matches.push(team);
             }
 
