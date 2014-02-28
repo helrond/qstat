@@ -106,4 +106,8 @@ angular.module('qStat.filters', []).
         return scope
     };
     }
+}).filter('checkmark', function() {
+  return function(input) {
+    return input ? 'gain' : 'lose';
+  };
 });

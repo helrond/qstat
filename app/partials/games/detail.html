@@ -48,7 +48,7 @@
                     <td class="col-xs-3">{{stat.player.name}}</td>
                     <td class="col-xs-2">{{stat.position.name}}</td>
                     <td class="col-xs-3">{{stat.team.name}}</td>
-                    <td class="col-xs-2">{{stat.name}}</td>
+                    <td class="col-xs-2">{{stat.value | checkmark}}&nbsp;{{stat.name}}</td>
                     <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}</td>
                 </tr>
             </table>
