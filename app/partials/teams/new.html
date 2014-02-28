@@ -28,7 +28,8 @@
 				</tr>
 			</table>
 			<div class="form-inline col-xs-12">
-				<select class="form-control" ng-model="addPlayer" ng-options="player.name for player in players | rosterFilter:team.players">
+				<input type="text" ng-model="query" placeholder="Search players"/>
+				<select class="form-control" ng-model="addPlayer" ng-options="player.name for player in players | rosterFilter:team.players | filter:query">
 					<option value="">-- Select players --</option>
 					{{player.name}}
 				</select>

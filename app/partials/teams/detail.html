@@ -15,9 +15,11 @@
 		</h2>
 	</div>
 	<div class="col-xs-12">
+		<div ng-show="teamForm.$visible">Description</div>
 		<div editable-text="team.description">{{team.description}}</div>
 	</div>
 	<div class="col-xs-12">
+		<div ng-show="teamForm.$visible">Link</div>
 		<div editable-url="team.url"><a href="{{team.url}}">{{team.url}}</a></div>
 	</div>
 	<div class="col-xs-12">
@@ -29,15 +31,16 @@
 				<td class="col-xs-12">
 					<a href="#/players/{{player._id}}">{{ player.name }}</a>
 				</td>
-				<td class="text-danger pull-right" href="#"><span ng-show="teamForm.$visible" class="glyphicon glyphicon-remove" ng-click="DeletePlayer(player)"></span></td>
+				<td class="text-danger pull-right" ng-show="teamForm.$visible" href="#"><span class="glyphicon glyphicon-remove" ng-click="DeletePlayer(player)"></span></td>
 			</tr>
 		</table>
-		{{team.players}}
-		<div class="form-inline col-xs-12">
-			<select class="form-control" ng-model="addPlayer" ng-show="teamForm.$visible" ng-options="player.name for player in players | rosterFilter:team.players">
+		<div class="form-inline col-xs-12" ng-show="teamForm.$visible">
+			<input type="text" ng-model="query" placeholder="Search players"/>
+			<select class="form-control" ng-model="addPlayer" ng-options="player.name for player in players | rosterFilter:team.players | filter:query">
+				<option value="">-- Select players --</option>
 				{{player.name}}
 			</select>
-		<a ng-show="teamForm.$visible" class="btn btn-sm btn-success" role="button" ng-click="AddPlayer()">Add player</a>
+		<a class="btn btn-sm btn-success" role="button" ng-click="AddPlayer()">Add player</a>
 		</div>
 	</div>
 	<div>
