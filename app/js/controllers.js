@@ -143,7 +143,8 @@ qStat.controller('statCtrl', function ($http, $scope) {
                 },
                 'time': new Date(),
                 'attribute': $scope.selectedStat.attribute
-            }, {
+            },
+            {
                 'name': $scope.selectedStat.secondaryName,
                 'statistic_id': $scope.selectedStat.secondary_id,
                 'team': {
@@ -188,10 +189,24 @@ qStat.controller('statCtrl', function ($http, $scope) {
         });
         $scope.selectedGame.statistics = updatedGameStats;
         
-        $scope.selectedTeam = {}
+        if ($scope.selectedStat.primary_id === 'snitchCatch') {
+            $scope.confirm = true
+            $scope.endTime = new function () {
+                var time = new Date()
+                $scope.selectedGame.endTime = time;
+            };
+            $scope.gameTime = new function () {
+                var time = $scope.selectedGame.endTime - $scope.selectedGame.startTime;
+                $scope.selectedGame.gameTime = time;
+            };
+        }
+        
+        $scope.selectedTeam = {
+        }
         if ($scope.selectedPositionLock === true) {
         } else {
-            $scope.selectedPosition = {}
+            $scope.selectedPosition = {
+            }
         }
         $scope.selectedPlayer = {
         };
@@ -220,7 +235,8 @@ qStat.controller('statCtrl', function ($http, $scope) {
             'name': 'possession',
             'value': team1value,
             'time': new Date()
-        }, {
+        },
+        {
             'team': {
                 'name': $scope.selectedGame.teams[1].name,
                 'team_id': $scope.selectedGame.teams[1]._id
@@ -310,9 +326,9 @@ qStat.controller('teamDetailCtrl', function ($http, $scope, $routeParams) {
             $scope.team.players =[];
         }
         var addPlayer = {
-            'name':$scope.addPlayer.name,
-            'player_id':$scope.addPlayer._id
-            }
+            'name': $scope.addPlayer.name,
+            'player_id': $scope.addPlayer._id
+        }
         var currentPlayers = $scope.team.players;
         console.log(currentPlayers)
         var updatedPlayers = currentPlayers.concat(addPlayer);
