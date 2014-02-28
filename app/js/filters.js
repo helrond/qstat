@@ -30,8 +30,8 @@ angular.module('qStat.filters', []).
     if (!angular.isUndefined(scope) && !angular.isUndefined(team) && team.length > 0) {
         var matches = []
         angular.forEach(scope, function (player) {
-            angular.forEach(team, function (team) {
-                if (angular.equals(team, player)) {
+            angular.forEach(team, function (teamPlayer) {
+                if (angular.equals(teamPlayer.player_id, player._id)) {
                matches.push(player);
             }
           })
