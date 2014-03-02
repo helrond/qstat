@@ -7,12 +7,12 @@
     <form editable-form name="gameForm" onaftersave="Update()">
         <div class="col-xs-12" ng-controller="teamCtrl">
             <h2 editable-select="game.teams[0].name" onshow="teams"
-                    e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[1].name}}'">
+                e-ng-options="team.name as team.name for team in teams | filter:'!'+game.teams[1]._id">
                     {{game.teams[0].name}}
                 </h2>
                 <div>vs</div>
                 <h2 editable-select="game.teams[1].name" onshow="teams"
-                    e-ng-options="team.name as team.name for team in teams | filter:'!{{game.teams[0].name}}'"
+                    e-ng-options="team.name as team.name for team in teams | filter:'!'+game.teams[0]._id"
                     >{{game.teams[1].name}}</h2>
             </h2>
         </div>
