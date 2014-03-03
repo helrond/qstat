@@ -74,7 +74,6 @@ qStat.controller('playerDetailCtrl', function ($scope, $routeParams, $http) {
         $scope.player = {
         };
     };
-    
     $scope.Add = function () {
         $http.post('/api/players', $scope.player).success(function (data) {
             window.location.href = "/#/players";
@@ -91,6 +90,24 @@ qStat.controller('playerDetailCtrl', function ($scope, $routeParams, $http) {
     $http.get('/api/teams').success(function (data, status, headers, config) {
         $scope.teams = data;
     });
+        $scope.AddPosition = function (positions) {
+        if ($scope.player.positions) {
+            $scope.player.positions = $scope.player.positions
+        } else {
+            $scope.player.positions =[];
+        }
+        var addPosition = {
+            'name': $scope.addPosition.name,
+            'player_id': $scope.addPosition._id
+        }
+        var currentPlayers = $scope.player.positions;
+        var updatedPositions = currentPlayers.concat(addPosition);
+        $scope.player.positions = updatedPositions
+    };
+    $scope.DeletePosition = function (position) {
+        var index = $scope.player.positions.indexOf(position)
+        $scope.player.positions.splice(index, 1);
+    };
 });
 
 /* Stat Controllers */

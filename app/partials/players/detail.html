@@ -11,10 +11,20 @@
     </div>
         <div class="col-xs-12">
             <div ng-show="playerForm.$visible">Position</div>
-            <div class="pull-left" editable-select="player.position" onshow="positions" e-ng-options="position.name for position in positions">
-                {{player.position.name}}
+            <table class="table table-striped">
+                <tr ng-repeat="position in player.positions | orderBy:player.position.name">
+                    <td class="col-xs-12">{{ position.name }}</td>
+                    <td class="text-danger pull-right"><span ng-show="playerForm.$visible" class="glyphicon glyphicon-remove" ng-click="DeletePosition(position)"></span></td>
+                </tr>
+            </table>
+            <div class="form-inline" ng-show="playerForm.$visible">
+                <select class="form-control" ng-model="addPosition"
+                    ng-options="position.name for position in positions | rosterFilter:player.positions">
+                    <option value="">-- Select a position --</option>
+                </select>
+                <a class="btn btn-sm btn-success" role="button" ng-click="AddPosition()">Add position</a>
             </div>
-            <div ng-hide="playerForm.$visible" class="pull-left" > / </div>
+            <div ng-hide="playerForm.$visible" class="pull-left" >#</div>
             <div ng-show="playerForm.$visible">Number</div>
             <div editable-text="player.number">{{player.number}}</div>
         </div>
