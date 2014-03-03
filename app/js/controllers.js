@@ -90,7 +90,7 @@ qStat.controller('playerDetailCtrl', function ($scope, $routeParams, $http) {
     $http.get('/api/teams').success(function (data, status, headers, config) {
         $scope.teams = data;
     });
-        $scope.AddPosition = function (positions) {
+    $scope.AddPosition = function (positions) {
         if ($scope.player.positions) {
             $scope.player.positions = $scope.player.positions
         } else {
@@ -129,6 +129,31 @@ qStat.controller('statCtrl', function ($http, $scope) {
         $scope.statistics = data;
     });
     
+    $scope.fouls =[ {
+        'foul_id': 'redCard',
+        'name': 'Red Card'
+    }, {
+        'foul_id': 'yellowCard',
+        'name': 'Yellow Card'
+    }]
+    
+    $scope.foulTypes =[ {
+        'foulType_id': 'procedureInfraction',
+        'name': 'Procedure Infraction'
+    },
+    {
+        'foulType_id': 'illegalContact',
+        'name': 'Illegal Contact'
+    },
+    {
+        'foulType_id': 'gameplayInfraction',
+        'name': 'Gameplay Infraction'
+    },
+    {
+        'foulType_id': 'unsportsmanlikeConduct',
+        'name': 'Unsportsmanlike Conduct'
+    }]
+    
     $scope.startTime = function () {
         var time = new Date()
         $scope.selectedGame.startTime = time;
@@ -142,7 +167,30 @@ qStat.controller('statCtrl', function ($http, $scope) {
         $scope.selectedGame.gameTime = time;
     };
     $scope.Add = function () {
-        if ($scope.selectedStat. double && $scope.success === true) {
+        if ($scope.selectedFoul) {
+            var newStat =[ {
+                'name': $scope.selectedFoul.name,
+                'statistic_id': $scope.selectedFoul.foul_id,
+                'type': {
+                    'name': $scope.selectedFoulType.name,
+                    'foulType_id': $scope.selectedFoulType.foulType_id
+                    },
+                'team': {
+                    'name': $scope.selectedTeam.name,
+                    'team_id': $scope.selectedTeam._id
+                },
+                'position': {
+                    'name': $scope.selectedPosition.name,
+                    'position_id': $scope.selectedPosition.position_id
+                },
+                'player': {
+                    'name': $scope.selectedPlayer.name,
+                    'player_id': $scope.selectedPlayer._id
+                },
+                'time': new Date(),
+                'attribute': $scope.selectedStat.attribute
+            }]
+        } else if ($scope.selectedStat.double && $scope.success === true) {
             var newStat =[ {
                 'name': $scope.selectedStat.primaryName,
                 'statistic_id': $scope.selectedStat.primary_id,
@@ -160,8 +208,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
                 },
                 'time': new Date(),
                 'attribute': $scope.selectedStat.attribute
-            },
-            {
+            }, {
                 'name': $scope.selectedStat.secondaryName,
                 'statistic_id': $scope.selectedStat.secondary_id,
                 'team': {
@@ -252,8 +299,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
             'name': 'possession',
             'value': team1value,
             'time': new Date()
-        },
-        {
+        }, {
             'team': {
                 'name': $scope.selectedGame.teams[1].name,
                 'team_id': $scope.selectedGame.teams[1]._id
