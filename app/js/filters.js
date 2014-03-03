@@ -72,7 +72,7 @@ angular.module('qStat.filters', []).
 }).
   filter('teamPlayerFilter', function () {
     return function (scope, player) {
-    if (!angular.isUndefined(scope) && !angular.isUndefined(player)) {
+    if (!angular.isUndefined(scope) && !angular.isUndefined(player) && player.length > 0) {
         var matches = []
         angular.forEach(scope, function (team) {
             angular.forEach(team.players, function (players) {
