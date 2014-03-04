@@ -115,7 +115,6 @@ qStat.controller('statCtrl', function ($http, $scope) {
     $http.get('/api/players').success(function (data, status, headers, config) {
         $scope.players = data;
     });
-    <!-- needs to be improved so it only selects players from game.selectedTeams -->
     $http.get('/api/teams').success(function (data, status, headers, config) {
         $scope.teams = data;
     });
@@ -132,7 +131,8 @@ qStat.controller('statCtrl', function ($http, $scope) {
     $scope.fouls =[ {
         'foul_id': 'redCard',
         'name': 'Red Card'
-    }, {
+    },
+    {
         'foul_id': 'yellowCard',
         'name': 'Yellow Card'
     }]
@@ -140,16 +140,13 @@ qStat.controller('statCtrl', function ($http, $scope) {
     $scope.foulTypes =[ {
         'foulType_id': 'procedureInfraction',
         'name': 'Procedure Infraction'
-    },
-    {
+    }, {
         'foulType_id': 'illegalContact',
         'name': 'Illegal Contact'
-    },
-    {
+    }, {
         'foulType_id': 'gameplayInfraction',
         'name': 'Gameplay Infraction'
-    },
-    {
+    }, {
         'foulType_id': 'unsportsmanlikeConduct',
         'name': 'Unsportsmanlike Conduct'
     }]
@@ -168,29 +165,48 @@ qStat.controller('statCtrl', function ($http, $scope) {
     };
     $scope.Add = function () {
         if ($scope.selectedFoul) {
-            var newStat =[ {
-                'name': $scope.selectedFoul.name,
-                'statistic_id': $scope.selectedFoul.foul_id,
-                'type': {
-                    'name': $scope.selectedFoulType.name,
-                    'foulType_id': $scope.selectedFoulType.foulType_id
+            if ($scope.selectedFoul.foul_id === 'yellowCard') {
+                var newStat =[ {
+                    'name': $scope.selectedFoul.name,
+                    'statistic_id': $scope.selectedFoul.foul_id,
+                    'type': {
+                        'name': $scope.selectedFoulType.name,
+                        'foulType_id': $scope.selectedFoulType.foulType_id
                     },
-                'team': {
-                    'name': $scope.selectedTeam.name,
-                    'team_id': $scope.selectedTeam._id
-                },
-                'position': {
-                    'name': $scope.selectedPosition.name,
-                    'position_id': $scope.selectedPosition.position_id
-                },
-                'player': {
-                    'name': $scope.selectedPlayer.name,
-                    'player_id': $scope.selectedPlayer._id
-                },
-                'time': new Date(),
-                'attribute': $scope.selectedStat.attribute
-            }]
-        } else if ($scope.selectedStat.double && $scope.success === true) {
+                    'team': {
+                        'name': $scope.selectedTeam.name,
+                        'team_id': $scope.selectedTeam._id
+                    },
+                    'position': {
+                        'name': $scope.selectedPosition.name,
+                        'position_id': $scope.selectedPosition.position_id
+                    },
+                    'player': {
+                        'name': $scope.selectedPlayer.name,
+                        'player_id': $scope.selectedPlayer._id
+                    },
+                    'time': new Date(),
+                }]
+            } else {
+                var newStat =[ {
+                    'name': $scope.selectedFoul.name,
+                    'statistic_id': $scope.selectedFoul.foul_id,
+                    'team': {
+                        'name': $scope.selectedTeam.name,
+                        'team_id': $scope.selectedTeam._id
+                    },
+                    'position': {
+                        'name': $scope.selectedPosition.name,
+                        'position_id': $scope.selectedPosition.position_id
+                    },
+                    'player': {
+                        'name': $scope.selectedPlayer.name,
+                        'player_id': $scope.selectedPlayer._id
+                    },
+                    'time': new Date(),
+                }]
+            }
+        } else if ($scope.selectedStat. double && $scope.success === true) {
             var newStat =[ {
                 'name': $scope.selectedStat.primaryName,
                 'statistic_id': $scope.selectedStat.primary_id,
@@ -208,7 +224,8 @@ qStat.controller('statCtrl', function ($http, $scope) {
                 },
                 'time': new Date(),
                 'attribute': $scope.selectedStat.attribute
-            }, {
+            },
+            {
                 'name': $scope.selectedStat.secondaryName,
                 'statistic_id': $scope.selectedStat.secondary_id,
                 'team': {
@@ -265,17 +282,13 @@ qStat.controller('statCtrl', function ($http, $scope) {
             };
         }
         
-        $scope.selectedTeam = {
-        }
         if ($scope.selectedPositionLock === true) {
         } else {
-            $scope.selectedPosition = {
-            }
+            $scope.selectedPosition = null;
         }
-        $scope.selectedPlayer = {
-        };
-        $scope.selectedStat = {
-        };
+        $scope.selectedTeam = null;
+        $scope.selectedPlayer = null;
+        $scope.selectedStat = null;
     };
     $scope. Delete = function (stat) {
         var index = $scope.selectedGame.statistics.indexOf(stat)
@@ -299,7 +312,8 @@ qStat.controller('statCtrl', function ($http, $scope) {
             'name': 'possession',
             'value': team1value,
             'time': new Date()
-        }, {
+        },
+        {
             'team': {
                 'name': $scope.selectedGame.teams[1].name,
                 'team_id': $scope.selectedGame.teams[1]._id

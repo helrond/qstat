@@ -31,7 +31,7 @@
                 <div class="form-group col-xs-12">
                     <label class="sr-only">Team</label>
                     <select name="team" class="form-control" ng-model="selectedTeam"
-                        ng-options="team.name for team in teams | teamFilter:selectedGame.teams | teamPlayerFilter:selectedPlayer" required>
+                        ng-options="team.name for team in teams | teamPlayerFilter:selectedPlayer | teamFilter:selectedGame.teams" required>
                         <option value="">-- Team --</option>
                     </select>
                 </div>
@@ -61,7 +61,6 @@
                         <option value="">-- Player number --</option>
                     </select>
                 </div>
-                <div class="col-xs-12">
                 <div class="form-group col-xs-6">
                     <label class="sr-only">Statistic Name</label>
                     <select class="form-control" ng-model="selectedStat" 
@@ -92,25 +91,26 @@
                         </div>
                     </div>
                 </div>
-                </div>
                 <div class="form-group col-xs-12">
-                    <div class="col-xs-6">
+                    <div class="form-group col-xs-6">
                     <select class="form-control" ng-model="selectedFoul" ng-options="foul.name for foul in fouls">
                         <option value="">-- Foul --</option>
                     </select>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="form-group col-xs-6">
                     <select class="form-control" ng-show="selectedFoul.name === 'Yellow Card'" ng-model="selectedFoulType" ng-options="type.name for type in foulTypes">
                         <option value="">-- Foul type --</option>
                     </select>
                     </div>
                 </div>
+                <div class="col-xs-12">
                 <button ng-show="stat.$error.required" class="btn btn-primary center-block" disabled="disabled">Add</button>
                 <button ng-hide="stat.$error.required" class="btn btn-primary center-block" ng-click="Add()">Add</button>
+                </div>
             </form>
-            <div>
+            <div class="col-xs-12">
                 <p>Game started at {{selectedGame.startTime | date:'h:mm:ss a'}}</p>
-                <table ng-model="selectedGame.statistics" class="table table-striped col-xs-12">
+                <table ng-model="selectedGame.statistics" class="table table-striped">
                     <tr>
                         <th class="col-xs-3">Player</th>
                         <th class="col-xs-2">Position</th>
