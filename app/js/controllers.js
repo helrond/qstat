@@ -98,7 +98,7 @@ qStat.controller('playerDetailCtrl', function ($scope, $routeParams, $http) {
         }
         var addPosition = {
             'name': $scope.addPosition.name,
-            'player_id': $scope.addPosition._id
+            'position_id': $scope.addPosition.position_id
         }
         var currentPlayers = $scope.player.positions;
         var updatedPositions = currentPlayers.concat(addPosition);
@@ -289,6 +289,8 @@ qStat.controller('statCtrl', function ($http, $scope) {
         $scope.selectedTeam = null;
         $scope.selectedPlayer = null;
         $scope.selectedStat = null;
+        $scope.selectedFoul = null
+        $scope.selectedFoulType = null;
     };
     $scope. Delete = function (stat) {
         var index = $scope.selectedGame.statistics.indexOf(stat)

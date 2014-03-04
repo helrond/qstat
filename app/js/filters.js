@@ -26,6 +26,24 @@ filter('positionFilter', function () {
         };
     }
 }).
+filter('positionPlayerFilter', function () {
+    return function (scope, positions) {
+        if (! angular.isUndefined(scope) && ! angular.isUndefined(positions) && positions.length > 0) {
+            var matches =[]
+            angular.forEach(scope, function (position) {
+                angular.forEach(positions, function (playerPosition) {
+                    if (angular.equals(playerPosition.position_id, position.position_id)) {
+                        matches.push(position);
+                    }
+                })
+            },
+            matches);
+            return (matches);
+        } else {
+            return scope
+        };
+    }
+}).
 filter('playerFilter', function () {
     return function (scope, team) {
         if (! angular.isUndefined(scope) && ! angular.isUndefined(team) && team.length > 0) {
