@@ -113,7 +113,7 @@ filter('rosterFilter', function () {
             return scope
         };
     }
-}).filter('checkmark', function () {
+}).filter('possessionFilter', function () {
     return function (input) {
         return input ? 'gain': 'lose';
     };

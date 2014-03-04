@@ -122,7 +122,7 @@
                         <td class="col-xs-3">{{stat.player.name}}</td>
                         <td class="col-xs-2">{{stat.position.name}}</td>
                         <td class="col-xs-3">{{stat.team.name}}</td>
-                        <td class="col-xs-2"><span ng-show="stat.value === false || stat.value === true">{{stat.value | checkmark}}&nbsp;</span>{{stat.name}}<span ng-show="stat.attribute">, {{stat.attribute}}</span></td>
+                        <td class="col-xs-2"><span ng-show="stat.value === false || stat.value === true">{{stat.value | possessionFilter}}&nbsp;</span>{{stat.name}}<span ng-show="stat.attribute">, {{stat.attribute}}</span><span ng-show="stat.type">&nbsp;({{stat.type.name}})</span></td>
                         <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}</td>
                         <td class="text-danger pull-right"><span class="glyphicon glyphicon-remove" ng-click="Delete(stat)"></span></td>
                     </tr>
@@ -148,7 +148,7 @@
                     <td class="col-xs-3">{{stat.player.name}}</td>
                     <td class="col-xs-2">{{stat.position.name}}</td>
                     <td class="col-xs-3">{{stat.team.name}}</td>
-                    <td class="col-xs-2"><span ng-show="stat.value === false || stat.value === true">{{stat.value | checkmark}}&nbsp;</span>{{stat.name}}<span ng-show="stat.attribute">, {{stat.attribute}}</span></td>
+                    <td class="col-xs-2"><span ng-show="stat.value === false || stat.value === true">{{stat.value | possessionFilter}}&nbsp;</span>{{stat.name}}<span ng-show="stat.attribute">, {{stat.attribute}}</span><span ng-show="stat.type">&nbsp;({{stat.type.name}})</span></td>
                     <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}</td>
                     <td class="text-danger pull-right"><span class="glyphicon glyphicon-remove" ng-click="Delete(stat)"></span></td>
                 </tr>

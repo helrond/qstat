@@ -270,7 +270,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
         });
         $scope.selectedGame.statistics = updatedGameStats;
         
-        if ($scope.selectedStat.primary_id === 'snitchCatch') {
+        if (!angular.isUndefined($scope.selectedStat) && $scope.selectedStat.primary_id === 'snitchCatch') {
             $scope.confirm = true
             $scope.endTime = new function () {
                 var time = new Date()
