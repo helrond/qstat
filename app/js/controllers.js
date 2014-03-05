@@ -152,16 +152,48 @@ qStat.controller('statCtrl', function ($http, $scope) {
     }]
     
     $scope.startTime = function () {
+        console.log('time started')
+        $scope.record = true
         var time = new Date()
         $scope.selectedGame.startTime = time;
     };
+    $scope.recordStats = function () {
+        console.log('recording stats')
+        $scope.statRecord = true
+    };
+    $scope.pauseTime = function () {
+        console.log('time paused')
+        $scope.pause = true
+        var time = new Date()
+        $scope.selectedGame.pauseStartTime = time
+    };
+    $scope.restartTime = function () {
+        if(angular.isUndefined($scope.selectedGame.pauseTime)){
+            $scope.selectedGame.pauseTime = []
+        }
+        console.log('time restarted')
+        $scope.pause = null
+        var time = new Date()
+        $scope.selectedGame.pauseEndTime = time
+        var pauseTime = $scope.selectedGame.pauseTime
+        var newPauseTime = $scope.selectedGame.pauseEndTime - $scope.selectedGame.pauseStartTime
+        console.log(newPauseTime)
+        $scope.selectedGame.pauseTime = +pauseTime + +newPauseTime
+        console.log(pauseTime)
+        $scope.selectedGame.pauseStartTime = []
+        $scope.selectedGame.pauseEndTime = []
+    };
     $scope.endTime = function () {
+        console.log('time stopped')
+        $scope.confirm = true
         var time = new Date()
         $scope.selectedGame.endTime = time;
+        var gameTime = $scope.selectedGame.endTime - $scope.selectedGame.startTime;
+        $scope.selectedGame.gameTime = gameTime - $scope.selectedGame.pauseTime;
     };
-    $scope.gameTime = function () {
-        var time = $scope.selectedGame.endTime - $scope.selectedGame.startTime;
-        $scope.selectedGame.gameTime = time;
+    $scope.endRecordStats = function () {
+        console.log('end recording stats')
+        $scope.confirm = true
     };
     $scope.Add = function () {
         if ($scope.selectedFoul) {

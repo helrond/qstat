@@ -7,21 +7,24 @@
         <option value="">-- Select a game --</option>
     </select>
         <div class="start" ng-show="selectedGame && !record">
-            <button class="btn btn-lg btn-success" ng-click="record = true; startTime()">Start</button>
+            <button class="btn btn-lg btn-success" ng-click="startTime()">Start</button>
             <p class="help-block">Timer will start for {{ selectedGame.name }}</p>
+        </div>
+        <div class="start" ng-show="selectedGame && record">
+            <button class="btn btn-lg btn-success" ng-click="recordStats()">Start</button>
         </div>
         <div ng-show="record && !confirm" class="record">
             <div class="col-xs-12">
                 <h4>Possession</h4>
                 <div class="radio">
                     <label>
-                        <input id="team1" name="switch" type="radio" value="{{selectedGame.teams[0]._id}}" ng-model="possessionTeam" ng-click="AddPossession()">
+                        <input id="team1" name="switch" type="radio" value="{{selectedGame.teams[0]._id}}" ng-model="possessionTeam" ng-click="AddPossession()"/>
                         {{selectedGame.teams[0].name}}
                     </label>
                 </div>
                 <div class="radio">
                     <label>
-                        <input id="team2" type="radio" value="{{selectedGame.teams[1]._id}}" ng-model="possessionTeam" ng-click="AddPossession()">
+                        <input id="team2" type="radio" value="{{selectedGame.teams[1]._id}}" ng-model="possessionTeam" ng-click="AddPossession()"/>
                             {{selectedGame.teams[1].name}}
                     </label>
                 </div>
@@ -129,8 +132,15 @@
                     </tr>
                 </table>
             </div>
-            <button class="btn btn-lg btn-danger center-block" ng-click="confirm = true; endTime(); gameTime();">Stop</button>
-            <p class="help-block text-center">Timer will stop for {{selectedGame.name}}</p>
+            <div ng-hide="statRecord" class="time col-xs-12 center-block">
+                <button ng-hide="pause" class="btn btn-lg btn-warning" ng-click="pauseTime()">Pause</button>
+                <button ng-show="pause" class="btn btn-lg btn-warning" ng-click="restartTime()">Restart</button>
+                <button class="btn btn-lg btn-danger" ng-click="endTime();">Stop</button>
+                <p class="help-block text-center">Timer will stop for {{selectedGame.name}}</p>
+            </div>
+            <div ng-show="statRecord" class="stats col-xs-12">
+                <button class="btn btn-lg btn-danger center-block" ng-click="endRecordStats()">Stop</button>
+            </div>
         </div>
 
         <div ng-show="confirm">
