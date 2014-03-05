@@ -13,10 +13,7 @@ var playerSchema = new Schema({
     image: String,
     number: String,
     description: String,
-    position: {
-        name: String,
-        position_id: String
-    },
+    positions: [],
     statistics:[]
 });
 var teamSchema = new Schema({
@@ -107,7 +104,7 @@ exports.playerAdd = function (req, res) {
         number: req.body.number,
         description: req.body.description,
         team:[req.body.team],
-        position: req.body.position
+        positions: req.body.positions
     });
     player.save(function (err) {
         if (! err) {
@@ -130,7 +127,7 @@ exports.playerUpdate = function (req, res) {
             player.number = req.body.number,
             player.description = req.body.description,
             player.team = req.body.team,
-            player.position = req.body.position,
+            player.positions = req.body.positions,
             player.save(function (err) {
                 if (! err) {
                     res.json(true);
