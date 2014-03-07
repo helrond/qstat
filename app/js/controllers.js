@@ -302,7 +302,8 @@ qStat.controller('statCtrl', function ($http, $scope) {
         });
         $scope.selectedGame.statistics = updatedGameStats;
         
-        if (!angular.isUndefined($scope.selectedStat) && $scope.selectedStat.primary_id === 'snitchCatch') {
+        if (!angular.isUndefined($scope.selectedStat) && $scope.selectedStat != null) {
+        if ($scope.selectedStat.primary_id === 'snitchCatch') {
             $scope.confirm = true
             $scope.endTime = new function () {
                 var time = new Date()
@@ -312,6 +313,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
                 var time = $scope.selectedGame.endTime - $scope.selectedGame.startTime;
                 $scope.selectedGame.gameTime = time;
             };
+          }
         }
         
         if ($scope.selectedPositionLock === true) {
