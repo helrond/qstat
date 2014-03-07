@@ -10,9 +10,6 @@
             <button class="btn btn-lg btn-success" ng-click="startTime()">Start</button>
             <p class="help-block">Timer will start for {{ selectedGame.name }}</p>
         </div>
-        <div class="start" ng-show="selectedGame && record">
-            <button class="btn btn-lg btn-success" ng-click="recordStats()">Start</button>
-        </div>
         <div ng-show="record && !confirm" class="record">
             <div class="col-xs-12">
                 <h4>Possession</h4>
@@ -106,9 +103,16 @@
                     </select>
                     </div>
                 </div>
-                <div class="col-xs-12">
-                <button ng-show="stat.$error.required" class="btn btn-primary center-block" disabled="disabled">Add</button>
-                <button ng-hide="stat.$error.required" class="btn btn-primary center-block" ng-click="Add()">Add</button>
+                <div ng-hide="statRecord" class="time col-xs-12 center-block">
+                    <button ng-show="stat.$error.required" class="btn btn-success" disabled="disabled">Add</button>
+                    <button ng-hide="stat.$error.required" class="btn btn-success" ng-click="Add()">Add</button>
+                    <button ng-hide="pause" class="btn btn-warning pull-right" ng-click="pauseTime()">Pause</button>
+                    <button ng-show="pause" class="btn btn-warning pull-right" ng-click="restartTime()">Restart</button>
+                    <button class="btn btn-danger pull-right" ng-click="endTime();">Stop</button>
+                </div>
+                <div ng-show="statRecord" class="stats col-xs-12">
+                    <button ng-show="stat.$error.required" class="btn btn-success" disabled="disabled">Add</button>
+                    <button ng-hide="stat.$error.required" class="btn btn-success" ng-click="Add()">Add</button><button class="btn btn-danger center-block" ng-click="endRecordStats()">Stop</button>
                 </div>
             </form>
             <div class="col-xs-12">
@@ -130,15 +134,6 @@
                         <td class="text-danger pull-right"><span class="glyphicon glyphicon-remove" ng-click="Delete(stat)"></span></td>
                     </tr>
                 </table>
-            </div>
-            <div ng-hide="statRecord" class="time col-xs-12 center-block">
-                <button ng-hide="pause" class="btn btn-lg btn-warning" ng-click="pauseTime()">Pause</button>
-                <button ng-show="pause" class="btn btn-lg btn-warning" ng-click="restartTime()">Restart</button>
-                <button class="btn btn-lg btn-danger" ng-click="endTime();">Stop</button>
-                <p class="help-block text-center">Timer will stop for {{selectedGame.name}}</p>
-            </div>
-            <div ng-show="statRecord" class="stats col-xs-12">
-                <button class="btn btn-lg btn-danger center-block" ng-click="endRecordStats()">Stop</button>
             </div>
         </div>
 
