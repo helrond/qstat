@@ -14,7 +14,21 @@
 			<th class="col-xs-3">Location</th>
 			<th class="col-xs-3">Date</th>
 		</tr>
-		<tr ng-repeat="game in games | filter:query | orderBy:game.name" ng-hide="game.date">
+		<tr ng-repeat="game in games | filter:query | orderBy:game.name" ng-hide="game.date || game.inProgress">
+			<td class="col-xs-6"><a href="#/games/{{game._id}}">{{ game.name }}</a></td>
+			<td class="col-xs-3">{{game.location.name}}</td>
+			<td class="col-xs-3">{{game.date | date:'longDate'}}</td>
+			<td class="text-danger pull-right" href="#"><span class="glyphicon glyphicon-remove" ng-click="Delete(game)"></span></td>
+		</tr>
+	</table>
+	<h3>In Progress Games</h3>
+	<table class="table table-striped">
+		<tr>
+			<th class="col-xs-6">Game</th>
+			<th class="col-xs-3">Location</th>
+			<th class="col-xs-3">Date</th>
+		</tr>
+		<tr ng-repeat="game in games | filter:query | orderBy:game.date:true" ng-show="game.inProgress">
 			<td class="col-xs-6"><a href="#/games/{{game._id}}">{{ game.name }}</a></td>
 			<td class="col-xs-3">{{game.location.name}}</td>
 			<td class="col-xs-3">{{game.date | date:'longDate'}}</td>

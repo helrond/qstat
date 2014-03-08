@@ -131,8 +131,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
     $scope.fouls =[ {
         'foul_id': 'redCard',
         'name': 'Red Card'
-    },
-    {
+    }, {
         'foul_id': 'yellowCard',
         'name': 'Yellow Card'
     }]
@@ -140,13 +139,16 @@ qStat.controller('statCtrl', function ($http, $scope) {
     $scope.foulTypes =[ {
         'foulType_id': 'procedureInfraction',
         'name': 'Procedure Infraction'
-    }, {
+    },
+    {
         'foulType_id': 'illegalContact',
         'name': 'Illegal Contact'
-    }, {
+    },
+    {
         'foulType_id': 'gameplayInfraction',
         'name': 'Gameplay Infraction'
-    }, {
+    },
+    {
         'foulType_id': 'unsportsmanlikeConduct',
         'name': 'Unsportsmanlike Conduct'
     }]
@@ -156,10 +158,18 @@ qStat.controller('statCtrl', function ($http, $scope) {
         $scope.record = true
         var time = new Date()
         $scope.selectedGame.startTime = time;
+        var gameId = $scope.selectedGame._id
+        var status = {
+            'teams': $scope.selectedGame.teams,
+            '_id': gameId,
+            'inProgress': true
+        }
+        $http.put('/api/games/' + gameId, status).success(function (data) {
+        })
     };
     $scope.recordStats = function () {
         console.log('recording stats')
-        $scope.statRecord = true
+        $scope.record = true
     };
     $scope.pauseTime = function () {
         console.log('time paused')
@@ -168,8 +178,8 @@ qStat.controller('statCtrl', function ($http, $scope) {
         $scope.selectedGame.pauseStartTime = time
     };
     $scope.restartTime = function () {
-        if(angular.isUndefined($scope.selectedGame.pauseTime)){
-            $scope.selectedGame.pauseTime = []
+        if (angular.isUndefined($scope.selectedGame.pauseTime)) {
+            $scope.selectedGame.pauseTime =[]
         }
         console.log('time restarted')
         $scope.pause = null
@@ -178,10 +188,10 @@ qStat.controller('statCtrl', function ($http, $scope) {
         var pauseTime = $scope.selectedGame.pauseTime
         var newPauseTime = $scope.selectedGame.pauseEndTime - $scope.selectedGame.pauseStartTime
         console.log(newPauseTime)
-        $scope.selectedGame.pauseTime = +pauseTime + +newPauseTime
+        $scope.selectedGame.pauseTime = + pauseTime + + newPauseTime
         console.log(pauseTime)
-        $scope.selectedGame.pauseStartTime = []
-        $scope.selectedGame.pauseEndTime = []
+        $scope.selectedGame.pauseStartTime =[]
+        $scope.selectedGame.pauseEndTime =[]
     };
     $scope.endTime = function () {
         console.log('time stopped')
@@ -189,7 +199,12 @@ qStat.controller('statCtrl', function ($http, $scope) {
         var time = new Date()
         $scope.selectedGame.endTime = time;
         var gameTime = $scope.selectedGame.endTime - $scope.selectedGame.startTime;
-        $scope.selectedGame.gameTime = gameTime - $scope.selectedGame.pauseTime;
+        if (! angular.isUndefined($scope.selectedGame.pauseTime) && $scope.selectedGame.pauseTime != null) {
+            $scope.selectedGame.gameTime = gameTime - $scope.selectedGame.pauseTime
+        } else {
+            $scope.selectedGame.gameTime = gameTime
+        }
+        $scope.selectedGame.inProgress = false;
     };
     $scope.endRecordStats = function () {
         console.log('end recording stats')
@@ -256,8 +271,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
                 },
                 'time': new Date(),
                 'attribute': $scope.selectedStat.attribute
-            },
-            {
+            }, {
                 'name': $scope.selectedStat.secondaryName,
                 'statistic_id': $scope.selectedStat.secondary_id,
                 'team': {
@@ -302,18 +316,18 @@ qStat.controller('statCtrl', function ($http, $scope) {
         });
         $scope.selectedGame.statistics = updatedGameStats;
         
-        if (!angular.isUndefined($scope.selectedStat) && $scope.selectedStat != null) {
-        if ($scope.selectedStat.primary_id === 'snitchCatch') {
-            $scope.confirm = true
-            $scope.endTime = new function () {
-                var time = new Date()
-                $scope.selectedGame.endTime = time;
-            };
-            $scope.gameTime = new function () {
-                var time = $scope.selectedGame.endTime - $scope.selectedGame.startTime;
-                $scope.selectedGame.gameTime = time;
-            };
-          }
+        if (! angular.isUndefined($scope.selectedStat) && $scope.selectedStat != null) {
+            if ($scope.selectedStat.primary_id === 'snitchCatch') {
+                $scope.confirm = true
+                $scope.endTime = new function () {
+                    var time = new Date()
+                    $scope.selectedGame.endTime = time;
+                };
+                $scope.gameTime = new function () {
+                    var time = $scope.selectedGame.endTime - $scope.selectedGame.startTime;
+                    $scope.selectedGame.gameTime = time;
+                };
+            }
         }
         
         if ($scope.selectedPositionLock === true) {
@@ -348,8 +362,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
             'name': 'possession',
             'value': team1value,
             'time': new Date()
-        },
-        {
+        }, {
             'team': {
                 'name': $scope.selectedGame.teams[1].name,
                 'team_id': $scope.selectedGame.teams[1]._id
