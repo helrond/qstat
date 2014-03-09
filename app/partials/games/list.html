@@ -17,8 +17,9 @@
 		<tr ng-repeat="game in games | filter:query | orderBy:game.name" ng-hide="game.date || game.inProgress">
 			<td class="col-xs-6"><a href="#/games/{{game._id}}">{{ game.name }}</a></td>
 			<td class="col-xs-3">{{game.location.name}}</td>
-			<td class="col-xs-3">{{game.date | date:'longDate'}}</td>
-			<td class="text-danger pull-right" href="#"><span class="glyphicon glyphicon-remove" ng-click="Delete(game)"></span></td>
+			<td class="col-xs-3">{{game.date | date:'longDate'}}
+				<span href="#" class="glyphicon glyphicon-remove text-danger pull-right" ng-click="Delete(game)"></span>
+			</td>
 		</tr>
 	</table>
 	<h3>In Progress Games</h3>
@@ -31,8 +32,9 @@
 		<tr ng-repeat="game in games | filter:query | orderBy:game.date:true" ng-show="game.inProgress">
 			<td class="col-xs-6"><a href="#/games/{{game._id}}">{{ game.name }}</a></td>
 			<td class="col-xs-3">{{game.location.name}}</td>
-			<td class="col-xs-3">{{game.date | date:'longDate'}}</td>
-			<td class="text-danger pull-right" href="#"><span class="glyphicon glyphicon-remove" ng-click="Delete(game)"></span></td>
+			<td class="col-xs-3">{{game.date | date:'longDate'}}
+				<span href="#" class="glyphicon glyphicon-remove text-danger pull-right" ng-click="Delete(game)"></span>
+			</td>
 		</tr>
 	</table>
 	<h3>Past Games</h3>
@@ -45,9 +47,10 @@
     	<tr ng-repeat="game in games | filter:query | orderBy:game.date:true" ng-show="game.date">
     		<td class="col-xs-6"><a href="#/games/{{game._id}}">{{ game.name }}</a></td>
     		<td class="col-xs-3">{{game.location.name}}</td>
-    		<td class="col-xs-3">{{game.date | date:'longDate'}}</td>
-            <td class="text-danger pull-right" href="#"><span class="glyphicon glyphicon-remove" ng-click="Delete(game)"></span></td>
+    		<td class="col-xs-3">{{game.date | date:'longDate'}}
+    			<span class="glyphicon glyphicon-remove text-danger pull-right" href="#" ng-click="Delete(game)"></span>
+    		</td>
         </tr>
     </table>
 	<a href="#/games/new" class="btn btn-sm btn-success" role="button" ng-click="new">Add new</a>
-</div>
+</div
