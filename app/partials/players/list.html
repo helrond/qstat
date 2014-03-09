@@ -9,7 +9,12 @@
     </div>
 	<table class="table table-striped">
     	<tr ng-repeat="player in players | filter:query | orderBy:orderProp">
-    		<td class="col-xs-12"><a href="#/players/{{player._id}}">{{ player.name }} (#{{player.number}})</a>
+    		<td class="col-xs-6"><a href="#/players/{{player._id}}">{{ player.name }} (#{{player.number}})</a></td>
+    		<td class="col-xs-6">{{player.positions[0].name}}
+    			<span ng-show="player.positions[1].name">, {{player.positions[1].name}}</span>
+    			<span ng-show="player.positions[2].name">, {{player.positions[2].name}}</span>
+    			<span ng-show="player.positions[3].name">, {{player.positions[3].name}}</span>
+    			<span ng-show="player.positions[4].name">, {{player.positions[4].name}}</span>
     			<span href="#" class="text-danger pull-right glyphicon glyphicon-remove" ng-click="Delete(player)"></span>
     		</td>
         </tr>
