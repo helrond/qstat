@@ -11,6 +11,14 @@
             <p class="help-block">Timer will start for {{ selectedGame.name }}</p>
         </div>
         <div ng-show="selectedGame && !confirm && (selectedGame.inProgress || record)" class="record">
+            <div ng-show="selectedGame.inProgress" class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                Someone else is already timing this game. You can only record statistics.
+            </div>
+            <div ng-hide="selectedGame.inProgress" class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                You are the official timer for this game. No pressure or anything!
+            </div>
             <div class="col-xs-12">
                 <h4>Possession</h4>
                 <div class="radio">
