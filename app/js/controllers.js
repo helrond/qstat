@@ -468,3 +468,15 @@ qStat.controller('teamDetailCtrl', function ($http, $scope, $routeParams) {
         $scope.players = data;
     });
 });
+
+// USER CONTROLLERS
+qStat.controller('userCtrl', function ($scope, $http) {
+    //$http.get('/api/users').success(function (data, status, headers, config) {
+    //    $scope.teams = data;
+    //});
+});
+qStat.controller('userDetailCtrl', function ($scope, $http) {
+    //$http.get('/api/users').success(function (data, status, headers, config) {
+    //    $scope.teams = data;
+    //});
+});

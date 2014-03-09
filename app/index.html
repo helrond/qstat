@@ -11,7 +11,11 @@
 <body>
   <div id="wrap">
 <header>
-<h1><a href="#">q.stat</a></h1>
+<h1 class="pull-left"><a href="#">q.stat</a></h1>
+  <div class="login pull-right">
+    <span ng-show="user.authenticated">Welcome {{user.first_name}} | <a href="#/users/{{userId}}">Profile</a> | <a href="#">Log Out</a></span>
+    <span ng-hide="user.authenticated"><a href="#/login">Log in</a></span>
+  </div>
 </header>
 	<ul class="nav nav-tabs" ng-controller="navCtrl">
 	  <li ng-class="{active:isActive('/games')}"><a href="#/games">Games</a></li>

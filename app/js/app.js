@@ -34,6 +34,10 @@ function ($routeProvider) {
         templateUrl: 'partials/players/detail.html', controller: 'playerDetailCtrl'
     }).when('/stats', {
         templateUrl: 'partials/stats/stats.html', controller: 'statCtrl'
+    }).when('/login', {
+        templateUrl: 'partials/users/login.html', controller: 'userCtrl'
+    }).when('/users/:userId', {
+        templateUrl: 'partials/users/detail.html', controller: 'userDetailCtrl'
     }).otherwise({
         redirectTo: '/'
     });

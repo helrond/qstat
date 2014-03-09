@@ -24,7 +24,6 @@ var teamSchema = new Schema({
     players: [],
     url: String,
     description: String,
-    statistics:[statisticSchema]
 });
 var gameSchema = new Schema({
     '@context': {
@@ -42,7 +41,8 @@ var gameSchema = new Schema({
     },
     date: String,
     time: String,
-    statistics:[statisticSchema]
+    statistics:[],
+    inProgress: Boolean
 });
 var statisticSchema = new Schema({
     name: String,
@@ -217,7 +217,6 @@ exports.teamUpdate = function (req, res) {
             team.players = req.body.players,
             team.url = req.body.url,
             team.description = req.body.description,
-            team.statistics = req.body.statistics
             team.save(function (err) {
                 if (! err) {
                     res.json(true);
@@ -292,12 +291,13 @@ exports.gameUpdate = function (req, res) {
     var id = req.body._id;
     if (id) {
         gameModel.findById(id, function (err, game) {
-            game.name = req.body.teams[0].name + ' vs ' + req.body.teams[1].name,
+            game.name = req.body.teams[0].name + ' vs ' + req.body.teams[1].name
             game.teams = req.body.teams,
             game.location = req.body.location,
             game.date = req.body.startTime,
             game.time = req.body.gameTime,
-            game.statistics = req.body.statistics
+            game.statistics = req.body.statistics,
+            game.inProgress = req.body.inProgress
             game.save(function (err) {
                 if (! err) {
                     res.json(true);

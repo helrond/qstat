@@ -14,22 +14,25 @@ body{
 }
 
 header{
-    text-align:center;
     background-color:#000;
     height:2.5em;
+    padding: 0 1em;
 }
 header h1{
     margin:0;
     font-size:2em;
 }
-header h1 a{
+header h1 a, header .login a, header .login {
     color:#fff;
     margin:0;
 }
-header h1 a:hover{
+header h1 a:hover, header .login a:hover{
     color:#ccc;
     text-decoration:none;
 }
+
+.login {padding-top:.5em;}
+
 .breadcrumb{
     margin-top:20px;
 }
