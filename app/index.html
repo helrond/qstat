@@ -13,7 +13,7 @@
 <header>
 <h1 class="pull-left"><a href="#">q.stat</a></h1>
   <div class="login pull-right">
-    <span ng-show="user.authenticated">Welcome {{user.first_name}} | <a href="#/users/{{userId}}">Profile</a> | <a href="#/login" ua-logout>Log Out</a></span>
+    <span ng-show="user.authenticated"><b>{{user.first_name}}</b> | <a href="#/users/{{user.user_id}}">Profile</a> | <a href="#/login" ua-logout>Log Out</a></span>
     <span ng-hide="user.authenticated"><a href="#/login">Log in</a></span>
   </div>
 </header>

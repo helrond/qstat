@@ -135,4 +135,11 @@ filter('rosterFilter', function () {
     return function (input) {
         return input ? 'gain': 'lose';
     };
+}).filter('permissionsFilter', function () {
+    return function (permissions, permission) {
+    angular.forEach(permissions, function (permission) {
+    console.log(permission)
+        return input ? 'Add, delete, edit and update' + permission: '';
+        })
+    };
 });

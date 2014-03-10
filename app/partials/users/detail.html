@@ -1,3 +1,15 @@
 <div ng-controller="userDetailCtrl">
-	<!-- Add stuff here -->
+    <h2>Profile</h2>
+    <h3>{{user.first_name}} {{user.last_name}}</h3>
+    <p>{{user.email}}</p>
+    <h4>Permissions:</h4>
+        <ul>
+            <li ng-show="user.permissions.games">Add, delete or edit games</li>
+            <li ng-show="user.permissions.players">Add, delete or edit players</li>
+            <li ng-show="user.permissions.teams">Add, delete or edit teams</li>
+            <li ng-show="user.permissions.stats">Add, delete or edit stats</li>
+        </ul>
+    <hr/>
+    <p>Created: {{user.created_at | date:'longDate'}}</p>
+    <p>Last updated: {{user.updated_at | date:'longDate'}}</p>
 </div>
