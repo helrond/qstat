@@ -13,7 +13,7 @@
 <header>
 <h1 class="pull-left"><a href="#">q.stat</a></h1>
   <div class="login pull-right">
-    <span ng-show="user.authenticated">Welcome {{user.first_name}} | <a href="#/users/{{userId}}">Profile</a> | <a href="#">Log Out</a></span>
+    <span ng-show="user.authenticated">Welcome {{user.first_name}} | <a href="#/users/{{userId}}">Profile</a> | <a href="#/login" ua-logout>Log Out</a></span>
     <span ng-hide="user.authenticated"><a href="#/login">Log in</a></span>
   </div>
 </header>
@@ -21,7 +21,7 @@
 	  <li ng-class="{active:isActive('/games')}"><a href="#/games">Games</a></li>
 	  <li ng-class="{active:isActive('/teams')}"><a href="#/teams">Teams</a></li>
 	  <li ng-class="{active:isActive('/players')}"><a href="#/players">Players</a></li>
-	  <li ng-class="{active:isActive('/stats')}" class="pull-right"><a href="#/stats">Stats</a></li>
+	  <li ng-show="user.permissions.stats" ng-class="{active:isActive('/stats')}" class="pull-right"><a href="#/stats">Stats</a></li>
   	</ul>
   
 	   <div class="content col-xs-11 center-block">
@@ -46,5 +46,7 @@
   <script src="js/xeditable.js"></script>
   <script src="js/jquery-2.1.0.min.js"></script>
   <script src="js/bootstrap.js"></script>
+  <script src="https://app.userapp.io/js/userapp.client.js"></script>
+  <script src="js/userapp.js"></script>
 </body>
 </html>

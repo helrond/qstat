@@ -15,9 +15,9 @@
     			<span ng-show="player.positions[2].name">, {{player.positions[2].name}}</span>
     			<span ng-show="player.positions[3].name">, {{player.positions[3].name}}</span>
     			<span ng-show="player.positions[4].name">, {{player.positions[4].name}}</span>
-    			<span href="#" class="text-danger pull-right glyphicon glyphicon-remove" ng-click="Delete(player)"></span>
+    			<span ng-show="user.permissions.players" href="#" class="text-danger pull-right glyphicon glyphicon-remove" ng-click="Delete(player)"></span>
     		</td>
         </tr>
     </table>
-	<a href="#/players/new" class="btn btn-sm btn-success" role="button">add new</a>
+	<a ng-show="user.permissions.players" href="#/players/new" class="btn btn-sm btn-success" role="button">add new</a>
 </div>

@@ -28,7 +28,7 @@
         </div>
         <div col-xs-12>
             <button type="button" class="btn btn-default btn-sm" ng-click="gameForm.$show()"
-                ng-show="!gameForm.$visible"> Edit </button>
+                ng-show="!gameForm.$visible && user.permissions.games"> Edit </button>
             <span ng-show="gameForm.$visible">
                 <button class="btn btn-primary" ng-disabled="gameForm.$waiting"> Save </button>
                 <button type="button" class="btn btn-danger" ng-disabled="gameForm.$waiting"
