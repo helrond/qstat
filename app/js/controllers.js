@@ -74,7 +74,7 @@ qStat.controller('playerDetailCtrl', function ($scope, $routeParams, $http) {
         $scope.player = {
         };
     };
-    $scope.statistics = [] //To be added later; pull all game stats and then filter for just the ones for this player
+    $scope.statistics =[] //To be added later; pull all game stats and then filter for just the ones for this player
     $scope.Add = function () {
         $http.post('/api/players', $scope.player).success(function (data) {
             window.location.href = "/#/players";
@@ -234,6 +234,10 @@ qStat.controller('statCtrl', function ($http, $scope) {
                         'player_id': $scope.selectedPlayer._id
                     },
                     'time': new Date(),
+                    'scorekeeper': {
+                        'name': $scope.scorekeeper.name,
+                        'scorekeeper_id': $scope.user._id
+                    }
                 }]
             } else {
                 var newStat =[ {
@@ -252,6 +256,10 @@ qStat.controller('statCtrl', function ($http, $scope) {
                         'player_id': $scope.selectedPlayer._id
                     },
                     'time': new Date(),
+                    'scorekeeper': {
+                        'name': $scope.scorekeeper.name,
+                        'scorekeeper_id': $scope.user._id
+                    }
                 }]
             }
         } else if ($scope.selectedStat. double && $scope.success === true) {
@@ -271,7 +279,11 @@ qStat.controller('statCtrl', function ($http, $scope) {
                     'player_id': $scope.selectedPlayer._id
                 },
                 'time': new Date(),
-                'attribute': $scope.selectedStat.attribute
+                'attribute': $scope.selectedStat.attribute,
+                'scorekeeper': {
+                    'name': $scope.scorekeeper.name,
+                    'scorekeeper_id': $scope.user._id
+                }
             }, {
                 'name': $scope.selectedStat.secondaryName,
                 'statistic_id': $scope.selectedStat.secondary_id,
@@ -288,7 +300,11 @@ qStat.controller('statCtrl', function ($http, $scope) {
                     'player_id': $scope.selectedPlayer._id
                 },
                 'time': new Date(),
-                'attribute': $scope.selectedStat.attribute
+                'attribute': $scope.selectedStat.attribute,
+                'scorekeeper': {
+                    'name': $scope.scorekeeper.name,
+                    'scorekeeper_id': $scope.user._id
+                }
             }]
         } else {
             var newStat =[ {
@@ -307,7 +323,11 @@ qStat.controller('statCtrl', function ($http, $scope) {
                     'player_id': $scope.selectedPlayer._id
                 },
                 'time': new Date(),
-                'attribute': $scope.selectedStat.attribute
+                'attribute': $scope.selectedStat.attribute,
+                'scorekeeper': {
+                    'name': $scope.scorekeeper.name,
+                    'scorekeeper_id': $scope.user._id
+                }
             }]
         }
         var currentGameStats = $scope.selectedGame.statistics;
@@ -362,7 +382,11 @@ qStat.controller('statCtrl', function ($http, $scope) {
             },
             'name': 'possession',
             'value': team1value,
-            'time': new Date()
+            'time': new Date(), 
+            'scorekeeper': {
+                'name': $scope.scorekeeper.name,
+                'scorekeeper_id': $scope.user._id
+            }
         }, {
             'team': {
                 'name': $scope.selectedGame.teams[1].name,
@@ -370,7 +394,11 @@ qStat.controller('statCtrl', function ($http, $scope) {
             },
             'name': 'possession',
             'value': team2value,
-            'time': new Date()
+            'time': new Date(),
+            'scorekeeper': {
+                    'name': $scope.scorekeeper.name,
+                    'scorekeeper_id': $scope.user._id
+                }
         }]
         var currentGameStats = $scope.selectedGame.statistics;
         var updatedGameStats = currentGameStats.concat(newStat);
@@ -386,7 +414,6 @@ qStat.controller('statCtrl', function ($http, $scope) {
         $http.put('/api/games/' + gameId, $scope.selectedGame).success(function (data) {
             window.location.href = "/#/games";
         });
-
     }
 });
 

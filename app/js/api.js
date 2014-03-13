@@ -14,7 +14,6 @@ var playerSchema = new Schema({
     number: String,
     description: String,
     positions: [],
-    statistics:[]
 });
 var teamSchema = new Schema({
     '@context': {
@@ -59,7 +58,11 @@ var statisticSchema = new Schema({
         name: String,
         team_id: String
     }],
-    time: String
+    time: String,
+    scorekeeper: [{
+        name: String,
+        scorekeeper_id: String
+    }]
 });
 var positionSchema = new Schema({
     '@context': {
@@ -138,22 +141,8 @@ exports.playerUpdate = function (req, res) {
                 }
             });
         });
-    } else if (player_id) {
-        playerModel.findById(player_id, function (err, player) {
-            player.statistics = player.statistics.concat(req.body.statistics)
-            player.save(function (err) {
-                if (! err) {
-                    res.json(true);
-                    console.log("Player stats updated");
-                } else {
-                    res.json(false);
-                    console.log(err);
-                }
-            });
-        });
     }
 }
-
 exports.playerDelete = function (req, res) {
     return playerModel.findById(req.params.id, function (err, player) {
         return player.remove(function (err) {
@@ -297,7 +286,7 @@ exports.gameUpdate = function (req, res) {
             game.date = req.body.startTime,
             game.time = req.body.gameTime,
             game.statistics = req.body.statistics,
-            game.inProgress = req.body.inProgress
+            game.inProgress = req.body.inProgress,
             game.save(function (err) {
                 if (! err) {
                     res.json(true);
