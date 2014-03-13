@@ -122,8 +122,6 @@
                     <button ng-show="pause" class="btn btn-warning pull-right" ng-click="restartTime()">Restart</button>
                     <button class="btn btn-danger pull-right" ng-click="endTime();">Stop</button>
                 </div>
-                {{scorekeeper.name}}
-                {{selectedGame.statistics}}
                 <div ng-show="selectedGame.inProgress" class="stats col-xs-12">
                     <button ng-show="stat.$error.required" class="btn btn-success" disabled="disabled">Add</button>
                     <button ng-hide="stat.$error.required" class="btn btn-success" ng-click="Add()">Add</button>

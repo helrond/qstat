@@ -62,7 +62,12 @@ var statisticSchema = new Schema({
     scorekeeper: [{
         name: String,
         scorekeeper_id: String
-    }]
+    }],
+    disputed: [{
+        status: Boolean,
+        reason: String,
+        user: String 
+        time: String }]
 });
 var positionSchema = new Schema({
     '@context': {

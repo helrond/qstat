@@ -49,6 +49,26 @@ qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
         success(function (data) {
         });
     };
+    $scope. Delete = function (stat) {
+        var index = $scope.game.statistics.indexOf(stat)
+        $scope.game.statistics.splice(index, 1);
+        $http.put('/api/games/' + $routeParams.gameId, $scope.game).success(function () {
+        });
+    }
+    $scope.Dispute = function (stat) {
+        var dispute = {
+        'status':true,
+        //'reason': $scope.reason,
+        //'user': $scope.user.name,
+        'time': new Date()
+        }
+        stat.disputed = dispute;
+        $http.put('/api/games/' + $routeParams.gameId, $scope.game).success(function () {
+        });
+    }
+    $scope.Reason = function (stat) {
+    alert('show dialog with reason for stat dispute plus user info for disputee')
+    }
 });
 
 /* Player Controllers */
@@ -382,7 +402,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
             },
             'name': 'possession',
             'value': team1value,
-            'time': new Date(), 
+            'time': new Date(),
             'scorekeeper': {
                 'name': $scope.scorekeeper.name,
                 'scorekeeper_id': $scope.user._id
@@ -396,9 +416,9 @@ qStat.controller('statCtrl', function ($http, $scope) {
             'value': team2value,
             'time': new Date(),
             'scorekeeper': {
-                    'name': $scope.scorekeeper.name,
-                    'scorekeeper_id': $scope.user._id
-                }
+                'name': $scope.scorekeeper.name,
+                'scorekeeper_id': $scope.user._id
+            }
         }]
         var currentGameStats = $scope.selectedGame.statistics;
         var updatedGameStats = currentGameStats.concat(newStat);
