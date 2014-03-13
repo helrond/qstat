@@ -74,6 +74,7 @@ qStat.controller('playerDetailCtrl', function ($scope, $routeParams, $http) {
         $scope.player = {
         };
     };
+    $scope.statistics = [] //To be added later; pull all game stats and then filter for just the ones for this player
     $scope.Add = function () {
         $http.post('/api/players', $scope.player).success(function (data) {
             window.location.href = "/#/players";
@@ -384,28 +385,8 @@ qStat.controller('statCtrl', function ($http, $scope) {
         var gameId = $scope.selectedGame._id
         $http.put('/api/games/' + gameId, $scope.selectedGame).success(function (data) {
             window.location.href = "/#/games";
-        })
-        var stats = $scope.selectedGame.statistics
-        angular.forEach(stats, function (stat) {
-            if (! angular.isUndefined(stat.player)) {
-                var newStat = {
-                    'player_id': stat.player.player_id,
-                    'statistics':[ {
-                        'name': stat.name,
-                        'statistic_id': stat.statistic_id,
-                        'team': stat.team,
-                        'position': stat.position,
-                        'time': stat.time,
-                        'attribute': stat.attribute
-                    }]
-                }
-                var playerId = stat.player.player_id
-                console.log(newStat)
-                $http.put('api/players/' + playerId, newStat);
-            }
         });
-        // iterate through stats, add stat matching stat.player.player_id with players.player_id
-        // put stats in player
+
     }
 });
 
