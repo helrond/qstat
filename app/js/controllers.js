@@ -27,7 +27,7 @@ qStat.controller('gameCtrl', function ($http, $scope) {
         });
     }
 });
-qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http, $modal) {
+qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
     if ($routeParams.gameId) {
         $http.get('/api/games/' + $routeParams.gameId).success(function (data) {
             $scope.game = data;
@@ -78,44 +78,6 @@ qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http, $modal
         }
         $http.put('/api/games/' + id, $scope.game).success(function (data) {
         });
-    }
-    $scope.showVerify = function () {
-        var id = $scope.user.properties.team.value
-        if ($scope.user.properties.captain.value && $scope.game.time) {
-            if (id === $scope.game.teams[0]._id) {
-                if ($scope.game.teams[0].verified) {
-                    return false;
-                } else {
-                    return true;
-                }
-            } else if
-            (id === $scope.game.teams[1]._id) {
-                if (id === $scope.game.teams[1].verified {
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-        } else {
-            return false;
-        }
-    }
-    $scope.showGameEdit() = function () {
-        var id = $scope.user.properties.team.value
-        if ($scope.user.properties.captain.value) {
-            if (id === $scope.game.teams[0]._id) {
-                return true;
-            } else if
-            (id === $scope.game.teams[1]._id) {
-                return true;
-            } else {
-                return false;
-            }
-        } else if ($scope.users.properties.admin.value) {
-            return true
-        } else {
-            return false;
-        }
     }
 });
 

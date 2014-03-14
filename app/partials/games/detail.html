@@ -31,7 +31,7 @@
         </div>
         <div col-xs-12>
             <button type="button" class="btn btn-default btn-sm" ng-click="gameForm.$show()"
-                ng-show="!gameForm.$visible && showGameEdit()"> Edit </button>
+                ng-show="!gameForm.$visible && (user.properties.captain.value && (user.properties.team.value===game.teams[0]._id || user.properties.team.value===game.teams[1]._id) || user.properties.admin.value)"> Edit </button>
             <span ng-show="gameForm.$visible">
                 <button class="btn btn-primary" ng-disabled="gameForm.$waiting"> Save </button>
                 <button type="button" class="btn btn-danger" ng-disabled="gameForm.$waiting"
@@ -68,7 +68,7 @@
                 </tr>
             </table>
         </div>      
-        <div class="center-block" ng-show="showVerify()">
+        <div class="center-block" ng-show="!game.time && user.properties.captain.value && (user.properties.team.value===game.teams[0]._id || user.properties.team.value===game.teams[1]._id) && (!game.teams[0].verified && !game.teams[1].verified)">
             <a class="btn btn-primary" ng-click="Signoff()">Stat sign off</a>
             <p class="help-block">Disputes have been recorded.</p>
         </div>
