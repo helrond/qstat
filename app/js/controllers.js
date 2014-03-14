@@ -57,26 +57,65 @@ qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http, $modal
     }
     $scope.Dispute = function (stat) {
         var dispute = {
-        'status':true,
-        'reason': $scope.reason,
-        'user': $scope.user.name,
-        'time': new Date()
+            'status': true,
+            'reason': $scope.reason,
+            'user': $scope.user.name,
+            'time': new Date()
         }
         stat.dispute = dispute;
-        console.log('updated')
-        console.log(stat)
-        console.log($scope.game)
         $http.put('/api/games/' + $routeParams.gameId, $scope.game).success(function (data) {
-            console.log($scope.game)
         });
     }
-    $scope.Reason = function (stat) {
-    //TODO ADD DIALOG
-    alert('show dialog with reason for stat dispute plus user info for disputee');
+    $scope.Signoff = function () {
+        $scope.verified =[]
+        var id = $scope.user.properties.team.value
+        if (id === $scope.game.teams[0]._id) {
+            $scope.game.teams[0].verified = true;
+            $scope.verified = true;
+        } else if (id === $scope.game.teams[1]._id) {
+            $scope.game.teams[1].verified = true;
+            $scope.verified = true;
+        }
+        $http.put('/api/games/' + id, $scope.game).success(function (data) {
+        });
     }
-    $scope.Signoff = function() {
-    //TODO ADD SOMETHING TO STATS SCHEMA AND PUSH
-    alert('record team captains signoff for these stats');
+    $scope.showVerify = function () {
+        var id = $scope.user.properties.team.value
+        if ($scope.user.properties.captain.value) {
+            if (id === $scope.game.teams[0]._id) {
+                if ($scope.game.teams[0].verified) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else if
+            (id === $scope.game.teams[1]._id) {
+                if (id === $scope.game.teams[1].verified {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        } else {
+            return false;
+        }
+    }
+    $scope.showGameEdit() = function () {
+        var id = $scope.user.properties.team.value
+        if ($scope.user.properties.captain.value) {
+            if (id === $scope.game.teams[0]._id) {
+                return true;
+            } else if
+            (id === $scope.game.teams[1]._id) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if ($scope.users.properties.admin.value) {
+            return true
+        } else {
+            return false;
+        }
     }
 });
 
@@ -157,7 +196,8 @@ qStat.controller('statCtrl', function ($http, $scope) {
     $http.get('/api/statistics').success(function (data, status, headers, config) {
         $scope.statistics = data;
     });
-    $scope.possessionTeam = {}
+    $scope.possessionTeam = {
+    }
     $scope.fouls =[ {
         'foul_id': 'redCard',
         'name': 'Red Card'

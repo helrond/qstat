@@ -33,6 +33,7 @@ var gameSchema = new Schema({
     teams:[ {
         name: String,
         team_id: String,
+        verified: Boolean
     }],
     location: {
         name: String,

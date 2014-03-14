@@ -5,7 +5,10 @@
         <li class="active">Game</li>
     </ol>
     <form editable-form name="gameForm" onaftersave="Update()">
-        <div class="col-xs-12" ng-controller="teamCtrl">
+        <div class="col-xs-12" ng-hide="gameForm.$visible">
+            <h2>{{game.name}}<span class="pull-right label label-warning" ng-show="(game.teams[0].verified && !game.teams[1].verified) || (game.teams[1].verified && !game.teams[0].verified)">Partially verified</span><span class="pull-right label label-success" ng-show="game.teams[0].verified && game.teams[1].verified">Verified</span></h2>
+        </div>
+        <div class="col-xs-12" ng-controller="teamCtrl" ng-show="gameForm.$visible">
             <h2 editable-select="game.teams[0].name" onshow="teams"
                 e-ng-options="team.name as team.name for team in teams | filter:'!'+game.teams[1]._id">
                     {{game.teams[0].name}}
@@ -28,7 +31,7 @@
         </div>
         <div col-xs-12>
             <button type="button" class="btn btn-default btn-sm" ng-click="gameForm.$show()"
-                ng-show="!gameForm.$visible && user.permissions.games"> Edit </button>
+                ng-show="!gameForm.$visible && showGameEdit()"> Edit </button>
             <span ng-show="gameForm.$visible">
                 <button class="btn btn-primary" ng-disabled="gameForm.$waiting"> Save </button>
                 <button type="button" class="btn btn-danger" ng-disabled="gameForm.$waiting"
@@ -65,9 +68,9 @@
                 </tr>
             </table>
         </div>      
-        <div class="center-block">
+        <div class="center-block" ng-show="showVerify()">
             <a class="btn btn-primary" ng-click="Signoff()">Stat sign off</a>
-            <p class="help-block">Disputes, if any, are recorded.</p>
+            <p class="help-block">Disputes have been recorded.</p>
         </div>
     </form>
 </div>
