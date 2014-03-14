@@ -285,10 +285,12 @@ exports.gameUpdate = function (req, res) {
     var id = req.body._id;
     if (id) {
         gameModel.findById(id, function (err, game) {
-            game.name = req.body.teams[0].name + ' vs ' + req.body.teams[1].name
+            if (req.body.teams[0].name) {
+            game.name = req.body.teams[0].name + ' vs ' + req.body.teams[1].name}
+            if (req.body.startTime) {
+            game.date = req.body.startTime}
             game.teams = req.body.teams,
             game.location = req.body.location,
-            game.date = req.body.startTime,
             game.time = req.body.gameTime,
             game.statistics = req.body.statistics,
             game.inProgress = req.body.inProgress,

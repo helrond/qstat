@@ -27,7 +27,7 @@ qStat.controller('gameCtrl', function ($http, $scope) {
         });
     }
 });
-qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
+qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http, $modal) {
     if ($routeParams.gameId) {
         $http.get('/api/games/' + $routeParams.gameId).success(function (data) {
             $scope.game = data;
@@ -56,16 +56,18 @@ qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
         });
     }
     $scope.Dispute = function (stat) {
-        //TODO ADD DIALOG FOR REASON ENTRY
         var dispute = {
         'status':true,
-        'reason': stat.dispute.reason,
+        'reason': $scope.reason,
         'user': $scope.user.name,
         'time': new Date()
         }
-        console.log(dispute)
         stat.dispute = dispute;
-        $http.put('/api/games/' + $routeParams.gameId, $scope.game).success(function () {
+        console.log('updated')
+        console.log(stat)
+        console.log($scope.game)
+        $http.put('/api/games/' + $routeParams.gameId, $scope.game).success(function (data) {
+            console.log($scope.game)
         });
     }
     $scope.Reason = function (stat) {
@@ -395,12 +397,12 @@ qStat.controller('statCtrl', function ($http, $scope) {
     }
     $scope.AddPossession = function (possessionTeam) {
         if ($scope.selectedGame.teams[0]._id === possessionTeam) {
-            var team1value = false
-            var team2value = true
-            console.log('matches team 0')
-        } else {
             var team1value = true
             var team2value = false
+            console.log('matches team 0')
+        } else {
+            var team1value = false
+            var team2value = true
             console.log('matches team 1')
         }
         
