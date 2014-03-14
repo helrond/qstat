@@ -81,7 +81,7 @@ qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http, $modal
     }
     $scope.showVerify = function () {
         var id = $scope.user.properties.team.value
-        if ($scope.user.properties.captain.value) {
+        if ($scope.user.properties.captain.value && $scope.game.time) {
             if (id === $scope.game.teams[0]._id) {
                 if ($scope.game.teams[0].verified) {
                     return false;
