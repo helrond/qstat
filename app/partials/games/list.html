@@ -45,6 +45,8 @@
     		<td class="col-xs-3">{{game.location.name}}</td>
     		<td class="col-xs-3">{{game.date | date:'longDate'}}
     			<span ng-show="user.permissions.games.value" class="glyphicon glyphicon-remove text-danger pull-right" href="#" ng-click="Delete(game)"></span>
+    			<span class="pull-right label label-warning" ng-show="(game.teams[0].verified && !game.teams[1].verified) || (game.teams[1].verified && !game.teams[0].verified)">Partially verified</span>
+    			<span class="pull-right label label-success" ng-show="game.teams[0].verified && game.teams[1].verified">Verified</span>
     		</td>
         </tr>
     </table>
