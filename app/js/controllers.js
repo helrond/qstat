@@ -55,10 +55,10 @@ qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
         $http.put('/api/games/' + $routeParams.gameId, $scope.game).success(function () {
         });
     }
-    $scope.Dispute = function (stat) {
+    $scope.Dispute = function (stat, reason) {
         var dispute = {
             'status': true,
-            'reason': $scope.reason,
+            'reason': reason,
             'user': $scope.user.name,
             'time': new Date()
         }
@@ -517,7 +517,7 @@ qStat.controller('userCtrl', function ($scope, $http) {
     //});
 });
 qStat.controller('userDetailCtrl', function ($scope, $http) {
-    //$http.get('/api/users').success(function (data, status, headers, config) {
-    //    $scope.teams = data;
-    //});
+    $http.get('/api/teams').success(function (data, status, headers, config) {
+        $scope.teams = data;
+    });
 });
