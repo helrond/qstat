@@ -1,8 +1,8 @@
 <div ng-controller="userDetailCtrl">
-    <h2>Profile</h2>
-    <h3>{{user.first_name}} {{user.last_name}}</h3>
-    <p ng-show="user.properties.team.value"><a href="#/teams/{{user.properties.team.value}}">Team captain</a></p>
-    <p>{{user.email}}</p>
+    <h2>{{user.first_name}} {{user.last_name}}</h2>
+    <p ng-show="user.properties.team.value">Captain of <a href="#/teams/{{user.properties.team.value}}">team</a></p>
+    <p ng-show="user.properties.scorekeeper.value">Scorekeeper</p>
+    <p ng-show="user.properties.admin.value">Administrator</p>
     <h4>Permissions:</h4>
         <ul>
             <li ng-show="user.permissions.games.value">Add, delete or edit games</li>
@@ -11,6 +11,6 @@
             <li ng-show="user.permissions.stats.value">Add, delete or edit stats</li>
         </ul>
     <hr/>
-    <p>Created: {{user.created_at | date:'longDate'}}</p>
-    <p>Last updated: {{user.updated_at | date:'longDate'}}</p>
+    <p class="help-block">Created: {{user.created_at * 1000 | date:'longDate'}}</p>
+    <p class="help-block">Last updated: {{user.updated_at * 1000 | date:'longDate'}}</p>
 </div>
