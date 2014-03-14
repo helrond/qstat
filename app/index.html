@@ -21,10 +21,10 @@
 	  <li ng-class="{active:isActive('/games')}"><a href="#/games">Games</a></li>
 	  <li ng-class="{active:isActive('/teams')}"><a href="#/teams">Teams</a></li>
 	  <li ng-class="{active:isActive('/players')}"><a href="#/players">Players</a></li>
-	  <li ng-show="user.permissions.stats" ng-class="{active:isActive('/stats')}" class="pull-right"><a href="#/stats">Stats</a></li>
+	  <li ng-show="user.permissions.stats.value" ng-class="{active:isActive('/stats')}" class="pull-right"><a href="#/stats">Stats</a></li>
   	</ul>
-  
 	   <div class="content col-xs-11 center-block">
+	     {{user}}
   		<div ng-view></div>
   	</div>
   </div>

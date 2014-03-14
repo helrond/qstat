@@ -53,14 +53,14 @@
                     <td class="col-xs-3">{{stat.team.name}}</td>
                     <td class="col-xs-2"><span ng-show="stat.value === false || stat.value === true">{{stat.value | possessionFilter}}&nbsp;</span>{{stat.name}}<span ng-show="stat.attribute">, {{stat.attribute}}</span><span ng-show="stat.type">&nbsp;({{stat.type.name}})</span></td>
                     <td class="col-xs-2">{{stat.time | date:'h:mm:ss a'}}
-                        <span ng-show="!stat.dispute.status" href="#" class="pull-right label label-primary" ng-click="addReason=true">Dispute</span>
+                        <span ng-show="user.properties.admin.value" href="#" class="text-danger pull-right glyphicon glyphicon-remove" ng-click="Delete(stat)"></span>
+                        <span ng-show="user.properties.captain.value && !stat.dispute.status" href="#" class="pull-right label label-primary" ng-click="addReason=true">Dispute</span>
                         <div ng-model="reason" ng-show="addReason && !stat.dispute.status">
                             <input class="form-control form-group" type="text" ng-model="reason"></input>
                             <a class="btn btn-sm btn-primary" ng-click="Dispute(stat)">Submit</a>
                             <a class="btn btn-sm btn-danger" ng-click="addReason=false">Cancel</a>
                         </div>
                         <span ng-show="stat.dispute.status" class="pull-right label label-danger" ng-click="Reason(stat)">Disputed</span>
-                        <span ng-show="user.properties.admin" href="#" class="text-danger pull-right glyphicon glyphicon-remove" ng-click="Delete(stat)"></span>
                     </td>
                 </tr>
             </table>

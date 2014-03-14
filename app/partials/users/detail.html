@@ -1,13 +1,14 @@
 <div ng-controller="userDetailCtrl">
     <h2>Profile</h2>
     <h3>{{user.first_name}} {{user.last_name}}</h3>
+    <p ng-show="user.properties.team.value"><a href="#/teams/{{user.properties.team.value}}">Team captain</a></p>
     <p>{{user.email}}</p>
     <h4>Permissions:</h4>
         <ul>
-            <li ng-show="user.permissions.games">Add, delete or edit games</li>
-            <li ng-show="user.permissions.players">Add, delete or edit players</li>
-            <li ng-show="user.permissions.teams">Add, delete or edit teams</li>
-            <li ng-show="user.permissions.stats">Add, delete or edit stats</li>
+            <li ng-show="user.permissions.games.value">Add, delete or edit games</li>
+            <li ng-show="user.permissions.players.value">Add, delete or edit players</li>
+            <li ng-show="user.permissions.teams.value">Add, delete or edit teams</li>
+            <li ng-show="user.permissions.stats.value">Add, delete or edit stats</li>
         </ul>
     <hr/>
     <p>Created: {{user.created_at | date:'longDate'}}</p>
