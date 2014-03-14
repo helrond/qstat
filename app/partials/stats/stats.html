@@ -25,7 +25,11 @@
             </div>
             <div class="col-xs-12">
                 <h4>Possession</h4>
-                <div class="radio">
+                <div class="btn-group">
+                    <button type="button" ng-model="possessionTeam" class="btn btn-primary" btn-radio="selectedGame.teams[0]._id" ng-click="AddPossession(selectedGame.teams[0]._id)">{{selectedGame.teams[0].name}}</button>
+                    <button type="button" ng-model="possessionTeam" class="btn btn-primary" btn-radio="selectedGame.teams[1]._id" ng-click="AddPossession(selectedGame.teams[1]._id)">{{selectedGame.teams[1].name}}</button>
+                </div>
+                <!--<div class="radio">
                     <label>
                         <input id="team1" name="switch" type="radio" value="{{selectedGame.teams[0]._id}}" ng-model="possessionTeam" ng-click="AddPossession()"/>
                         {{selectedGame.teams[0].name}}
@@ -36,7 +40,7 @@
                         <input id="team2" type="radio" value="{{selectedGame.teams[1]._id}}" ng-model="possessionTeam" ng-click="AddPossession()"/>
                             {{selectedGame.teams[1].name}}
                     </label>
-                </div>
+                </div>-->
                 <hr/>
             </div>
             <form name="stat" novalidate>

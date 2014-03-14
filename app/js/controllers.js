@@ -56,18 +56,25 @@ qStat.controller('gameDetailCtrl', function ($scope, $routeParams, $http) {
         });
     }
     $scope.Dispute = function (stat) {
+        //TODO ADD DIALOG FOR REASON ENTRY
         var dispute = {
         'status':true,
-        //'reason': $scope.reason,
-        //'user': $scope.user.name,
+        'reason': stat.dispute.reason,
+        'user': $scope.user.name,
         'time': new Date()
         }
-        stat.disputed = dispute;
+        console.log(dispute)
+        stat.dispute = dispute;
         $http.put('/api/games/' + $routeParams.gameId, $scope.game).success(function () {
         });
     }
     $scope.Reason = function (stat) {
-    alert('show dialog with reason for stat dispute plus user info for disputee')
+    //TODO ADD DIALOG
+    alert('show dialog with reason for stat dispute plus user info for disputee');
+    }
+    $scope.Signoff = function() {
+    //TODO ADD SOMETHING TO STATS SCHEMA AND PUSH
+    alert('record team captains signoff for these stats');
     }
 });
 
@@ -148,7 +155,7 @@ qStat.controller('statCtrl', function ($http, $scope) {
     $http.get('/api/statistics').success(function (data, status, headers, config) {
         $scope.statistics = data;
     });
-    
+    $scope.possessionTeam = {}
     $scope.fouls =[ {
         'foul_id': 'redCard',
         'name': 'Red Card'
@@ -386,13 +393,15 @@ qStat.controller('statCtrl', function ($http, $scope) {
         var id = $scope.selectedGame.statistics[index]._id
         $scope.selectedGame.statistics.splice(index, 1);
     }
-    $scope.AddPossession = function () {
-        if ($scope.selectedGame.teams[0]._id === $scope.possessionTeam) {
-            var team1value = true
-            var team2value = false
-        } else {
+    $scope.AddPossession = function (possessionTeam) {
+        if ($scope.selectedGame.teams[0]._id === possessionTeam) {
             var team1value = false
             var team2value = true
+            console.log('matches team 0')
+        } else {
+            var team1value = true
+            var team2value = false
+            console.log('matches team 1')
         }
         
         var newStat =[ {

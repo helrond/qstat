@@ -9,7 +9,8 @@ angular.module('qStat',[
 'qStat.directives',
 'qStat.controllers',
 'xeditable',
-'UserApp']).
+'UserApp',
+'ui.bootstrap']).
 config([ '$routeProvider',
 function ($routeProvider) {
     $routeProvider.
