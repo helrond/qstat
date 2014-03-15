@@ -2,7 +2,7 @@
 
 /* Filters */
 
-angular.module('qStat.filters',[]).
+angular.module('qStat.filters',['ngResource']).
 filter('interpolate',[ 'version', function (version) {
     return function (text) {
         return String(text).replace(/\%VERSION\%/mg, version);
@@ -135,11 +135,14 @@ filter('rosterFilter', function () {
     return function (input) {
         return input ? 'gain': 'lose';
     };
-}).filter('permissionsFilter', function () {
-    return function (permissions, permission) {
-    angular.forEach(permissions, function (permission) {
-    console.log(permission)
-        return input ? 'Add, delete, edit and update' + permission: '';
-        })
-    };
+}).filter('teamIdFilter', function () {
+    return function (input, teams) {
+    var name = ""
+        angular.forEach(teams, function (team) {
+            if (angular.equals(input, team._id)) {
+                name = team.name
+            };
+        }, name);
+        return (name)
+    }
 });

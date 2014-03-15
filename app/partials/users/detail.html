@@ -1,6 +1,6 @@
 <div ng-controller="userDetailCtrl">
     <h2>{{user.first_name}} {{user.last_name}}</h2>
-    <p ng-show="user.properties.team.value">Captain of <a href="#/teams/{{user.properties.team.value}}">team</a></p>
+    <p ng-show="user.properties.team.value">Captain of <a href="#/teams/{{user.properties.team.value}}">{{user.properties.team.value | teamIdFilter:teams}}</a></p>
     <p ng-show="user.properties.scorekeeper.value">Scorekeeper</p>
     <p ng-show="user.properties.admin.value">Administrator</p>
     <h4>Permissions:</h4>
