@@ -11,6 +11,7 @@
             <li ng-show="user.permissions.stats.value">Add, delete or edit stats</li>
         </ul>
     <hr/>
+    <!-- need to convert timestamp in seconds to milliseconds -->
     <p class="help-block">Created: {{user.created_at * 1000 | date:'longDate'}}</p>
     <p class="help-block">Last updated: {{user.updated_at * 1000 | date:'longDate'}}</p>
 </div>

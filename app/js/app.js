@@ -37,9 +37,9 @@ function ($routeProvider) {
     }).when('/stats', {
         templateUrl: 'partials/stats/stats.html', controller: 'statCtrl', hasPermission:'stats'
     }).when('/login', {
-        templateUrl: 'partials/users/login.html', controller: 'userCtrl', public:true, login:true
+        templateUrl: 'partials/users/login.html', controller: 'userCtrl', login: true
     }).when('/users/:userId', {
-        templateUrl: 'partials/users/detail.html', controller: 'userDetailCtrl', public:true
+        templateUrl: 'partials/users/detail.html', controller: 'userDetailCtrl'
     }).otherwise({
         redirectTo: '/'
     });
