@@ -104,7 +104,9 @@ qStat.controller('playerDetailCtrl', function ($scope, $routeParams, $http) {
         $scope.player = {
         };
     };
-    $scope.statistics =[] //To be added later; pull all game stats and then filter for just the ones for this player
+    $http.get('/api/games').success(function (data, status, headers, config) {
+        $scope.games = data;
+    });
     $scope.Add = function () {
         $http.post('/api/players', $scope.player).success(function (data) {
             window.location.href = "/#/players";
