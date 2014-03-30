@@ -446,7 +446,10 @@ qStat.controller('statCtrl', function ($http, $scope) {
     }
     $scope.Confirm = function (stat) {
         var gameId = $scope.selectedGame._id
-        $http.put('/api/games/' + gameId, $scope.selectedGame).success(function (data) {
+        $http.get('api/games/' + gameId).success(function(data) {
+        var gameScope = data});
+        var newStats = gameScope.concat($scope.selectedGame);
+        $http.put('/api/games/' + gameId, newStats).success(function (data) {
             window.location.href = "/#/games";
         });
     }
