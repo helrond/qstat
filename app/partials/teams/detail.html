@@ -45,7 +45,7 @@
 	</div>
 	<div>
 		<button type="button" class="btn btn-default btn-sm" ng-click="teamForm.$show()"
-			ng-show="!teamForm.$visible && user.permissions.teams.value && user.properties.team.value === team._id"> Edit </button>
+			ng-show="!teamForm.$visible && user.permissions.teams.value && (user.properties.team.value === team._id || user.properties.admin.value)"> Edit </button>
 		<span ng-show="teamForm.$visible">
 			<button type="submit" class="btn btn-primary" ng-disabled="teamForm.$waiting"> Save </button>
 			<button type="button" class="btn btn-danger" ng-disabled="teamForm.$waiting"
