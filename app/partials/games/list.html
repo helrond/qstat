@@ -3,6 +3,7 @@
     	<div class="title">
     		<h2>Games</h2>
     	</div>
+		<a ng-show="user.permissions.games.value" href="#/games/new" class="btn btn-sm btn-success" role="button" ng-click="new">Add new</a>
     	<div class="search col-xs-6">
 			<input type="text" placeholder="Search" ng-model="query" class="form-control"/>
         </div>
