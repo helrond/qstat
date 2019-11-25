@@ -1,4 +1,4 @@
-#qstat
+# qstat
 
 A mobile-first web app for recording quidditch stats.
 
